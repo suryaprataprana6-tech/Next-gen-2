@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">gi
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen Digital Agency — We Build Digital Assets That Generate Revenue</title>
+  <meta name="description" content="Premium digital marketing & website development agency in India. High-converting websites, Meta Ads, Google Ads, SEO & more." />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===================== CURSOR ===================== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+        <span class="logo-text">NextGen<span class="logo-accent">Digital</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#why-us" class="nav-link">Why Us</a></li>
+        <li><a href="#stats" class="nav-link">Results</a></li>
+        <li><a href="#process" class="nav-link">Process</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta">Get Free Consultation</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <!-- Particle canvas background -->
+    <canvas id="particleCanvas"></canvas>
+    <!-- Three.js canvas -->
+    <div id="threeContainer"></div>
+    <!-- Glow orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Full-Service Digital Agency — India's Fastest Growing
+      </div>
+      <h1 class="hero-title reveal">
+        Grow Your Business with<br/>
+        <span class="gradient-text">High-Converting</span><br/>
+        Websites &amp; Ads
+      </h1>
+      <p class="hero-sub reveal">
+        We engineer premium digital experiences that attract customers,<br class="br-hide"/>
+        build authority, and generate measurable revenue — for every business type.
+      </p>
+      <div class="hero-btns reveal">
+        <a href="#contact" class="btn-primary">
+          <span>Get Free Consultation</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#services" class="btn-outline">
+          <span>View Services</span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+      <div class="hero-metrics reveal">
+        <div class="metric">
+          <span class="metric-num">120+</span>
+          <span class="metric-label">Websites Built</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <span class="metric-num">300+</span>
+          <span class="metric-label">Campaigns Run</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <span class="metric-num">5M+</span>
+          <span class="metric-label">Leads Generated</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===================== Services===================== -->
+  <section class="services section-pad" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">Full-Services <span class="gradient-text">Digital Solutions</span></h2>
+        <p class="section-sub">Everything your business needs to dominate online — under one roof.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fas fa-code"></i></div>
+          <h3>Website Development</h3>
+          <p>Lightning-fast, conversion-optimized websites built to turn visitors into paying customers. Mobile-first & SEO-ready.</p>
+          <div class="card-tag">Most Popular</div>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fab fa-facebook-f"></i></div>
+          <h3>Meta Ads</h3>
+          <p>Precision Facebook & Instagram ad campaigns with hyper-targeted audiences that deliver maximum ROI for your budget.</p>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fab fa-google"></i></div>
+          <h3>Google Ads</h3>
+          <p>Dominate Google search results with data-driven PPC campaigns that capture buyers exactly when they're ready.</p>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fas fa-search"></i></div>
+          <h3>SEO Optimization</h3>
+          <p>Rank #1 organically. Technical SEO, content strategy, and link building that drives sustainable long-term traffic.</p>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fas fa-share-nodes"></i></div>
+          <h3>Social Media Management</h3>
+          <p>Consistent, branded social presence that builds community, increases engagement, and nurtures leads daily.</p>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Landing Page Creation</h3>
+          <p>High-converting, persuasive landing pages built around your offer — designed to make visitors say yes instantly.</p>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+        <div class="service-card tilt-card reveal service-card-wide">
+          <div class="card-glow"></div>
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Lead Generation</h3>
+          <p>End-to-end lead generation systems combining ads, funnels, and automation — delivering qualified prospects directly to your inbox every day. We've generated 5M+ leads for Indian businesses.</p>
+          <div class="card-tag">Best Results</div>
+          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY US ===================== -->
+  <section class="why-us section-pad" id="why-us">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Why NextGen</div>
+        <h2 class="section-title">We Don't Just Run Campaigns.<br/><span class="gradient-text">We Drive Revenue.</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-database"></i></div>
+          <h3>Data-Driven Strategies</h3>
+          <p>Every decision backed by analytics. We track, test, and optimize for one thing — your conversions.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-coins"></i></div>
+          <h3>ROI-Focused Campaigns</h3>
+          <p>Your investment returns measurable revenue. We set clear KPIs and hit them — consistently.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Fast Delivery</h3>
+          <p>Websites live in 7 days. Campaigns live in 48 hours. No unnecessary delays, ever.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-chart-bar"></i></div>
+          <h3>Transparent Reporting</h3>
+          <p>Real-time dashboards, weekly reports, and zero hidden fees. You always know exactly where your money goes.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-headset"></i></div>
+          <h3>Dedicated Support</h3>
+          <p>Direct WhatsApp access to your account manager. Response within 2 hours, always.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+          <h3>India-Competitive Pricing</h3>
+          <p>Premium results at pricing built for Indian businesses — startups to enterprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="stats-section section-pad" id="stats">
+    <div class="stats-bg"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Proven Track Record</div>
+        <h2 class="section-title">Numbers That <span class="gradient-text">Speak Louder</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon"><i class="fas fa-globe"></i></div>
+          <div class="stat-number" data-target="120" data-suffix="+">0</div>
+          <div class="stat-label">Websites Built</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="85"></div></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
+          <div class="stat-number" data-target="300" data-suffix="+">0</div>
+          <div class="stat-label">Campaigns Managed</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="92"></div></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-number" data-target="5" data-suffix="M+">0</div>
+          <div class="stat-label">Leads Generated</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="97"></div></div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <div class="stat-number" data-target="4.9" data-suffix="" data-decimal="true">0</div>
+          <div class="stat-label">Average Client Rating</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="98"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section class="process section-pad" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">How We Work</div>
+        <h2 class="section-title">From Zero to <span class="gradient-text">Revenue</span> — Our Process</h2>
+        <p class="section-sub">A battle-tested 3-phase framework that launches fast and scales consistently.</p>
+      </div>
+      <div class="process-timeline">
+        <div class="timeline-line"></div>
+
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-card">
+            <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
+            <h3>Strategy & Discovery</h3>
+            <p>Deep-dive consultation to understand your business, audience, competition, and goals. We build a custom digital roadmap.</p>
+            <ul class="step-list">
+              <li><i class="fas fa-check-circle"></i> Business audit</li>
+              <li><i class="fas fa-check-circle"></i> Competitor analysis</li>
+              <li><i class="fas fa-check-circle"></i> Custom growth strategy</li>
+            </ul>
+            <div class="step-duration"><i class="fas fa-clock"></i> Day 1–2</div>
+          </div>
+        </div>
+
+        <div class="process-step reveal step-right">
+          <div class="step-number">02</div>
+          <div class="step-card">
+            <div class="step-icon"><i class="fas fa-pen-ruler"></i></div>
+            <h3>Design & Development</h3>
+            <p>We craft pixel-perfect designs, build your digital assets, and set up ad campaigns — all optimized for conversion.</p>
+            <ul class="step-list">
+              <li><i class="fas fa-check-circle"></i> Premium UI/UX design</li>
+              <li><i class="fas fa-check-circle"></i> Website development</li>
+              <li><i class="fas fa-check-circle"></i> Ad creatives & copy</li>
+            </ul>
+            <div class="step-duration"><i class="fas fa-clock"></i> Day 3–7</div>
+          </div>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-number">03</div>
+          <div class="step-card">
+            <div class="step-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Launch & Scale</h3>
+            <p>Go live, monitor performance in real-time, and continuously optimize to grow your leads and revenue month over month.</p>
+            <ul class="step-list">
+              <li><i class="fas fa-check-circle"></i> Live launch & testing</li>
+              <li><i class="fas fa-check-circle"></i> Weekly optimization</li>
+              <li><i class="fas fa-check-circle"></i> Scaling strategy</li>
+            </ul>
+            <div class="step-duration"><i class="fas fa-clock"></i> Day 8+</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="testimonials section-pad" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Client Stories</div>
+        <h2 class="section-title">Real Results. <span class="gradient-text">Real Businesses.</span></h2>
+      </div>
+      <div class="testimonial-carousel reveal">
+        <div class="testimonial-track" id="testimonialTrack">
+
+          <div class="testimonial-card">
+            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="test-text">"NextGen built our real estate website and ran Meta Ads. Within 30 days, we got 180+ qualified leads. Our previous agency gave us nothing in 3 months."</p>
+            <div class="test-author">
+              <div class="test-avatar">RK</div>
+              <div>
+                <div class="test-name">Rajesh Kumar</div>
+                <div class="test-role">Real Estate Developer, Patna</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="test-text">"Our coaching institute went from 40 students to 200+ in one semester. Their Google Ads and landing page strategy is genuinely world-class."</p>
+            <div class="test-author">
+              <div class="test-avatar">PS</div>
+              <div>
+                <div class="test-name">Priya Sharma</div>
+                <div class="test-role">Director, EduPrime Institute, Ranchi</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="test-text">"I run a small clothing boutique. NextGen set up Instagram ads for just ₹5000/month — I'm getting 20-30 orders a day now. Best investment ever!"</p>
+            <div class="test-author">
+              <div class="test-avatar">AM</div>
+              <div>
+                <div class="test-name">Anjali Mehta</div>
+                <div class="test-role">Boutique Owner, Dhanbad</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="test-text">"The website they built for our startup looks like a ₹5 lakh project — we paid a fraction. SEO traffic went from 0 to 8,000 visitors/month in 4 months."</p>
+            <div class="test-author">
+              <div class="test-avatar">VT</div>
+              <div>
+                <div class="test-name">Vikram Tiwari</div>
+                <div class="test-role">Co-Founder, TechBridge Startup</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="test-text">"As a doctor, I needed patients to find me online. NextGen's Local SEO and Google Ads strategy tripled my clinic appointments in 60 days. Highly recommend!"</p>
+            <div class="test-author">
+              <div class="test-avatar">DR</div>
+              <div>
+                <div class="test-name">Dr. Deepak Rao</div>
+                <div class="test-role">Healthcare Professional, Jamshedpur</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact section-pad" id="contact">
+    <div class="contact-bg-glow"></div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-tag">Let's Talk</div>
+          <h2 class="section-title">Ready to <span class="gradient-text">Grow?</span></h2>
+          <p class="contact-desc">Book your free strategy session. We'll audit your current digital presence and show you exactly how to double your leads.</p>
+
+          <div class="contact-items">
+            <a href="tel:+918340424989" class="contact-item">
+              <div class="ci-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="ci-label">Call Us Directly</div>
+                <div class="ci-value">+91 83404 24989</div>
+              </div>
+            </a>
+            <a href="https://wa.me/918340424989?text=Hi%20I%20want%20to%20grow%20my%20business%20with%20your%20services" target="_blank" class="contact-item">
+              <div class="ci-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <div class="ci-label">WhatsApp Chat</div>
+                <div class="ci-value">+91 83404 24989</div>
+              </div>
+            </a>
+            <a href="mailto:suryaprataprana6@gmail.com" class="contact-item">
+              <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="ci-label">Email Us</div>
+                <div class="ci-value">suryaprataprana6@gmail.com</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="trust-badges">
+            <div class="trust-badge"><i class="fas fa-shield-halved"></i> Free Consultation</div>
+            <div class="trust-badge"><i class="fas fa-clock"></i> 24hr Response</div>
+            <div class="trust-badge"><i class="fas fa-handshake"></i> No Lock-in</div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper reveal">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" placeholder="Rajesh Kumar" required />
+                <span class="error-msg" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="business">Business Name *</label>
+                <input type="text" id="business" name="business" placeholder="Kumar Enterprises" required />
+                <span class="error-msg" id="businessError"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+                <span class="error-msg" id="phoneError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" />
+                <span class="error-msg" id="emailError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In *</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service...</option>
+                <option value="website">Website Development</option>
+                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                <option value="google">Google Ads</option>
+                <option value="seo">SEO Optimization</option>
+                <option value="social">Social Media Management</option>
+                <option value="landing">Landing Page Creation</option>
+                <option value="leads">Lead Generation</option>
+                <option value="all">Complete Digital Marketing Package</option>
+              </select>
+              <span class="error-msg" id="serviceError"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Business</label>
+              <textarea id="message" name="message" rows="4" placeholder="Briefly describe your business and what you're looking to achieve..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-submit">
+              <span id="btnText">Get My Free Consultation</span>
+              <i class="fas fa-arrow-right" id="btnIcon"></i>
+              <div class="btn-loader" id="btnLoader" style="display:none;"></div>
+            </button>
+            <div class="form-success" id="formSuccess" style="display:none;">
+              <i class="fas fa-circle-check"></i>
+              <span>Request sent! We'll contact you within 24 hours. Check WhatsApp for faster response.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="nav-logo">
+              <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+              <span class="logo-text">NextGen<span class="logo-accent">Digital</span></span>
+            </a>
+            <p>We build digital assets that generate revenue. India's premium full-service digital marketing agency.</p>
+            <div class="footer-social">
+              <a href="https://wa.me/918340424989" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="mailto:suryaprataprana6@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+              <a href="tel:+918340424989" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Website Development</a></li>
+              <li><a href="#services">Meta Ads</a></li>
+              <li><a href="#services">Google Ads</a></li>
+              <li><a href="#services">SEO Optimization</a></li>
+              <li><a href="#services">Lead Generation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#why-us">Why Choose Us</a></li>
+              <li><a href="#process">Our Process</a></li>
+              <li><a href="#testimonials">Client Reviews</a></li>
+              <li><a href="#contact">Free Consultation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+918340424989"><i class="fas fa-phone"></i> +91 83404 24989</a></li>
+              <li><a href="mailto:suryaprataprana6@gmail.com"><i class="fas fa-envelope"></i> Email Us</a></li>
+              <li><a href="https://wa.me/918340424989" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 NextGen Digital Agency. All rights reserved. | Designed to Convert.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== WHATSAPP FLOAT ===================== -->
+  <a class="wa-float" id="waFloat"
+     href="https://wa.me/918340424989?text=Hi%20I%20want%20to%20grow%20my%20business%20with%20your%20services"
+     target="_blank"
+     rel="noopener"
+     aria-label="Chat on WhatsApp">
+    <div class="wa-pulse-ring"></div>
+    <div class="wa-pulse-ring wa-pulse-ring-2"></div>
+    <i class="fab fa-whatsapp wa-icon"></i>
+    <span class="wa-tooltip">Chat with Us!</span>
+  </a>
+
+  <!-- ===================== SCROLL TO TOP ===================== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
