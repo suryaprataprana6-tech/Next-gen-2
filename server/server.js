@@ -36,11 +36,14 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174"
 ];
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL);
+}
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || allowedOrigins.some(o => origin.startsWith(o))) {
       return callback(null, true);
     }
     return callback(null, true); // Allow all in early production; tighten later
