@@ -1,0 +1,130 @@
+[
+  {
+    "_id": "f9e10d41fe4277036eeafb0a",
+    "name": "India One Matrimony",
+    "url": "https://indiaonematrimony.com",
+    "clientName": "India One Matrimony Inc",
+    "category": "Matrimony",
+    "description": "India's trusted matrimonial platform with verified profiles and AI-powered matchmaking solutions.",
+    "images": [
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2025-08-15T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "bacc4711112f8f0d3d4dab03",
+    "name": "Honeymoon Safar",
+    "url": "https://honeymoonsafar.com",
+    "clientName": "Honeymoon Safar Travel Group",
+    "category": "Travel & Tourism",
+    "description": "Travel and honeymoon package booking platform designed for seamless trip planning and booking.",
+    "images": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2025-10-22T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "56da5c232910ce878b93ba00",
+    "name": "Kamakhya Yatra",
+    "url": "https://kamakhyayatra.com",
+    "clientName": "Kamakhya Pilgrimages",
+    "category": "Religious Tourism",
+    "description": "Religious tourism platform focused on pilgrimage, packages, and spiritual travel experiences.",
+    "images": [
+      "https://images.unsplash.com/photo-1602631985686-2bb0604508ec?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2025-12-05T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "fd536e56debfc0a08dc9af32",
+    "name": "Label Raje",
+    "url": "https://labelraje.com",
+    "clientName": "Label Raje Designs",
+    "category": "Fashion & Retail",
+    "description": "Modern fashion, clothing line, and luxury apparel brand e-commerce website.",
+    "images": [
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2026-01-20T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "43d9184b751a6786cb1ed4f8",
+    "name": "AIT Research Centre",
+    "url": "https://aitresearchcentre.in",
+    "clientName": "Academy of Information Technology",
+    "category": "Research & Education",
+    "description": "National academic and science research institute portal focused on educational studies.",
+    "images": [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2026-02-14T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "ce1f5018fb0b3ee741426bac",
+    "name": "AIT Research Centre Global",
+    "url": "https://aitresearchcentre.com",
+    "clientName": "AIT Global Foundations",
+    "category": "Research & Academic",
+    "description": "International academic exchange and research collaboration platform.",
+    "images": [
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2026-03-30T00:00:00.000Z",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "1bc605c6417ba9600a7a22d8",
+    "name": "World's Winner Education",
+    "url": "https://worldswinnereducation.com",
+    "clientName": "Worlds Winner Academy",
+    "category": "Education & Career",
+    "description": "Educational platform for student resources, courses, and digital career growth.",
+    "images": [
+      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2026-04-10T00:00:00.000Z",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  },
+  {
+    "_id": "4518a1244e1a3b18184aec91",
+    "name": "Miss Bharat Award",
+    "url": "https://missbharataward.com",
+    "clientName": "Miss Bharat Pageants",
+    "category": "Events & Pageants",
+    "description": "National beauty pageant platform focused on talent, leadership, and social impact.",
+    "images": [
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&fit=crop&q=80"
+    ],
+    "completionDate": "2026-05-18T00:00:00.000Z",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.493Z",
+    "updatedAt": "2026-06-25T15:44:45.493Z"
+  }
+]

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-dark font-sans antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headings font-bold tracking-tight text-dark;
+  }
+}
+
+/* Custom Webkit scrollbar for sleek premium UI */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.cardBg');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.borderBg');
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.muted');
+}
+
+/* Glow orb background animation keys */
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-4%, 6%) scale(1.08); }
+}
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(5%, -4%) scale(1.04); }
+}
+
+.animate-float-1 {
+  animation: floatOrb1 20s infinite alternate ease-in-out;
+}
+
+.animate-float-2 {
+  animation: floatOrb2 25s infinite alternate ease-in-out;
+}
+
+/* Custom dashboard SVG animate stroke rules */
+@keyframes animateStrokeLine {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-dashboard-stroke {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: animateStrokeLine 3s infinite alternate ease-in-out;
+}

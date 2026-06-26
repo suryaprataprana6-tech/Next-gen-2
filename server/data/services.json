@@ -1,0 +1,102 @@
+[
+  {
+    "_id": "cff8a2f77b9763f5d4ccb2c1",
+    "name": "Search Engine Optimization (SEO)",
+    "description": "Dominate search results, drive organic traffic, and capture high-intent customers with data-backed content optimization and ranking strategies.",
+    "icon": "Search",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "2d734070495ef88145b928f2",
+    "name": "Google Ads",
+    "description": "Target buyers instantly. We set up, manage, and optimize performance-driven Google PPC campaigns designed to yield high conversions.",
+    "icon": "Megaphone",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "7c1968f18350659987de8393",
+    "name": "Meta Ads",
+    "description": "Scale brand growth on Facebook and Instagram with visually compelling ad creatives and hyper-targeted custom audience segmentation.",
+    "icon": "Target",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "b64efeb331d9ef5779671c22",
+    "name": "Social Media Marketing",
+    "description": "Build an active online community, enhance customer loyalty, and drive product virality across LinkedIn, TikTok, and Instagram.",
+    "icon": "MessageCircle",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "149e6e1b067b65ebf4c11eee",
+    "name": "Website Development",
+    "description": "Develop fast, responsive, and visually spectacular websites optimized for maximum user experience, speed, and sales conversion.",
+    "icon": "Code",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "c8789b08a3ee73c47e518473",
+    "name": "Branding",
+    "description": "Craft a premium, memorable brand identity. We design logos, choose typography systems, and create brand strategy playbooks.",
+    "icon": "Palette",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "83ced8d10fad79bfa5c750ba",
+    "name": "Email Marketing",
+    "description": "Nurture leads and drive repeat revenue with custom, high-converting lifecycle emails, sequence automations, and weekly newsletters.",
+    "icon": "Mail",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "a7e8826912c87ddd3025e786",
+    "name": "Content Marketing",
+    "description": "Establish ultimate industry authority. We research, write, and distribute SEO-optimized blog posts, case studies, and digital guides.",
+    "icon": "FileText",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "31485746d7e9ddf39cb6f349",
+    "name": "Analytics & Reporting",
+    "description": "Gain complete visibility on performance. We build customized BI analytics dashboards tracking marketing spend and conversion funnels.",
+    "icon": "BarChart3",
+    "featured": false,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  },
+  {
+    "_id": "e70119fdcc39f2eaddc4f0e8",
+    "name": "AI Automation",
+    "description": "Reduce operational friction. We develop bespoke AI chatbots and streamline backend CRM systems to scale support and outbound sales.",
+    "icon": "Cpu",
+    "featured": true,
+    "status": "Active",
+    "createdAt": "2026-06-25T15:44:45.485Z",
+    "updatedAt": "2026-06-25T15:44:45.485Z"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "01541aa0f0fc1451dba4d34b",
+    "name": "Super Admin",
+    "email": "admin@nextgendigital.com",
+    "password": "$2a$10$SfwENTAjLnI3/1YiBEdwXuaWaNS4mLQiUP9MRIKTm7Mq5.JgGhNVm",
+    "role": "Admin",
+    "permissions": [
+      "all"
+    ],
+    "createdAt": "2026-06-25T15:44:45.316Z",
+    "updatedAt": "2026-06-25T15:44:45.319Z"
+  }
+]
