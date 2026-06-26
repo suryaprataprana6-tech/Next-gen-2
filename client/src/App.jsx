@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
 import { WebsiteProvider } from "./context/WebsiteContext";
 
 // Public Components
@@ -8,19 +7,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import LeadModal from "./components/LeadModal";
 import ChatBot from "./components/ChatBot";
-
-// Admin Layout & Pages
-import AdminLayout from "./layouts/AdminLayout";
-import Login from "./pages/admin/Login";
-import Dashboard from "./pages/admin/Dashboard";
-import Leads from "./pages/admin/Leads";
-import Portfolio from "./pages/admin/Portfolio";
-import Testimonials from "./pages/admin/Testimonials";
-import Services from "./pages/admin/Services";
-import ChatLogs from "./pages/admin/ChatLogs";
-import Blogs from "./pages/admin/Blogs";
-import Users from "./pages/admin/Users";
-import Settings from "./pages/admin/Settings";
 
 function PublicApp() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,9 +44,9 @@ function PublicApp() {
       <Home onOpenModal={openModal} />
       
       <LeadModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        prefilledInterest={prefilledInterest} 
+         isOpen={isModalOpen} 
+         onClose={closeModal} 
+         prefilledInterest={prefilledInterest} 
       />
       <ChatBot />
     </div>
@@ -69,36 +55,17 @@ function PublicApp() {
 
 function App() {
   return (
-    <AuthProvider>
-      <WebsiteProvider>
-        <Router>
-          <Routes>
-            {/* Public Website */}
-            <Route path="/" element={<PublicApp />} />
+    <WebsiteProvider>
+      <Router>
+        <Routes>
+          {/* Public Website */}
+          <Route path="/" element={<PublicApp />} />
 
-            {/* Admin Auth */}
-            <Route path="/admin/login" element={<Login />} />
-
-            {/* Admin Protected Dashboard Panel */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<Navigate to="/admin/dashboard" replace />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="leads" element={<Leads />} />
-              <Route path="portfolio" element={<Portfolio />} />
-              <Route path="testimonials" element={<Testimonials />} />
-              <Route path="services" element={<Services />} />
-              <Route path="chatlogs" element={<ChatLogs />} />
-              <Route path="blogs" element={<Blogs />} />
-              <Route path="users" element={<Users />} />
-              <Route path="settings" element={<Settings />} />
-            </Route>
-
-            {/* Catch-all redirect */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Router>
-      </WebsiteProvider>
-    </AuthProvider>
+          {/* Catch-all redirect */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </WebsiteProvider>
   );
 }
 

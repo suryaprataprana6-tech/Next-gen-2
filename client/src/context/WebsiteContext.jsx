@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
 
 const WebsiteContext = createContext();
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 // ─── Default Static Fallbacks ───────────────────────────────────────
 
@@ -263,120 +260,29 @@ const DEFAULT_TESTIMONIALS = [
 ];
 
 export const WebsiteProvider = ({ children }) => {
-  const [services, setServices] = useState(DEFAULT_SERVICES);
-  const [portfolio, setPortfolio] = useState(DEFAULT_PORTFOLIO);
-  const [testimonials, setTestimonials] = useState(DEFAULT_TESTIMONIALS);
-  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
-  const [loading, setLoading] = useState(true);
+  const [services] = useState(DEFAULT_SERVICES);
+  const [portfolio] = useState(DEFAULT_PORTFOLIO);
+  const [testimonials] = useState(DEFAULT_TESTIMONIALS);
+  const [settings] = useState(DEFAULT_SETTINGS);
+  const [loading, setLoading] = useState(false);
 
-  const fetchWebsiteData = async () => {
-    try {
-      setLoading(true);
-      // Fetch dynamic settings
-      const settingsRes = await axios.get(`${API_BASE_URL}/settings`);
-      if (settingsRes.data?.success && settingsRes.data?.settings) {
-        setSettings(settingsRes.data.settings);
-      }
-
-      // Fetch dynamic services
-      const servicesRes = await axios.get(`${API_BASE_URL}/services`);
-      if (servicesRes.data?.success && servicesRes.data?.services?.length > 0) {
-        // Map the colors (keep standard gradients)
-        const mapped = servicesRes.data.services.map((s, index) => ({
-          ...s,
-          title: s.name,
-          color: index % 2 === 0 
-            ? "from-blue-500/10 to-blue-500/5 text-blue-600" 
-            : "from-purple-500/10 to-purple-500/5 text-purple-600"
-        }));
-        setServices(mapped);
-      }
-
-      // Fetch dynamic portfolio
-      const portfolioRes = await axios.get(`${API_BASE_URL}/portfolio`);
-      if (portfolioRes.data?.success && portfolioRes.data?.portfolio?.length > 0) {
-        // Map fields
-        const mapped = portfolioRes.data.portfolio.map(p => ({
-          ...p,
-          screenshot: p.images?.[0] || "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&fit=crop&q=80",
-          technologies: p.technologies || ["React", "Tailwind CSS"],
-          tags: p.tags || [p.category]
-        }));
-        setPortfolio(mapped);
-      }
-
-      // Fetch dynamic testimonials
-      const testimonialsRes = await axios.get(`${API_BASE_URL}/testimonials`);
-      if (testimonialsRes.data?.success && testimonialsRes.data?.testimonials?.length > 0) {
-        setTestimonials(testimonialsRes.data.testimonials);
-      }
-    } catch (err) {
-      console.warn("Failed to load website content from database. Using static fallbacks.", err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Submit Lead CRM Handler
+  // Submit Lead CRM Handler (mock)
   const submitLead = async (leadData) => {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/leads`, leadData);
-      return response.data;
-    } catch (err) {
-      console.error("Lead submission error:", err);
-      throw err;
-    }
+    return { success: true };
   };
 
-  // Event Analytics Logger
+  // Event Analytics Logger (mock)
   const trackEvent = async (eventType, eventDetails = "") => {
-    try {
-      // Get basic browser info
-      const ua = navigator.userAgent;
-      let browser = "Chrome";
-      if (ua.indexOf("Firefox") > -1) browser = "Firefox";
-      else if (ua.indexOf("Safari") > -1 && ua.indexOf("Chrome") === -1) browser = "Safari";
-      else if (ua.indexOf("Edge") > -1) browser = "Edge";
-
-      let device = "Desktop";
-      if (/Mobi|Android|iPhone/i.test(ua)) device = "Mobile";
-      else if (/Tablet|iPad/i.test(ua)) device = "Tablet";
-
-      await axios.post(`${API_BASE_URL}/analytics/track`, {
-        device,
-        browser,
-        path: window.location.pathname || "/",
-        referrer: document.referrer || "Direct",
-        eventType,
-        eventDetails
-      });
-    } catch (err) {
-      // Slient fail for tracker
-    }
+    // Noop
   };
 
-  // Log chat conversation
+  // Log chat conversation (mock)
   const logChat = async (visitorName, messages, duration, redirectedToWhatsApp) => {
-    try {
-      await axios.post(`${API_BASE_URL}/chatlogs`, {
-        visitorName,
-        messages,
-        duration,
-        redirectedToWhatsApp
-      });
-    } catch (err) {
-      // Silent fail
-    }
+    // Noop
   };
-
-  useEffect(() => {
-    fetchWebsiteData();
-    // Track initial pageview
-    trackEvent("pageview", "Home page load");
-  }, []);
 
   return (
-    <WebsiteContext.Provider value={{ services, portfolio, testimonials, settings, loading, submitLead, trackEvent, logChat, refreshData: fetchWebsiteData }}>
+    <WebsiteContext.Provider value={{ services, portfolio, testimonials, settings, loading, submitLead, trackEvent, logChat, refreshData: () => {} }}>
       {children}
     </WebsiteContext.Provider>
   );
