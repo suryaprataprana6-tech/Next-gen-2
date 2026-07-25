@@ -10,11 +10,7 @@ import {
   RefreshCw, 
   Zap, 
   Rocket, 
-  Check, 
-  Sparkles,
-  ArrowUpRight,
-  ShieldCheck,
-  Search
+  ShieldCheck
 } from "lucide-react";
 
 export default function HeroLiveBuildVisual() {
@@ -131,14 +127,16 @@ export default function HeroLiveBuildVisual() {
           rotateY: { type: "spring", stiffness: 150, damping: 20 },
           y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
         }}
-        className="relative w-full h-[340px] sm:h-[370px] bg-slate-900/90 rounded-2xl border border-white/15 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden z-10"
+        className="relative w-full h-[340px] sm:h-[370px] bg-slate-950/95 rounded-2xl border border-white/15 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden z-10"
       >
-        {/* macOS Window Title Bar */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/80 border-b border-white/10 text-xs shrink-0">
+        {/* macOS Window Title Bar with Integrated Non-Overlapping Stage Indicator */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950 border-b border-white/10 text-xs shrink-0 z-10">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
             <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
             <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+            
+            {/* Active File / Mode Title */}
             <span className="ml-2 font-mono text-[11px] text-slate-300 font-semibold flex items-center gap-1.5">
               {stage === 1 && <><Code2 className="w-3.5 h-3.5 text-brand-400" /> App.tsx — VS Code</>}
               {stage === 2 && <><Terminal className="w-3.5 h-3.5 text-emerald-400" /> Terminal Build Engine</>}
@@ -146,12 +144,13 @@ export default function HeroLiveBuildVisual() {
             </span>
           </div>
 
-          <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300">
-            {stage === 1 ? "STAGE 1: CODE" : stage === 2 ? "STAGE 2: BUILD" : "STAGE 3: LIVE"}
+          {/* Compact Stage Indicator Badge inside Header (Left-aligned relative to floating cards) */}
+          <span className="text-[9px] font-extrabold px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-slate-300">
+            {stage === 1 ? "STAGE 1" : stage === 2 ? "STAGE 2" : "STAGE 3"}
           </span>
         </div>
 
-        {/* Dynamic Canvas Content Switching */}
+        {/* Dynamic Canvas Content Switching (Fast 200ms Crisp Transition) */}
         <div className="flex-1 relative overflow-hidden bg-[#0b0e14]">
           <AnimatePresence mode="wait">
             
@@ -159,10 +158,10 @@ export default function HeroLiveBuildVisual() {
             {stage === 1 && (
               <motion.div
                 key="stage1"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0.85, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0.85, y: -4 }}
+                transition={{ duration: 0.2 }}
                 className="w-full h-full p-4 font-mono text-xs text-slate-200 leading-relaxed overflow-hidden flex flex-col justify-between"
               >
                 <div className="flex items-center gap-2 pb-2 mb-2 border-b border-slate-800 text-[10px] text-slate-400">
@@ -211,14 +210,14 @@ export default function HeroLiveBuildVisual() {
               </motion.div>
             )}
 
-            {/* STAGE 2: Terminal Build & Compile Animation */}
+            {/* STAGE 2: Terminal Build & Compile Animation (UNTOUCHED LOGIC) */}
             {stage === 2 && (
               <motion.div
                 key="stage2"
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0.85, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0.85, y: -4 }}
+                transition={{ duration: 0.2 }}
                 className="w-full h-full p-4 font-mono text-xs bg-[#07090e] text-slate-200 flex flex-col justify-between"
               >
                 <div className="space-y-2 text-[11px]">
@@ -271,17 +270,17 @@ export default function HeroLiveBuildVisual() {
               </motion.div>
             )}
 
-            {/* STAGE 3: Polished Mini Website Preview */}
+            {/* STAGE 3: Polished Mini Website Preview (Optimized Margins & Fast Transition) */}
             {stage === 3 && (
               <motion.div
                 key="stage3"
-                initial={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0.85, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0.85, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
                 className="w-full h-full flex flex-col bg-slate-950 text-white overflow-hidden"
               >
-                {/* Mini Browser Bar */}
+                {/* Mini Browser Address Bar */}
                 <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-slate-800 text-[10px]">
                   <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-950 border border-slate-800 text-slate-200 font-semibold text-[9px] w-64 justify-center">
                     <Globe className="w-3 h-3 text-emerald-400" />
@@ -293,7 +292,7 @@ export default function HeroLiveBuildVisual() {
                 </div>
 
                 {/* Mini Site Preview Body */}
-                <div className="flex-1 p-4 bg-gradient-to-br from-slate-950 via-slate-900 to-dark-bg flex flex-col justify-between">
+                <div className="flex-1 p-5 sm:p-6 bg-gradient-to-br from-slate-950 via-slate-900 to-dark-bg flex flex-col justify-between">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-800">
                     <div className="flex items-center gap-1.5">
                       <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-brand-500 to-accent-violet flex items-center justify-center text-white text-[10px] font-extrabold shadow-sm">
@@ -306,7 +305,7 @@ export default function HeroLiveBuildVisual() {
                     </span>
                   </div>
 
-                  <div className="my-auto space-y-2 py-1">
+                  <div className="my-auto space-y-2 py-1 pr-6">
                     <h3 className="font-heading text-sm sm:text-base font-extrabold text-white leading-snug">
                       Engineering Scalable <span className="text-gradient">Digital Experiences</span>
                     </h3>
@@ -335,32 +334,32 @@ export default function HeroLiveBuildVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Accent Cards around Main Window */}
-      {/* 1. PageSpeed Badge (Top Right) */}
+      {/* Solid Opaque Floating Trust Cards around Main Window */}
+      {/* 1. PageSpeed Badge (Top Right Offset) */}
       <motion.div
         animate={{ y: [0, -7, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-emerald-500/30 shadow-xl backdrop-blur-md text-xs font-bold text-emerald-400 z-20"
+        className="absolute -top-7 -right-7 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/95 border border-emerald-500/40 shadow-2xl backdrop-blur-xl text-xs font-bold text-emerald-400 z-30"
       >
         <Zap className="w-4 h-4 fill-emerald-400 text-emerald-400" />
         <span>⚡ 99/100 PageSpeed</span>
       </motion.div>
 
-      {/* 2. Deployed Speed Badge (Bottom Left) */}
+      {/* 2. Deployed Speed Badge (Bottom Right Offset) */}
       <motion.div
         animate={{ y: [0, 7, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, delay: 0.6, ease: "easeInOut" }}
-        className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/90 border border-purple-500/30 shadow-xl backdrop-blur-md text-xs font-bold text-purple-300 z-20"
+        className="absolute -bottom-7 -right-7 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/95 border border-purple-500/40 shadow-2xl backdrop-blur-xl text-xs font-bold text-purple-300 z-30"
       >
         <Rocket className="w-4 h-4 text-accent-violet" />
         <span>🚀 Deployed in 0.8s</span>
       </motion.div>
 
-      {/* 3. SEO Badge (Top Left) */}
+      {/* 3. SEO Badge (Top Left Offset) */}
       <motion.div
-        animate={{ y: [0, -5, 0] }}
+        animate={{ y: [0, -6, 0] }}
         transition={{ duration: 3.8, repeat: Infinity, delay: 1.2, ease: "easeInOut" }}
-        className="absolute top-1/2 -left-6 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 shadow-xl backdrop-blur-md text-[11px] font-bold text-cyan-300 z-20"
+        className="absolute -top-7 -left-7 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/95 border border-cyan-500/40 shadow-2xl backdrop-blur-xl text-[11px] font-bold text-cyan-300 z-30"
       >
         <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
         <span>✓ SEO Optimized</span>
