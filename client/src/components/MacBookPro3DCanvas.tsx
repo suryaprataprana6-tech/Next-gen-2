@@ -53,13 +53,13 @@ export default function MacBookPro3DCanvas() {
       {isMounted ? (
         <Canvas
           shadows
-          camera={{ position: [0, 2.5, 8], fov: 36 }}
+          camera={{ position: [0, 1.2, 9.2], fov: 32 }}
           dpr={[1, 2]}
           className="relative z-10"
           gl={{ antialias: true, alpha: true }}
         >
           {/* Studio-style Apple lighting setup */}
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={0.6} />
 
           {/* Key light (top-right, warm) */}
           <directionalLight
@@ -99,10 +99,10 @@ export default function MacBookPro3DCanvas() {
 
           {/* Soft contact shadow on ground plane */}
           <ContactShadows
-            position={[0, -3.0, 0]}
-            opacity={0.6}
-            scale={15}
-            blur={3}
+            position={[0, -2.3, 0]}
+            opacity={0.65}
+            scale={14}
+            blur={2.5}
             far={6}
           />
 

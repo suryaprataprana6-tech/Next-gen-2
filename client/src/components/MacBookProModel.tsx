@@ -8,7 +8,7 @@
  * float, and 3–5° mouse parallax tilt.
  */
 
-import React, { useRef, useEffect, useMemo } from "react";
+import React, { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -44,21 +44,21 @@ export default function MacBookProModel({ mousePos }: MacBookProModelProps) {
 
     // Rise-from-below entry animation (cubic ease-out)
     if (!entryDone.current) {
-      entryProgress.current = Math.min(1, entryProgress.current + delta * 0.7);
+      entryProgress.current = Math.min(1, entryProgress.current + delta * 0.75);
       const t = entryProgress.current;
       const eased = 1 - Math.pow(1 - t, 3);
-      groupRef.current.position.y = THREE.MathUtils.lerp(-4.5, -0.5, eased);
+      groupRef.current.position.y = THREE.MathUtils.lerp(-4.0, -0.65, eased);
       if (t >= 1) entryDone.current = true;
       return;
     }
 
     // Gentle floating after entry
-    const floatY = Math.sin(state.clock.elapsedTime * 1.1) * 0.07;
-    groupRef.current.position.y = -0.5 + floatY;
+    const floatY = Math.sin(state.clock.elapsedTime * 1.1) * 0.05;
+    groupRef.current.position.y = -0.65 + floatY;
 
     // Mouse parallax — 3–5° max (0.052–0.087 rad)
-    const targetRotX = mousePos.y * -0.075;
-    const targetRotY = mousePos.x * 0.085;
+    const targetRotX = mousePos.y * -0.07;
+    const targetRotY = mousePos.x * 0.08;
     groupRef.current.rotation.x = THREE.MathUtils.lerp(
       groupRef.current.rotation.x,
       targetRotX,
@@ -74,7 +74,7 @@ export default function MacBookProModel({ mousePos }: MacBookProModelProps) {
   const rot = [Math.PI / 2, 0, 0] as [number, number, number];
 
   return (
-    <group ref={groupRef} position={[0, -4.5, 0]} scale={[1.3, 1.3, 1.3]} dispose={null}>
+    <group ref={groupRef} position={[0, -4.0, 0]} scale={[0.95, 0.95, 0.95]} dispose={null}>
 
       {/* ── All 19 real model meshes ──────────────────────────────── */}
       <mesh geometry={nodes.Object_10.geometry}  material={materials.PaletteMaterial001} rotation={rot} castShadow receiveShadow />
@@ -97,17 +97,11 @@ export default function MacBookProModel({ mousePos }: MacBookProModelProps) {
       <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor}   rotation={rot} castShadow receiveShadow />
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW}   rotation={rot} castShadow receiveShadow />
 
-      {/* ── Screen story embedded on the display plane ─────────────
-           The MacBook M3 16" model (Sketchfab/jackbaeten CC-BY-4.0) screen
-           sits at approximately y=1.35, z=-0.65 in model space at 0° rotation.
-           After our scale=1.3 and the group at y=-0.5, the Html panel sits flush
-           on the glass display. Tweak position/rotation if the screen offset
-           needs fine-tuning after you run npm run dev.
-      ─────────────────────────────────────────────────────────── */}
+      {/* ── Screen story embedded on the display plane ───────────── */}
       <Html
         transform
         occlude="blending"
-        distanceFactor={1.6}
+        distanceFactor={1.22}
         position={[0, 1.35, -0.62]}
         rotation={[-Math.PI / 2, 0, Math.PI]}
         style={{

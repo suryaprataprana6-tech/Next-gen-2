@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { STATS_DATA } from "@/data/portfolioData";
-import MacBookPro3DCanvas from "./MacBookPro3DCanvas";
+import HeroLiveBuildVisual from "./HeroLiveBuildVisual";
 
 export default function Hero() {
   const { openLeadModal, openConsultationModal } = useTheme();
@@ -97,9 +97,9 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Hero Visual (Real 3D MacBook GLB via React Three Fiber) */}
+          {/* Right Hero Visual (Animated Live Coding Build Canvas) */}
           <div className="lg:col-span-5 flex justify-center relative w-full">
-            <MacBookPro3DCanvas />
+            <HeroLiveBuildVisual />
           </div>
 
         </div>
