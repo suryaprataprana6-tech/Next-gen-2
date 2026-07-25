@@ -9,8 +9,6 @@ import {
   ArrowRight, 
   CheckCircle2, 
   X, 
-  Layers, 
-  TrendingUp, 
   AlertCircle,
   Lightbulb
 } from "lucide-react";
@@ -27,33 +25,40 @@ export default function FeaturedProjects() {
     : PROJECTS_DATA.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-slate-900/[0.02] dark:bg-white/[0.01]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-28 relative overflow-hidden bg-[#060816] text-white border-t border-white/10">
+      
+      {/* Background Soft Ambient Light */}
+      <div className="absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full bg-[#A855F7]/10 blur-[160px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-brand-500/20 text-xs font-bold text-brand-500 dark:text-brand-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-[#7C5CFF] mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Featured Case Studies</span>
+            <span>Selected Client Work</span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            High-Converting <span className="text-gradient">Portfolio & Systems</span>
+          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Featured Projects <br />
+            <span className="bg-gradient-to-r from-[#7C5CFF] to-[#A855F7] bg-clip-text text-transparent">
+              Built for Measurable Growth
+            </span>
           </h2>
-          <p className="mt-4 text-slate-600 dark:text-slate-300 text-base">
-            Explore detailed client case studies highlighting business problems solved, custom tech stack, and measurable growth metrics.
+          <p className="mt-4 text-[#94A3B8] text-lg max-w-2xl mx-auto">
+            Explore Apple-style case studies showing business challenges solved, custom tech stack applied, and client ROI metrics achieved.
           </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-12">
+        <div className="flex flex-wrap justify-center gap-2.5 mb-14">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-extrabold transition-all duration-200 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 ${
                 selectedCategory === cat
-                  ? "bg-gradient-to-r from-brand-600 to-accent-violet text-white shadow-glow-primary scale-105"
-                  : "glass-card border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-brand-500/50"
+                  ? "bg-gradient-to-r from-[#7C5CFF] to-[#A855F7] text-white shadow-lg scale-105"
+                  : "bg-[#0b0f24] border border-white/10 text-[#94A3B8] hover:border-[#7C5CFF]/60 hover:text-white"
               }`}
             >
               {cat}
@@ -61,71 +66,71 @@ export default function FeaturedProjects() {
           ))}
         </div>
 
-        {/* Case Studies Grid */}
+        {/* Apple-style Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project: ProjectCaseStudy, idx: number) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="group glass-card rounded-3xl overflow-hidden border border-slate-900/10 dark:border-white/10 hover:border-brand-500/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="group bg-[#0b0f24] rounded-3xl overflow-hidden border border-white/10 hover:border-[#7C5CFF]/60 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-2xl"
             >
               <div>
-                {/* Hero Image Container */}
-                <div className="relative h-52 w-full overflow-hidden bg-slate-900">
+                {/* Image Showcase Frame */}
+                <div className="relative h-56 w-full overflow-hidden bg-[#060816]">
                   <img
                     src={project.heroImage}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold tracking-wider uppercase bg-slate-900/80 backdrop-blur-md text-white border border-white/20">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#060816]/90 backdrop-blur-md text-white border border-white/20">
                       {project.category}
                     </span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="text-[11px] font-extrabold text-brand-500 dark:text-brand-400 mb-1">
+                {/* Card Info */}
+                <div className="p-7">
+                  <div className="text-xs font-bold text-[#7C5CFF] mb-1">
                     Client: {project.clientName}
                   </div>
 
-                  <h3 className="font-heading font-extrabold text-xl text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors mb-3">
+                  <h3 className="font-heading font-extrabold text-2xl text-white group-hover:text-[#7C5CFF] transition-colors mb-3">
                     {project.title}
                   </h3>
 
-                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-4">
+                  <p className="text-xs text-[#94A3B8] line-clamp-2 leading-relaxed mb-6">
                     {project.description}
                   </p>
 
-                  {/* Tech Badges */}
+                  {/* Tech Stack Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {project.techStack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300"
+                        className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5 text-slate-400">
+                      <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-white/5 text-slate-400">
                         +{project.techStack.length - 4}
                       </span>
                     )}
                   </div>
 
-                  {/* Key Metrics Banner */}
-                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-brand-500/5 border border-brand-500/15 mb-4">
+                  {/* Measurable ROI Metric Banner */}
+                  <div className="grid grid-cols-2 gap-2 p-3.5 rounded-2xl bg-[#7C5CFF]/10 border border-[#7C5CFF]/20 mb-2">
                     {project.resultsAchieved.slice(0, 2).map((res) => (
                       <div key={res.label} className="text-center">
-                        <span className="font-heading text-sm font-extrabold text-brand-500 block">
+                        <span className="font-heading text-sm font-extrabold text-[#7C5CFF] block">
                           {res.metric}
                         </span>
-                        <span className="text-[9px] font-semibold text-slate-500 dark:text-slate-400">
+                        <span className="text-[9px] font-medium text-[#94A3B8]">
                           {res.label}
                         </span>
                       </div>
@@ -134,32 +139,22 @@ export default function FeaturedProjects() {
                 </div>
               </div>
 
-              {/* Action Bar */}
-              <div className="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-900/10 dark:border-white/10">
+              {/* Card Footer Action */}
+              <div className="px-7 pb-7 pt-3 flex items-center justify-between border-t border-white/5">
                 <button
                   onClick={() => setActiveModalProject(project)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white hover:text-brand-500 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-[#7C5CFF] transition-colors"
                 >
                   <span>View Case Study</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-brand-500" />
+                  <ArrowRight className="w-4 h-4 text-[#7C5CFF]" />
                 </button>
 
                 <div className="flex items-center gap-2">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-xl glass-card text-slate-700 dark:text-slate-300 hover:text-brand-500"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                  )}
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl glass-card text-slate-700 dark:text-slate-300 hover:text-brand-500"
+                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </a>
@@ -171,22 +166,22 @@ export default function FeaturedProjects() {
 
       </div>
 
-      {/* Case Study Detail Modal */}
+      {/* Detailed Case Study Storytelling Modal */}
       <AnimatePresence>
         {activeModalProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#060816]/90 backdrop-blur-md overflow-y-auto"
             onClick={() => setActiveModalProject(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-card rounded-3xl border border-white/20 p-6 sm:p-8 bg-slate-900 text-white shadow-2xl my-8"
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/15 p-6 sm:p-8 bg-[#0b0f24] text-white shadow-2xl my-8"
             >
               {/* Close Button */}
               <button
@@ -196,20 +191,19 @@ export default function FeaturedProjects() {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Modal Hero Header */}
-              <div className="mb-8">
-                <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-400 border border-brand-500/30 uppercase tracking-widest inline-block mb-3">
+              <div className="mb-6">
+                <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-[#7C5CFF]/20 text-[#7C5CFF] border border-[#7C5CFF]/30 uppercase tracking-widest inline-block mb-3">
                   {activeModalProject.category} Case Study
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-2">
+                <h3 className="font-heading text-3xl font-extrabold text-white mb-1">
                   {activeModalProject.title}
                 </h3>
-                <p className="text-sm font-semibold text-slate-400">
-                  Client Partner: {activeModalProject.clientName}
+                <p className="text-sm font-semibold text-[#94A3B8]">
+                  Client: {activeModalProject.clientName}
                 </p>
               </div>
 
-              {/* Main Screenshot Banner */}
+              {/* Screenshot Banner */}
               <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden mb-8 border border-white/10">
                 <img
                   src={activeModalProject.heroImage}
@@ -218,21 +212,21 @@ export default function FeaturedProjects() {
                 />
               </div>
 
-              {/* Metrics Grid */}
+              {/* ROI Results Grid */}
               <div className="grid grid-cols-3 gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 mb-8">
                 {activeModalProject.resultsAchieved.map((res) => (
                   <div key={res.label} className="text-center">
-                    <span className="font-heading text-xl sm:text-2xl font-extrabold text-gradient block">
+                    <span className="font-heading text-2xl font-extrabold bg-gradient-to-r from-[#7C5CFF] to-[#A855F7] bg-clip-text text-transparent block">
                       {res.metric}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400">
+                    <span className="text-xs font-medium text-[#94A3B8]">
                       {res.label}
                     </span>
                   </div>
                 ))}
               </div>
 
-              {/* Business Problem & Solution */}
+              {/* Storytelling Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="p-6 rounded-2xl bg-rose-500/10 border border-rose-500/20">
                   <div className="flex items-center gap-2 mb-3 text-rose-400 font-bold text-sm">
@@ -247,7 +241,7 @@ export default function FeaturedProjects() {
                 <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
                   <div className="flex items-center gap-2 mb-3 text-emerald-400 font-bold text-sm">
                     <Lightbulb className="w-4 h-4" />
-                    <span>Solution Implemented</span>
+                    <span>Engineering Solution</span>
                   </div>
                   <p className="text-xs text-slate-300 leading-relaxed">
                     {activeModalProject.solutionImplemented}
@@ -255,31 +249,16 @@ export default function FeaturedProjects() {
                 </div>
               </div>
 
-              {/* Features List */}
+              {/* Features & Tech Stack */}
               <div className="mb-8">
-                <h4 className="font-heading text-lg font-bold text-white mb-4">
-                  Key System Features
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {activeModalProject.features.map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tech Stack */}
-              <div className="mb-8">
-                <h4 className="font-heading text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">
-                  Tech Stack Applied
+                <h4 className="font-heading text-sm font-bold text-[#94A3B8] uppercase tracking-widest mb-3">
+                  Applied Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {activeModalProject.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-bold px-3 py-1.5 rounded-xl bg-white/10 text-white border border-white/10"
+                      className="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-white/10 text-white border border-white/10"
                     >
                       {tech}
                     </span>
@@ -287,29 +266,17 @@ export default function FeaturedProjects() {
                 </div>
               </div>
 
-              {/* Live Links */}
-              <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              {/* CTA Link */}
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                 <a
                   href={activeModalProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-accent-violet text-white font-bold text-xs hover:shadow-glow-primary transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#7C5CFF] to-[#A855F7] text-white font-bold text-xs hover:shadow-lg transition-all"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Visit Live Application</span>
                 </a>
-
-                {activeModalProject.githubUrl && (
-                  <a
-                    href={activeModalProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>View Repository</span>
-                  </a>
-                )}
               </div>
 
             </motion.div>
