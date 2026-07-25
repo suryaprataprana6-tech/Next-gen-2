@@ -1,32 +1,41 @@
 {
-  "name": "next-gen-2",
+  "name": "next-gen-portfolio",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "lucide-react": "^0.470.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "react-router-dom": "^7.18.0"
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "framer-motion": "^12.0.6",
+    "lucide-react": "^0.474.0",
+    "react-hook-form": "^7.54.2",
+    "@hookform/resolvers": "^3.10.0",
+    "zod": "^3.24.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.1",
+    "canvas-confetti": "^1.9.4",
+    "three": "^0.173.0",
+    "@react-three/fiber": "^9.0.0",
+    "@react-three/drei": "^9.121.4",
+    "gsap": "^3.12.7"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^10.3.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.6.0",
-    "postcss": "^8.5.15",
-    "tailwindcss": "^3.4.19",
-    "vite": "^8.0.12"
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/three": "^0.173.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.1.6"
   }
 }
