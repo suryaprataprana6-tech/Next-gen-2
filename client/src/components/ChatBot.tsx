@@ -20,7 +20,7 @@ export default function ChatBot() {
     {
       id: "m1",
       sender: "bot",
-      text: "Hello! I am Surya's AI Portfolio Assistant. How can I help you accelerate your web project today?",
+      text: "Hello! Welcome to NextGen Digital Solutions. How can we help accelerate your digital growth, web platform, or ad campaigns today?",
       time: "Just now",
     },
   ]);
@@ -36,10 +36,10 @@ export default function ChatBot() {
   }, [messages, isTyping]);
 
   const quickPrompts = [
-    "What services do you offer?",
-    "Show me client case studies",
-    "What is your pricing starting rate?",
-    "Book a 1-on-1 consultation",
+    "What services do you provide?",
+    "Show me featured work categories",
+    "How does the growth process work?",
+    "Request a free consultation",
   ];
 
   const handleSend = async (textToSend?: string) => {
@@ -58,17 +58,17 @@ export default function ChatBot() {
     setIsTyping(true);
 
     setTimeout(() => {
-      let botResponse = "Surya specializes in Next.js 15 App Router applications, full-stack web platforms, SEO schemas, and AI lead automations. Would you like to view project case studies or request a custom quote?";
+      let botResponse = "NextGen Digital Solutions specializes in high-converting web applications, precision Meta & Google ad campaigns, technical SEO, and automated lead generation systems. Would you like to discuss your project requirements?";
 
       const lower = query.toLowerCase();
       if (lower.includes("service") || lower.includes("offer")) {
-        botResponse = "Surya offers 9 core engineering & growth services: Website Development, Full Stack Apps, Next.js 15, Technical SEO, Meta Ads, AI Automation, CRM Platforms, UI/UX Design, and Performance Revamps.";
-      } else if (lower.includes("case study") || lower.includes("project") || lower.includes("portfolio")) {
-        botResponse = "Check out our Featured Projects section above! Highlight builds include Kamakhya Yatra (+310% traffic), Anjan Hospital, Goodluck Properties, and AIT Research Centre.";
-      } else if (lower.includes("price") || lower.includes("cost") || lower.includes("pricing")) {
-        botResponse = "Custom website developments start from $999, Next.js Applications from $1,499, and Full Stack enterprise systems from $1,999. Would you like to request a tailored quote?";
+        botResponse = "We provide 6 core growth services: Website Development, Meta Ads, Google Ads, SEO & Local Growth, Lead Generation Systems, and Social Media Management.";
+      } else if (lower.includes("case study") || lower.includes("project") || lower.includes("portfolio") || lower.includes("work")) {
+        botResponse = "Explore our Featured Projects section above! We build across high-impact industry sectors including Travel & Tourism, Healthcare & Clinics, Real Estate, and Direct-to-Consumer retail.";
+      } else if (lower.includes("price") || lower.includes("cost") || lower.includes("pricing") || lower.includes("rate")) {
+        botResponse = "Every project is custom-scoped to your specific commercial goals, required features, and timeline. Fill out our consultation form to receive a detailed, transparent proposal.";
       } else if (lower.includes("book") || lower.includes("consultation") || lower.includes("call")) {
-        botResponse = "Great! You can click the 'Book Consultation' button to pick a convenient 30-minute slot directly.";
+        botResponse = "Great! You can click the 'Free Consultation' button or message us directly on WhatsApp at +91 83404 24989 to speak with our strategy team.";
       }
 
       const botMsg: ChatMessage = {

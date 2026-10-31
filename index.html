@@ -1,252 +1,695 @@
 <!DOCTYPE html>
-<html lang="en">gi
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NextGen Digital Agency — We Build Digital Assets That Generate Revenue</title>
-  <meta name="description" content="Premium digital marketing & website development agency in India. High-converting websites, Meta Ads, Google Ads, SEO & more." />
+  <title>NextGen Digital Solutions | Websites, Ads & Digital Growth</title>
+  <meta name="description" content="NextGen Digital Solutions engineers high-performing websites, precision Meta & Google ad campaigns, and automated lead generation systems built for business growth." />
+  <meta name="keywords" content="NextGen Digital Solutions, web development, Meta ads, Google ads, SEO, lead generation, digital growth" />
+  <link rel="canonical" href="https://nextgendigitalsolutions.com" />
+  
+  <!-- Favicon & Apple Touch Icon using official logo -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextgendigitalsolutions.com" />
+  <meta property="og:title" content="NextGen Digital Solutions | Websites, Ads & Digital Growth" />
+  <meta property="og:description" content="Engineering high-performing websites, precision Meta & Google ads, and automated lead generation systems." />
+  <meta property="og:image" content="logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NextGen Digital Solutions | Websites, Ads & Digital Growth" />
+  <meta name="twitter:description" content="High-performing websites, Meta & Google Ads, and automated lead generation systems." />
+  <meta name="twitter:image" content="logo.png" />
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Google Fonts -->
+
+  <!-- Modern Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for UI icons only -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- ===================== CURSOR ===================== -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- ===================== NAV ===================== -->
+  <!-- ===================== NAVBAR ===================== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="logo-icon"><i class="fas fa-bolt"></i></span>
-        <span class="logo-text">NextGen<span class="logo-accent">Digital</span></span>
+      <!-- Official Brand Logo -->
+      <a href="#" class="nav-brand" aria-label="NextGen Digital Solutions Home">
+        <div class="brand-logo-frame">
+          <img src="logo.png" alt="NextGen Digital Solutions Logo" class="brand-logo-img" />
+        </div>
+        <div class="brand-text-col">
+          <span class="brand-title">NextGen</span>
+          <span class="brand-subtitle">Digital Solutions</span>
+        </div>
       </a>
+
+      <!-- Desktop Navigation Links -->
       <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#why-us" class="nav-link">Why Us</a></li>
-        <li><a href="#stats" class="nav-link">Results</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
         <li><a href="#process" class="nav-link">Process</a></li>
-        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
-        <li><a href="#contact" class="nav-cta">Get Free Consultation</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li class="mobile-only-item">
+          <a href="tel:+918340424989" class="mobile-phone-link">
+            <i class="fas fa-phone-alt"></i> +91 83404 24989
+          </a>
+        </li>
+        <li class="mobile-only-item">
+          <a href="#contact" class="mobile-cta-btn">
+            Let's Talk
+          </a>
+        </li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="tel:+918340424989" class="nav-phone-btn" title="Call directly">
+          <i class="fas fa-phone-alt"></i>
+          <span>+91 83404 24989</span>
+        </a>
+        <a href="#contact" class="nav-cta">
+          <span>Let's Talk</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="hero">
-    <!-- Particle canvas background -->
-    <canvas id="particleCanvas"></canvas>
-    <!-- Three.js canvas -->
-    <div id="threeContainer"></div>
-    <!-- Glow orbs -->
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
+    <!-- Ambient CSS Lighting (Zero Canvas, GPU-friendly) -->
+    <div class="hero-ambient" aria-hidden="true">
+      <div class="ambient-glow ambient-primary"></div>
+      <div class="ambient-glow ambient-cyan"></div>
+      <div class="ambient-glow ambient-purple"></div>
+    </div>
 
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="badge-dot"></span>
-        Full-Service Digital Agency — India's Fastest Growing
-      </div>
-      <h1 class="hero-title reveal">
-        Grow Your Business with<br/>
-        <span class="gradient-text">High-Converting</span><br/>
-        Websites &amp; Ads
-      </h1>
-      <p class="hero-sub reveal">
-        We engineer premium digital experiences that attract customers,<br class="br-hide"/>
-        build authority, and generate measurable revenue — for every business type.
-      </p>
-      <div class="hero-btns reveal">
-        <a href="#contact" class="btn-primary">
-          <span>Get Free Consultation</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
-        <a href="#services" class="btn-outline">
-          <span>View Services</span>
-          <i class="fas fa-chevron-down"></i>
-        </a>
-      </div>
-      <div class="hero-metrics reveal">
-        <div class="metric">
-          <span class="metric-num">120+</span>
-          <span class="metric-label">Websites Built</span>
+    <div class="container hero-container">
+      <div class="hero-grid">
+        
+        <!-- Left: Outcome-Focused Value Proposition -->
+        <div class="hero-left">
+          <div class="hero-badge reveal">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Digital Solutions &amp; Performance Marketing</span>
+          </div>
+
+          <h1 class="hero-title reveal">
+            Build a Brand That Gets Noticed — <br />
+            <span class="gradient-text">and a Funnel That Gets Results.</span>
+          </h1>
+
+          <p class="hero-sub reveal">
+            NextGen Digital Solutions engineers high-performing websites, precision Meta &amp; Google ad campaigns, and automated lead generation systems built for business growth.
+          </p>
+
+          <div class="hero-btns reveal">
+            <a href="#contact" class="btn-primary">
+              <span>Claim Free Growth Audit</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://wa.me/918340424989?text=Hi%20NextGen%20Digital%20Solutions,%20I%20would%20like%20to%20discuss%20growing%20our%20business%20revenue" target="_blank" rel="noopener" class="btn-secondary">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+
+          <!-- Non-Numerical Value Pillars (Authorized Statements) -->
+          <div class="hero-metrics-strip reveal">
+            <div class="metric-item">
+              <span class="metric-title">High-Performance</span>
+              <span class="metric-desc">Websites</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-title">Performance</span>
+              <span class="metric-desc">Marketing</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-title">Lead Generation</span>
+              <span class="metric-desc">Systems</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-title">Revenue-Focused</span>
+              <span class="metric-desc">Strategy</span>
+            </div>
+          </div>
         </div>
-        <div class="metric-divider"></div>
-        <div class="metric">
-          <span class="metric-num">300+</span>
-          <span class="metric-label">Campaigns Run</span>
+
+        <!-- Right: Illustrative Growth Architecture Console (Sample / Conceptual UI) -->
+        <div class="hero-right reveal">
+          <div class="dashboard-preview-card">
+            
+            <!-- Window Topbar -->
+            <div class="preview-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="preview-url-pill">
+                <i class="fas fa-layer-group"></i>
+                <span>Illustrative Workflow View</span>
+              </div>
+              <div class="preview-live-indicator">
+                <span class="live-pulse"></span>
+                <span>Active Pipeline</span>
+              </div>
+            </div>
+
+            <!-- Dashboard Body -->
+            <div class="preview-body">
+              
+              <!-- Conceptual Stat Highlights -->
+              <div class="preview-stats-row">
+                <div class="preview-stat-pill">
+                  <span class="stat-pill-label">Pipeline Phase</span>
+                  <span class="stat-pill-val">Targeted Acquisition</span>
+                  <span class="stat-pill-delta positive"><i class="fas fa-check"></i> High-Intent Traffic</span>
+                </div>
+                <div class="preview-stat-pill">
+                  <span class="stat-pill-label">Conversion Infrastructure</span>
+                  <span class="stat-pill-val">Direct Inbound Funnel</span>
+                  <span class="stat-pill-delta positive"><i class="fas fa-bolt"></i> Real-Time Routing</span>
+                </div>
+              </div>
+
+              <!-- Interactive Tabs -->
+              <div class="preview-tabs">
+                <button class="preview-tab active" data-tab="funnel">Conversion Funnel</button>
+                <button class="preview-tab" data-tab="channels">Channels</button>
+                <button class="preview-tab" data-tab="speed">Performance UX</button>
+              </div>
+
+              <!-- Tab 1: Conversion Funnel (Visual Conceptual Sparkline) -->
+              <div class="tab-pane active" id="pane-funnel">
+                <div class="chart-container">
+                  <div class="chart-legend">
+                    <span><span class="legend-dot dot-blue"></span> Paid &amp; Organic Inbound</span>
+                    <span><span class="legend-dot dot-cyan"></span> Qualified Inquiries</span>
+                  </div>
+                  <svg class="sparkline-svg" viewBox="0 0 400 110" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3" />
+                        <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0" />
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-area" d="M 0,100 L 0,80 Q 60,50 120,65 T 240,40 T 340,25 T 400,10 L 400,110 L 0,110 Z" fill="url(#areaGradient)" />
+                    <path class="chart-line" d="M 0,80 Q 60,50 120,65 T 240,40 T 340,25 T 400,10" fill="none" stroke="#38bdf8" stroke-width="2" />
+                    <circle cx="120" cy="65" r="3.5" fill="#38bdf8" />
+                    <circle cx="240" cy="40" r="3.5" fill="#60a5fa" />
+                    <circle cx="340" cy="25" r="3.5" fill="#818cf8" />
+                    <circle cx="400" cy="10" r="4.5" fill="#a855f7" />
+                  </svg>
+                </div>
+
+                <!-- Funnel Architecture Stages -->
+                <div class="funnel-metrics-grid">
+                  <div class="funnel-item">
+                    <span class="funnel-num">Step 1</span>
+                    <span class="funnel-lbl">Intent Capture</span>
+                  </div>
+                  <div class="funnel-item">
+                    <span class="funnel-num">Step 2</span>
+                    <span class="funnel-lbl">Persuasive Landing</span>
+                  </div>
+                  <div class="funnel-item highlight">
+                    <span class="funnel-num">Step 3</span>
+                    <span class="funnel-lbl">WhatsApp / CRM Sync</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab 2: Channels -->
+              <div class="tab-pane" id="pane-channels">
+                <div class="channel-bars">
+                  <div class="channel-row">
+                    <div class="channel-info">
+                      <span class="channel-name"><i class="fab fa-facebook-square text-blue"></i> Meta Ads (FB &amp; IG)</span>
+                      <span class="channel-stat">Audience Segmentation &amp; Retargeting</span>
+                    </div>
+                    <div class="channel-bar-bg"><div class="channel-bar-fill" style="width: 90%;"></div></div>
+                  </div>
+                  <div class="channel-row">
+                    <div class="channel-info">
+                      <span class="channel-name"><i class="fab fa-google text-cyan"></i> Google Ads (Search &amp; Intent)</span>
+                      <span class="channel-stat">High-Commercial Search Intent</span>
+                    </div>
+                    <div class="channel-bar-bg"><div class="channel-bar-fill" style="width: 85%;"></div></div>
+                  </div>
+                  <div class="channel-row">
+                    <div class="channel-info">
+                      <span class="channel-name"><i class="fas fa-search text-purple"></i> Technical &amp; Local SEO</span>
+                      <span class="channel-stat">Structured Data &amp; Core Vitals</span>
+                    </div>
+                    <div class="channel-bar-bg"><div class="channel-bar-fill" style="width: 80%;"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab 3: Performance UX -->
+              <div class="tab-pane" id="pane-speed">
+                <div class="speed-grid">
+                  <div class="speed-score-card">
+                    <div class="score-circle">
+                      <span class="score-val"><i class="fas fa-check"></i></span>
+                    </div>
+                    <span class="score-title">Optimized UX</span>
+                    <span class="score-sub">Clean Architecture</span>
+                  </div>
+                  <div class="speed-metrics-list">
+                    <div class="speed-row"><span>Load Speed</span> <strong>Sub-Second</strong></div>
+                    <div class="speed-row"><span>Mobile Experience</span> <strong>100% Responsive</strong></div>
+                    <div class="speed-row"><span>Layout Shift</span> <strong>Zero CLS</strong></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Floating Subtle Glass Badges -->
+            <div class="floating-badge badge-top-right">
+              <i class="fas fa-bolt text-cyan"></i>
+              <div>
+                <strong>Rapid Turnaround</strong>
+                <span>7-Day Go-Live Sprint</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <i class="fas fa-shield-alt text-emerald"></i>
+              <div>
+                <strong>Direct Routing</strong>
+                <span>Instant Inbound Alerts</span>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="metric-divider"></div>
-        <div class="metric">
-          <span class="metric-num">5M+</span>
-          <span class="metric-label">Leads Generated</span>
-        </div>
+
       </div>
     </div>
 
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+    <!-- Scroll Cue -->
+    <a href="#services" class="hero-scroll-cue" aria-label="Scroll to services section">
+      <span>SERVICES</span>
+      <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+    </a>
+  </section>
+
+  <!-- ===================== PLATFORM STRIP (Technologies We Deploy) ===================== -->
+  <section class="trust-strip">
+    <div class="container">
+      <p class="trust-heading">MODERN PLATFORMS, NETWORKS &amp; TECHNOLOGIES WE DEPLOY</p>
+      <div class="trust-logos">
+        <div class="trust-item"><i class="fab fa-meta"></i> <span>Meta Ads (Facebook &amp; Instagram)</span></div>
+        <div class="trust-item"><i class="fab fa-google"></i> <span>Google Search &amp; Ad Network</span></div>
+        <div class="trust-item"><i class="fas fa-code"></i> <span>Next.js &amp; Modern Web Stack</span></div>
+        <div class="trust-item"><i class="fas fa-bolt"></i> <span>Edge Hosting &amp; Cloud Infra</span></div>
+        <div class="trust-item"><i class="fab fa-whatsapp"></i> <span>WhatsApp Business Messaging</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== Services===================== -->
+  <!-- ===================== SERVICES ===================== -->
   <section class="services section-pad" id="services">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag">What We Do</div>
-        <h2 class="section-title">Full-Services <span class="gradient-text">Digital Solutions</span></h2>
-        <p class="section-sub">Everything your business needs to dominate online — under one roof.</p>
+        <div class="section-tag">Core Services</div>
+        <h2 class="section-title">Digital Solutions Built For <br /><span class="gradient-text">Performance &amp; Scale</span></h2>
+        <p class="section-sub">We combine technical web engineering with direct-response performance marketing so every asset you deploy serves a measurable business purpose.</p>
       </div>
+
       <div class="services-grid">
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fas fa-code"></i></div>
-          <h3>Website Development</h3>
-          <p>Lightning-fast, conversion-optimized websites built to turn visitors into paying customers. Mobile-first & SEO-ready.</p>
-          <div class="card-tag">Most Popular</div>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 1: Website Development -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="service-name">Website Development</h3>
+          <p class="service-desc">Fast, modern websites and web applications built with clean code, mobile-first responsiveness, and technical SEO baked into every page.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Sub-second page load speeds</li>
+            <li><i class="fas fa-check"></i> Mobile-first, responsive layouts</li>
+            <li><i class="fas fa-check"></i> Full client IP ownership upon delivery</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> 7–10 Day Delivery</span>
+            <a href="#contact" class="service-action-link" data-service="website">
+              <span>Book Scope</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fab fa-facebook-f"></i></div>
-          <h3>Meta Ads</h3>
-          <p>Precision Facebook & Instagram ad campaigns with hyper-targeted audiences that deliver maximum ROI for your budget.</p>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 2: Meta Ads -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+          <h3 class="service-name">Meta Ads</h3>
+          <p class="service-desc">Targeted paid advertising across Facebook and Instagram designed to reach qualified prospects, test creative variants, and scale customer acquisition.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Segmented audience targeting &amp; exclusions</li>
+            <li><i class="fas fa-check"></i> Persuasive ad copy &amp; visual creatives</li>
+            <li><i class="fas fa-check"></i> Pixel &amp; Conversions API configuration</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> Fast 48h Setup</span>
+            <a href="#contact" class="service-action-link" data-service="meta">
+              <span>Launch Ads</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fab fa-google"></i></div>
-          <h3>Google Ads</h3>
-          <p>Dominate Google search results with data-driven PPC campaigns that capture buyers exactly when they're ready.</p>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 3: Google Ads -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fab fa-google"></i>
+          </div>
+          <h3 class="service-name">Google Ads</h3>
+          <p class="service-desc">Capture active commercial search intent on Google. Target customers precisely at the moment they are searching for the solutions you offer.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> High-intent keyword search campaigns</li>
+            <li><i class="fas fa-check"></i> Negative keyword lists to cut wasted spend</li>
+            <li><i class="fas fa-check"></i> Transparent conversion &amp; cost tracking</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> Commercial Search</span>
+            <a href="#contact" class="service-action-link" data-service="google">
+              <span>Setup Google Ads</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fas fa-search"></i></div>
-          <h3>SEO Optimization</h3>
-          <p>Rank #1 organically. Technical SEO, content strategy, and link building that drives sustainable long-term traffic.</p>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 4: SEO & Local Growth -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="service-name">SEO &amp; Local Growth</h3>
+          <p class="service-desc">Technical site audits, structured schema markup, search-intent optimization, and local profile enhancement to build sustainable organic search visibility.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Technical SEO &amp; Core Web Vitals audit</li>
+            <li><i class="fas fa-check"></i> Google Business Profile optimization</li>
+            <li><i class="fas fa-check"></i> On-page structure &amp; content alignment</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> Organic Strategy</span>
+            <a href="#contact" class="service-action-link" data-service="seo">
+              <span>Optimize Search</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fas fa-share-nodes"></i></div>
-          <h3>Social Media Management</h3>
-          <p>Consistent, branded social presence that builds community, increases engagement, and nurtures leads daily.</p>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 5: Lead Generation Systems -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="service-name">Lead Generation</h3>
+          <p class="service-desc">Complete inbound lead systems uniting high-converting landing pages, targeted ads, and instant WhatsApp notification routing for immediate prospect follow-up.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Direct-response landing page funnels</li>
+            <li><i class="fas fa-check"></i> Instant WhatsApp &amp; spreadsheet alerts</li>
+            <li><i class="fas fa-check"></i> Frictionless inquiry capture forms</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> Inbound Funnels</span>
+            <a href="#contact" class="service-action-link" data-service="leads">
+              <span>Build Lead System</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="service-card tilt-card reveal">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fas fa-rocket"></i></div>
-          <h3>Landing Page Creation</h3>
-          <p>High-converting, persuasive landing pages built around your offer — designed to make visitors say yes instantly.</p>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
-        </div>
-
-        <div class="service-card tilt-card reveal service-card-wide">
-          <div class="card-glow"></div>
-          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Lead Generation</h3>
-          <p>End-to-end lead generation systems combining ads, funnels, and automation — delivering qualified prospects directly to your inbox every day. We've generated 5M+ leads for Indian businesses.</p>
-          <div class="card-tag">Best Results</div>
-          <div class="card-arrow"><i class="fas fa-arrow-up-right"></i></div>
+        <!-- Service 6: Social Media Management -->
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <i class="fas fa-share-nodes"></i>
+          </div>
+          <h3 class="service-name">Social Media Management</h3>
+          <p class="service-desc">Consistent, professional social media execution designed to communicate brand authority, educate prospective clients, and build community credibility.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Branded graphics, carousels &amp; posts</li>
+            <li><i class="fas fa-check"></i> Scheduled publishing &amp; content calendar</li>
+            <li><i class="fas fa-check"></i> Community engagement &amp; profile alignment</li>
+          </ul>
+          <div class="service-footer">
+            <span class="delivery-time"><i class="far fa-clock"></i> Monthly Growth</span>
+            <a href="#contact" class="service-action-link" data-service="social">
+              <span>Grow Social</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===================== WHY US ===================== -->
-  <section class="why-us section-pad" id="why-us">
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section class="work-section section-pad" id="work">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag">Why NextGen</div>
-        <h2 class="section-title">We Don't Just Run Campaigns.<br/><span class="gradient-text">We Drive Revenue.</span></h2>
+        <div class="section-tag">Project Portfolio</div>
+        <h2 class="section-title">Selected Work by <br /><span class="gradient-text">Industry Category</span></h2>
+        <p class="section-sub">A cross-section of high-converting web applications, booking systems, and lead funnels engineered for modern businesses.</p>
       </div>
+
+      <div class="work-grid">
+        <!-- Work 1: Travel & Tourism -->
+        <div class="work-card reveal">
+          <div class="work-card-media">
+            <div class="work-category-badge">Travel &amp; Tourism</div>
+            <div class="work-mockup-pattern travel-pattern">
+              <i class="fas fa-plane-departure"></i>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <span class="work-scope">UI/UX + Next.js Platform + Lead Automation</span>
+            <h3 class="work-title">Travel &amp; Pilgrimage Booking Engine</h3>
+            <p class="work-desc">Comprehensive travel platform featuring dynamic package discovery, custom itinerary timelines, and 1-tap WhatsApp booking reservations.</p>
+            <div class="work-deliverables">
+              <span>Next.js Architecture</span>
+              <span>WhatsApp Integration</span>
+              <span>Sub-Second Load</span>
+            </div>
+            <a href="#contact" class="work-cta" data-service="website">
+              <span>Discuss Similar Project</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Work 2: Healthcare & Clinics -->
+        <div class="work-card reveal">
+          <div class="work-card-media">
+            <div class="work-category-badge">Healthcare &amp; Clinics</div>
+            <div class="work-mockup-pattern health-pattern">
+              <i class="fas fa-hospital-user"></i>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <span class="work-scope">Web Architecture + Patient Scheduling</span>
+            <h3 class="work-title">Healthcare Portal &amp; Appointment System</h3>
+            <p class="work-desc">Multi-specialty clinic portal with real-time doctor availability schedules, emergency call triggers, and structured medical search schema.</p>
+            <div class="work-deliverables">
+              <span>Appointment Scheduling</span>
+              <span>Emergency Dispatch UI</span>
+              <span>Local SEO Schema</span>
+            </div>
+            <a href="#contact" class="work-cta" data-service="website">
+              <span>Discuss Similar Project</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Work 3: Real Estate -->
+        <div class="work-card reveal">
+          <div class="work-card-media">
+            <div class="work-category-badge">Real Estate</div>
+            <div class="work-mockup-pattern realty-pattern">
+              <i class="fas fa-building"></i>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <span class="work-scope">Lead Portal + Property Search + Meta Ad Funnel</span>
+            <h3 class="work-title">Real Estate Lead Portal &amp; Property CRM</h3>
+            <p class="work-desc">High-intent property discovery engine equipped with location and budget filters, mortgage calculators, and automated brochure lead capture.</p>
+            <div class="work-deliverables">
+              <span>Filter Engine</span>
+              <span>Brochure Funnel</span>
+              <span>Meta Ads CAPI</span>
+            </div>
+            <a href="#contact" class="work-cta" data-service="leads">
+              <span>Discuss Similar Project</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Work 4: E-Commerce & Retail -->
+        <div class="work-card reveal">
+          <div class="work-card-media">
+            <div class="work-category-badge">E-Commerce &amp; Retail</div>
+            <div class="work-mockup-pattern commerce-pattern">
+              <i class="fas fa-bag-shopping"></i>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <span class="work-scope">E-Commerce Storefront + Checkout Optimization</span>
+            <h3 class="work-title">Direct-to-Consumer Digital Store</h3>
+            <p class="work-desc">Modern retail storefront engineered for brand prestige and speed, featuring high-resolution product showcases and seamless cart transitions.</p>
+            <div class="work-deliverables">
+              <span>Slide Cart Drawer</span>
+              <span>Mobile-First Flow</span>
+              <span>Conversion Layouts</span>
+            </div>
+            <a href="#contact" class="work-cta" data-service="website">
+              <span>Discuss Similar Project</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT / WHY US ===================== -->
+  <section class="why-us section-pad" id="about">
+    <span id="why-us" style="display:none;"></span>
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Why NextGen Digital Solutions</div>
+        <h2 class="section-title">Built On Practical Principles, <br /><span class="gradient-text">Not Agency Bureaucracy</span></h2>
+        <p class="section-sub">We combine technical execution with straightforward communication. No vanity metrics, no hidden fees, and no unnecessary complexity.</p>
+      </div>
+
       <div class="why-grid">
         <div class="why-card reveal">
           <div class="why-icon"><i class="fas fa-database"></i></div>
           <h3>Data-Driven Strategies</h3>
-          <p>Every decision backed by analytics. We track, test, and optimize for one thing — your conversions.</p>
+          <p>Every campaign structure and website layout is informed by analytics, user behavior, and commercial conversion principles.</p>
         </div>
+
         <div class="why-card reveal">
-          <div class="why-icon"><i class="fas fa-coins"></i></div>
-          <h3>ROI-Focused Campaigns</h3>
-          <p>Your investment returns measurable revenue. We set clear KPIs and hit them — consistently.</p>
+          <div class="why-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Outcome-Focused Campaigns</h3>
+          <p>We define clear objectives before writing a line of code or launching an ad. We prioritize qualified business inquiries over vanity impressions.</p>
         </div>
+
         <div class="why-card reveal">
           <div class="why-icon"><i class="fas fa-bolt"></i></div>
-          <h3>Fast Delivery</h3>
-          <p>Websites live in 7 days. Campaigns live in 48 hours. No unnecessary delays, ever.</p>
+          <h3>Rapid 7-Day Turnaround</h3>
+          <p>Websites deployed in 7–10 business days. Ad funnels live within 48 hours of review. Agile execution eliminates project stalling.</p>
         </div>
+
         <div class="why-card reveal">
-          <div class="why-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="why-icon"><i class="fas fa-tachometer-alt"></i></div>
           <h3>Transparent Reporting</h3>
-          <p>Real-time dashboards, weekly reports, and zero hidden fees. You always know exactly where your money goes.</p>
+          <p>Clear reporting on ad spend, conversion inquiries, and website performance. You always know how your investment is performing.</p>
         </div>
+
         <div class="why-card reveal">
           <div class="why-icon"><i class="fas fa-headset"></i></div>
-          <h3>Dedicated Support</h3>
-          <p>Direct WhatsApp access to your account manager. Response within 2 hours, always.</p>
+          <h3>Direct Communication</h3>
+          <p>Direct WhatsApp and telephone access to the team executing your project. Speak directly with strategists who understand your goals.</p>
         </div>
+
         <div class="why-card reveal">
-          <div class="why-icon"><i class="fas fa-indian-rupee-sign"></i></div>
-          <h3>India-Competitive Pricing</h3>
-          <p>Premium results at pricing built for Indian businesses — startups to enterprises.</p>
+          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Full Client Ownership</h3>
+          <p>100% intellectual property ownership of your website, code, and ad accounts. No proprietary lock-in or licensing hostage tactics.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== STATS ===================== -->
-  <section class="stats-section section-pad" id="stats">
-    <div class="stats-bg"></div>
+  <!-- ===================== BUILT AROUND BUSINESS OUTCOMES ===================== -->
+  <section class="outcomes-section section-pad" id="outcomes">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag">Proven Track Record</div>
-        <h2 class="section-title">Numbers That <span class="gradient-text">Speak Louder</span></h2>
+        <div class="section-tag">Our Methodology</div>
+        <h2 class="section-title">Built Around <span class="gradient-text">Business Outcomes</span></h2>
+        <p class="section-sub">We measure our success by the tangible commercial value created for your business: speed to market, qualified prospect flow, and clean infrastructure.</p>
       </div>
-      <div class="stats-grid">
-        <div class="stat-card reveal">
-          <div class="stat-icon"><i class="fas fa-globe"></i></div>
-          <div class="stat-number" data-target="120" data-suffix="+">0</div>
-          <div class="stat-label">Websites Built</div>
-          <div class="stat-bar"><div class="stat-fill" data-width="85"></div></div>
+
+      <div class="outcomes-grid">
+        <!-- Outcome Pillar 1 -->
+        <div class="outcome-card reveal">
+          <div class="outcome-header">
+            <div class="outcome-num">01</div>
+            <div class="outcome-icon"><i class="fas fa-users-viewfinder"></i></div>
+          </div>
+          <h3>Acquisition Velocity</h3>
+          <p>Targeted traffic generation focused on commercial intent. We structure Meta and Google campaigns to reach decision-makers when they are actively seeking solutions.</p>
+          <ul class="outcome-list">
+            <li><i class="fas fa-check"></i> Intent-based keyword targeting</li>
+            <li><i class="fas fa-check"></i> Audience demographic segmentation</li>
+            <li><i class="fas fa-check"></i> Continuous ad creative refinement</li>
+          </ul>
         </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
-          <div class="stat-number" data-target="300" data-suffix="+">0</div>
-          <div class="stat-label">Campaigns Managed</div>
-          <div class="stat-bar"><div class="stat-fill" data-width="92"></div></div>
+
+        <!-- Outcome Pillar 2 -->
+        <div class="outcome-card reveal">
+          <div class="outcome-header">
+            <div class="outcome-num">02</div>
+            <div class="outcome-icon"><i class="fas fa-laptop-code"></i></div>
+          </div>
+          <h3>Conversion Architecture</h3>
+          <p>Websites engineered to convert visitors into inquiries. Sub-second load times, distraction-free layouts, and clear calls-to-action that eliminate drop-offs.</p>
+          <ul class="outcome-list">
+            <li><i class="fas fa-check"></i> Mobile-first visual hierarchy</li>
+            <li><i class="fas fa-check"></i> Frictionless inquiry capture forms</li>
+            <li><i class="fas fa-check"></i> Core Web Vitals compliance</li>
+          </ul>
         </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon"><i class="fas fa-users"></i></div>
-          <div class="stat-number" data-target="5" data-suffix="M+">0</div>
-          <div class="stat-label">Leads Generated</div>
-          <div class="stat-bar"><div class="stat-fill" data-width="97"></div></div>
+
+        <!-- Outcome Pillar 3 -->
+        <div class="outcome-card reveal">
+          <div class="outcome-header">
+            <div class="outcome-num">03</div>
+            <div class="outcome-icon"><i class="fas fa-route"></i></div>
+          </div>
+          <h3>Direct Lead Routing</h3>
+          <p>Never lose a prospective client to delayed follow-up. Inbound leads are instantly formatted and dispatched straight to your WhatsApp and internal management sheets.</p>
+          <ul class="outcome-list">
+            <li><i class="fas fa-check"></i> Real-time WhatsApp notifications</li>
+            <li><i class="fas fa-check"></i> Structured inquiry data logging</li>
+            <li><i class="fas fa-check"></i> Zero manual data transfer delay</li>
+          </ul>
         </div>
-        <div class="stat-card reveal">
-          <div class="stat-icon"><i class="fas fa-star"></i></div>
-          <div class="stat-number" data-target="4.9" data-suffix="" data-decimal="true">0</div>
-          <div class="stat-label">Average Client Rating</div>
-          <div class="stat-bar"><div class="stat-fill" data-width="98"></div></div>
+
+        <!-- Outcome Pillar 4 -->
+        <div class="outcome-card reveal">
+          <div class="outcome-header">
+            <div class="outcome-num">04</div>
+            <div class="outcome-icon"><i class="fas fa-layer-group"></i></div>
+          </div>
+          <h3>Long-Term Scalability</h3>
+          <p>Built with modern industry standards including Next.js, semantic HTML, and secure edge hosting. Easy to expand, maintain, and adapt as your enterprise grows.</p>
+          <ul class="outcome-list">
+            <li><i class="fas fa-check"></i> Clean, well-documented code</li>
+            <li><i class="fas fa-check"></i> Complete asset and account control</li>
+            <li><i class="fas fa-check"></i> Scalable cloud architecture</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -257,54 +700,64 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="section-tag">How We Work</div>
-        <h2 class="section-title">From Zero to <span class="gradient-text">Revenue</span> — Our Process</h2>
-        <p class="section-sub">A battle-tested 3-phase framework that launches fast and scales consistently.</p>
+        <h2 class="section-title">From Concept to Go-Live — <br /><span class="gradient-text">Our 3-Phase Sprint</span></h2>
+        <p class="section-sub">A disciplined execution framework that keeps projects on schedule, transparent, and aligned with your business objectives.</p>
       </div>
+
       <div class="process-timeline">
         <div class="timeline-line"></div>
 
+        <!-- Step 1 -->
         <div class="process-step reveal">
           <div class="step-number">01</div>
           <div class="step-card">
-            <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
-            <h3>Strategy & Discovery</h3>
-            <p>Deep-dive consultation to understand your business, audience, competition, and goals. We build a custom digital roadmap.</p>
+            <div class="step-header-row">
+              <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
+              <div class="step-duration"><i class="far fa-clock"></i> Days 1–2</div>
+            </div>
+            <h3>Discovery &amp; Strategy Architecture</h3>
+            <p>We review your business goals, target audience, and current digital presence. We define target keywords, audience segments, and the conversion path.</p>
             <ul class="step-list">
-              <li><i class="fas fa-check-circle"></i> Business audit</li>
-              <li><i class="fas fa-check-circle"></i> Competitor analysis</li>
-              <li><i class="fas fa-check-circle"></i> Custom growth strategy</li>
+              <li><i class="fas fa-check-circle"></i> Digital presence &amp; requirement audit</li>
+              <li><i class="fas fa-check-circle"></i> Commercial keyword &amp; audience mapping</li>
+              <li><i class="fas fa-check-circle"></i> Milestone roadmap &amp; deliverable timeline</li>
             </ul>
-            <div class="step-duration"><i class="fas fa-clock"></i> Day 1–2</div>
           </div>
         </div>
 
+        <!-- Step 2 -->
         <div class="process-step reveal step-right">
           <div class="step-number">02</div>
           <div class="step-card">
-            <div class="step-icon"><i class="fas fa-pen-ruler"></i></div>
-            <h3>Design & Development</h3>
-            <p>We craft pixel-perfect designs, build your digital assets, and set up ad campaigns — all optimized for conversion.</p>
+            <div class="step-header-row">
+              <div class="step-icon"><i class="fas fa-pen-ruler"></i></div>
+              <div class="step-duration"><i class="far fa-clock"></i> Days 3–7</div>
+            </div>
+            <h3>Design, Development &amp; Campaign Setup</h3>
+            <p>We craft responsive UI layouts, write outcome-focused messaging, engineer your web assets, and set up conversion tracking pixels and ad funnels.</p>
             <ul class="step-list">
-              <li><i class="fas fa-check-circle"></i> Premium UI/UX design</li>
-              <li><i class="fas fa-check-circle"></i> Website development</li>
-              <li><i class="fas fa-check-circle"></i> Ad creatives & copy</li>
+              <li><i class="fas fa-check-circle"></i> Clean, modern, responsive UI design</li>
+              <li><i class="fas fa-check-circle"></i> High-speed web implementation</li>
+              <li><i class="fas fa-check-circle"></i> Ad creative drafts &amp; campaign staging</li>
             </ul>
-            <div class="step-duration"><i class="fas fa-clock"></i> Day 3–7</div>
           </div>
         </div>
 
+        <!-- Step 3 -->
         <div class="process-step reveal">
           <div class="step-number">03</div>
           <div class="step-card">
-            <div class="step-icon"><i class="fas fa-rocket"></i></div>
-            <h3>Launch & Scale</h3>
-            <p>Go live, monitor performance in real-time, and continuously optimize to grow your leads and revenue month over month.</p>
+            <div class="step-header-row">
+              <div class="step-icon"><i class="fas fa-rocket"></i></div>
+              <div class="step-duration"><i class="far fa-clock"></i> Day 8 Onward</div>
+            </div>
+            <h3>Deployment, Verification &amp; Optimization</h3>
+            <p>We deploy your website to edge hosting, verify inquiry form routing, launch approved ad campaigns, and monitor performance indicators.</p>
             <ul class="step-list">
-              <li><i class="fas fa-check-circle"></i> Live launch & testing</li>
-              <li><i class="fas fa-check-circle"></i> Weekly optimization</li>
-              <li><i class="fas fa-check-circle"></i> Scaling strategy</li>
+              <li><i class="fas fa-check-circle"></i> Production release &amp; SSL verification</li>
+              <li><i class="fas fa-check-circle"></i> Live lead routing confirmation</li>
+              <li><i class="fas fa-check-circle"></i> Ongoing performance review &amp; iteration</li>
             </ul>
-            <div class="step-duration"><i class="fas fa-clock"></i> Day 8+</div>
           </div>
         </div>
 
@@ -312,183 +765,193 @@
     </div>
   </section>
 
-  <!-- ===================== TESTIMONIALS ===================== -->
-  <section class="testimonials section-pad" id="testimonials">
+  <!-- ===================== FAQ ACCORDION ===================== -->
+  <section class="faqs-section section-pad" id="faqs">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-tag">Client Stories</div>
-        <h2 class="section-title">Real Results. <span class="gradient-text">Real Businesses.</span></h2>
+        <div class="section-tag">Common Inquiries</div>
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <p class="section-sub">Clear answers to help you understand our scope, process, and working model.</p>
       </div>
-      <div class="testimonial-carousel reveal">
-        <div class="testimonial-track" id="testimonialTrack">
 
-          <div class="testimonial-card">
-            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="test-text">"NextGen built our real estate website and ran Meta Ads. Within 30 days, we got 180+ qualified leads. Our previous agency gave us nothing in 3 months."</p>
-            <div class="test-author">
-              <div class="test-avatar">RK</div>
-              <div>
-                <div class="test-name">Rajesh Kumar</div>
-                <div class="test-role">Real Estate Developer, Patna</div>
-              </div>
-            </div>
+      <div class="faqs-container reveal">
+        
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>What is the typical turnaround time for a project?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Custom websites and landing pages are typically delivered in <strong>7 to 10 business days</strong>. Targeted ad campaigns on Meta or Google are built, reviewed, and deployed within <strong>48 hours</strong> following strategy and creative approval.</p>
           </div>
-
-          <div class="testimonial-card">
-            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="test-text">"Our coaching institute went from 40 students to 200+ in one semester. Their Google Ads and landing page strategy is genuinely world-class."</p>
-            <div class="test-author">
-              <div class="test-avatar">PS</div>
-              <div>
-                <div class="test-name">Priya Sharma</div>
-                <div class="test-role">Director, EduPrime Institute, Ranchi</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="test-text">"I run a small clothing boutique. NextGen set up Instagram ads for just ₹5000/month — I'm getting 20-30 orders a day now. Best investment ever!"</p>
-            <div class="test-author">
-              <div class="test-avatar">AM</div>
-              <div>
-                <div class="test-name">Anjali Mehta</div>
-                <div class="test-role">Boutique Owner, Dhanbad</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="test-text">"The website they built for our startup looks like a ₹5 lakh project — we paid a fraction. SEO traffic went from 0 to 8,000 visitors/month in 4 months."</p>
-            <div class="test-author">
-              <div class="test-avatar">VT</div>
-              <div>
-                <div class="test-name">Vikram Tiwari</div>
-                <div class="test-role">Co-Founder, TechBridge Startup</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="test-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p class="test-text">"As a doctor, I needed patients to find me online. NextGen's Local SEO and Google Ads strategy tripled my clinic appointments in 60 days. Highly recommend!"</p>
-            <div class="test-author">
-              <div class="test-avatar">DR</div>
-              <div>
-                <div class="test-name">Dr. Deepak Rao</div>
-                <div class="test-role">Healthcare Professional, Jamshedpur</div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-          <div class="carousel-dots" id="carouselDots"></div>
-          <button class="carousel-btn" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What does NextGen Digital Solutions do differently?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We combine <strong>technical web engineering</strong> (fast loading, responsive layouts, clean code) with <strong>performance advertising</strong> (high-intent targeting, lead generation funnels, direct WhatsApp routing). This ensures your website functions as an active business tool rather than an inactive digital brochure.</p>
+          </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What types of businesses do you work with?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We work with service businesses, professional practices, clinics, local enterprises, retailers, and digital ventures looking to establish credible online authority and systematically generate prospective client inquiries.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How are inbound inquiries and ad performance tracked?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Lead inquiries submitted through your website are instantly routed to your direct <strong>WhatsApp</strong> and logged to your management sheet. For advertising, we provide clear summaries of ad spend, clicks, and incoming inquiries.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you require long-term lock-in contracts?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>No. Web development projects are milestone-based with 100% intellectual property ownership transferred to you upon completion. Marketing campaigns operate on flexible terms based on mutual alignment and documented performance.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT ===================== -->
+  <!-- ===================== CONTACT / CONSULTATION ===================== -->
   <section class="contact section-pad" id="contact">
-    <div class="contact-bg-glow"></div>
     <div class="container">
       <div class="contact-grid">
+        
+        <!-- Left: Direct Contact Information -->
         <div class="contact-info reveal">
-          <div class="section-tag">Let's Talk</div>
-          <h2 class="section-title">Ready to <span class="gradient-text">Grow?</span></h2>
-          <p class="contact-desc">Book your free strategy session. We'll audit your current digital presence and show you exactly how to double your leads.</p>
+          <div class="section-tag">Get in Touch</div>
+          <h2 class="section-title">Ready To Discuss <br /><span class="gradient-text">Your Project?</span></h2>
+          <p class="contact-desc">
+            Book a complimentary strategy consultation. We will review your current website or advertising requirements and provide a clear, practical execution plan.
+          </p>
 
           <div class="contact-items">
+            <!-- Direct Phone -->
             <a href="tel:+918340424989" class="contact-item">
-              <div class="ci-icon"><i class="fas fa-phone"></i></div>
+              <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
               <div>
-                <div class="ci-label">Call Us Directly</div>
+                <div class="ci-label">Call Directly</div>
                 <div class="ci-value">+91 83404 24989</div>
               </div>
             </a>
-            <a href="https://wa.me/918340424989?text=Hi%20I%20want%20to%20grow%20my%20business%20with%20your%20services" target="_blank" class="contact-item">
+
+            <!-- WhatsApp Chat -->
+            <a href="https://wa.me/918340424989?text=Hi%20NextGen%20Digital%20Solutions,%20I%20would%20like%20to%20discuss%20our%20project" target="_blank" rel="noopener" class="contact-item">
               <div class="ci-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
               <div>
                 <div class="ci-label">WhatsApp Chat</div>
                 <div class="ci-value">+91 83404 24989</div>
               </div>
             </a>
+
+            <!-- Direct Email -->
             <a href="mailto:suryaprataprana6@gmail.com" class="contact-item">
               <div class="ci-icon"><i class="fas fa-envelope"></i></div>
               <div>
-                <div class="ci-label">Email Us</div>
+                <div class="ci-label">Email Directly</div>
                 <div class="ci-value">suryaprataprana6@gmail.com</div>
               </div>
             </a>
           </div>
 
+          <!-- Practical Service Standards -->
           <div class="trust-badges">
-            <div class="trust-badge"><i class="fas fa-shield-halved"></i> Free Consultation</div>
-            <div class="trust-badge"><i class="fas fa-clock"></i> 24hr Response</div>
-            <div class="trust-badge"><i class="fas fa-handshake"></i> No Lock-in</div>
+            <div class="trust-badge"><i class="fas fa-shield-alt"></i> Complete Privacy</div>
+            <div class="trust-badge"><i class="fas fa-clock"></i> 2-Hour Response Window</div>
+            <div class="trust-badge"><i class="fas fa-handshake"></i> Direct Technical Discussion</div>
           </div>
         </div>
 
+        <!-- Right: Inquiry Form with Truthful WhatsApp Submission -->
         <div class="contact-form-wrapper reveal">
           <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-title-wrap">
+              <h3>Request Strategy Consultation</h3>
+              <p>Provide brief details below and we will connect to discuss scope and timelines.</p>
+            </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name" placeholder="Rajesh Kumar" required />
+                <input type="text" id="name" name="name" placeholder="e.g. Your Name" required />
                 <span class="error-msg" id="nameError"></span>
               </div>
               <div class="form-group">
                 <label for="business">Business Name *</label>
-                <input type="text" id="business" name="business" placeholder="Kumar Enterprises" required />
+                <input type="text" id="business" name="business" placeholder="e.g. Your Business or Brand" required />
                 <span class="error-msg" id="businessError"></span>
               </div>
             </div>
+
             <div class="form-row">
               <div class="form-group">
-                <label for="phone">Phone Number *</label>
+                <label for="phone">Phone / WhatsApp Number *</label>
                 <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
                 <span class="error-msg" id="phoneError"></span>
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" />
+                <input type="email" id="email" name="email" placeholder="you@company.com" />
                 <span class="error-msg" id="emailError"></span>
               </div>
             </div>
+
             <div class="form-group">
               <label for="service">Service Interested In *</label>
               <select id="service" name="service" required>
-                <option value="" disabled selected>Select a service...</option>
+                <option value="" disabled selected>Select a service or objective...</option>
                 <option value="website">Website Development</option>
-                <option value="meta">Meta Ads (Facebook/Instagram)</option>
-                <option value="google">Google Ads</option>
-                <option value="seo">SEO Optimization</option>
+                <option value="meta">Meta Ads (Facebook &amp; Instagram)</option>
+                <option value="google">Google Ads (Search Intent)</option>
+                <option value="seo">SEO &amp; Local Growth</option>
+                <option value="leads">Lead Generation Systems</option>
                 <option value="social">Social Media Management</option>
-                <option value="landing">Landing Page Creation</option>
-                <option value="leads">Lead Generation</option>
-                <option value="all">Complete Digital Marketing Package</option>
+                <option value="all">Full Digital Solutions Package</option>
               </select>
               <span class="error-msg" id="serviceError"></span>
             </div>
+
             <div class="form-group">
-              <label for="message">Tell Us About Your Business</label>
-              <textarea id="message" name="message" rows="4" placeholder="Briefly describe your business and what you're looking to achieve..."></textarea>
+              <label for="message">About Your Business &amp; Goals</label>
+              <textarea id="message" name="message" rows="3" placeholder="Briefly describe your business, current website or ad goals, and target timeline..."></textarea>
             </div>
+
             <button type="submit" class="btn-primary btn-submit">
-              <span id="btnText">Get My Free Consultation</span>
+              <span id="btnText">Prepare Consultation Request</span>
               <i class="fas fa-arrow-right" id="btnIcon"></i>
               <div class="btn-loader" id="btnLoader" style="display:none;"></div>
             </button>
+
+            <!-- Truthful State (WhatsApp Handoff) -->
             <div class="form-success" id="formSuccess" style="display:none;">
-              <i class="fas fa-circle-check"></i>
-              <span>Request sent! We'll contact you within 24 hours. Check WhatsApp for faster response.</span>
+              <i class="fab fa-whatsapp text-emerald"></i>
+              <div>
+                <strong>Your enquiry is ready!</strong>
+                <p>WhatsApp will open so you can send it directly to our team.</p>
+                <a href="#" id="waDirectLink" target="_blank" rel="noopener" class="wa-direct-btn">Click here if WhatsApp didn't open automatically</a>
+              </div>
             </div>
           </form>
         </div>
+
       </div>
     </div>
   </section>
@@ -498,65 +961,105 @@
     <div class="footer-top">
       <div class="container">
         <div class="footer-grid">
+          
+          <!-- Brand Column -->
           <div class="footer-brand">
-            <a href="#" class="nav-logo">
-              <span class="logo-icon"><i class="fas fa-bolt"></i></span>
-              <span class="logo-text">NextGen<span class="logo-accent">Digital</span></span>
+            <a href="#" class="nav-brand footer-logo">
+              <div class="brand-logo-frame">
+                <img src="logo.png" alt="NextGen Digital Solutions Logo" class="brand-logo-img" />
+              </div>
+              <div class="brand-text-col">
+                <span class="brand-title">NextGen</span>
+                <span class="brand-subtitle">Digital Solutions</span>
+              </div>
             </a>
-            <p>We build digital assets that generate revenue. India's premium full-service digital marketing agency.</p>
+            <p class="footer-desc">
+              NextGen Digital Solutions engineers high-performing websites, precision Meta &amp; Google ad campaigns, and automated lead generation systems built for business growth.
+            </p>
             <div class="footer-social">
-              <a href="https://wa.me/918340424989" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://wa.me/918340424989" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
               <a href="mailto:suryaprataprana6@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-              <a href="tel:+918340424989" aria-label="Phone"><i class="fas fa-phone"></i></a>
+              <a href="tel:+918340424989" aria-label="Phone"><i class="fas fa-phone-alt"></i></a>
             </div>
           </div>
+
+          <!-- Services Column -->
           <div class="footer-col">
             <h4>Services</h4>
             <ul>
               <li><a href="#services">Website Development</a></li>
               <li><a href="#services">Meta Ads</a></li>
               <li><a href="#services">Google Ads</a></li>
-              <li><a href="#services">SEO Optimization</a></li>
+              <li><a href="#services">SEO &amp; Local Growth</a></li>
               <li><a href="#services">Lead Generation</a></li>
+              <li><a href="#services">Social Media Management</a></li>
             </ul>
           </div>
+
+          <!-- Company Column -->
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="#why-us">Why Choose Us</a></li>
-              <li><a href="#process">Our Process</a></li>
-              <li><a href="#testimonials">Client Reviews</a></li>
-              <li><a href="#contact">Free Consultation</a></li>
+              <li><a href="#about">About NextGen</a></li>
+              <li><a href="#work">Selected Work</a></li>
+              <li><a href="#outcomes">Business Outcomes</a></li>
+              <li><a href="#process">Our 3-Phase Process</a></li>
+              <li><a href="#faqs">Frequently Asked Questions</a></li>
+              <li><a href="#contact">Let's Talk</a></li>
             </ul>
           </div>
+
+          <!-- Direct Contact Column -->
           <div class="footer-col">
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="tel:+918340424989"><i class="fas fa-phone"></i> +91 83404 24989</a></li>
-              <li><a href="mailto:suryaprataprana6@gmail.com"><i class="fas fa-envelope"></i> Email Us</a></li>
-              <li><a href="https://wa.me/918340424989" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+            <h4>Direct Contact</h4>
+            <ul class="footer-contact-list">
+              <li>
+                <a href="tel:+918340424989">
+                  <i class="fas fa-phone-alt"></i> <span>+91 83404 24989</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/918340424989" target="_blank" rel="noopener">
+                  <i class="fab fa-whatsapp"></i> <span>WhatsApp Support</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:suryaprataprana6@gmail.com">
+                  <i class="fas fa-envelope"></i> <span>suryaprataprana6@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <span class="office-hours"><i class="far fa-clock"></i> Mon–Sat: 9:00 AM – 8:00 PM IST</span>
+              </li>
             </ul>
           </div>
+
         </div>
       </div>
     </div>
+
+    <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2025 NextGen Digital Agency. All rights reserved. | Designed to Convert.</p>
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 NextGen Digital Solutions. All rights reserved.</p>
+        <div class="footer-badges">
+          <span>High-Performing Digital Assets</span>
+          <span class="footer-dot">•</span>
+          <span>100% Client Ownership</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- ===================== WHATSAPP FLOAT ===================== -->
+  <!-- ===================== WHATSAPP FLOATING CTA ===================== -->
   <a class="wa-float" id="waFloat"
-     href="https://wa.me/918340424989?text=Hi%20I%20want%20to%20grow%20my%20business%20with%20your%20services"
+     href="https://wa.me/918340424989?text=Hi%20NextGen%20Digital%20Solutions,%20I%20would%20like%20to%20discuss%20our%20project"
      target="_blank"
      rel="noopener"
-     aria-label="Chat on WhatsApp">
+     aria-label="Chat with NextGen Digital Solutions on WhatsApp">
     <div class="wa-pulse-ring"></div>
-    <div class="wa-pulse-ring wa-pulse-ring-2"></div>
     <i class="fab fa-whatsapp wa-icon"></i>
-    <span class="wa-tooltip">Chat with Us!</span>
+    <span class="wa-tooltip">Chat with us on WhatsApp</span>
   </a>
 
   <!-- ===================== SCROLL TO TOP ===================== -->
@@ -564,6 +1067,7 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <!-- Script (Zero Three.js, GPU-friendly, Accessible) -->
   <script src="script.js"></script>
 </body>
 </html>

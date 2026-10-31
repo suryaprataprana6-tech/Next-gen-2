@@ -6,20 +6,15 @@ import { Mail, Github, Linkedin, Twitter, MessageSquare, ArrowUpRight } from "lu
 import { PERSONAL_INFO, FAQ_DATA, PROJECTS_DATA } from "@/data/portfolioData";
 
 export default function Footer() {
-  // Generate JSON-LD Schemas for Person & FAQ Page
-  const personSchema = {
+  // Generate JSON-LD Schemas for Organization & FAQ Page
+  const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": PERSONAL_INFO.name,
-    "jobTitle": PERSONAL_INFO.title,
-    "description": PERSONAL_INFO.bio,
-    "url": "https://suryaprataprana.dev",
-    "sameAs": [PERSONAL_INFO.github, PERSONAL_INFO.linkedin, PERSONAL_INFO.twitter],
-    "knowsAbout": ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO Schemas", "AI Automation", "Full Stack Development"],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "NextGen Digital Agency"
-    }
+    "@type": "Organization",
+    "name": "NextGen Digital Solutions",
+    "description": "NextGen Digital Solutions is a premier digital solutions and performance marketing agency engineering high-converting web applications, precision Meta & Google ad funnels, and automated lead systems.",
+    "url": "https://nextgendigitalsolutions.com",
+    "logo": "https://nextgendigitalsolutions.com/logo.png",
+    "knowsAbout": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Technical SEO", "Meta Ads", "Google Ads", "Automated Lead Generation"]
   };
 
   const faqSchema = {
@@ -41,7 +36,7 @@ export default function Footer() {
       {/* Embedded JSON-LD SEO Schemas */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
       <script
         type="application/ld+json"
@@ -100,17 +95,11 @@ export default function Footer() {
             </p>
 
             <div className="flex items-center gap-3 pt-2">
-              <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-brand-400">
-                <Github className="w-4 h-4" />
-              </a>
-              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-brand-400">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href={PERSONAL_INFO.twitter} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-brand-400">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href={PERSONAL_INFO.whatsapp} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-brand-400">
+              <a href={PERSONAL_INFO.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-emerald-400 transition-colors">
                 <MessageSquare className="w-4 h-4" />
+              </a>
+              <a href={`mailto:${PERSONAL_INFO.email}`} aria-label="Email" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-cyan-400 transition-colors">
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -121,11 +110,12 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><a href="#about" className="hover:text-white transition-colors">About Me</a></li>
+              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#skills" className="hover:text-white transition-colors">Tech Skills</a></li>
-              <li><a href="#projects" className="hover:text-white transition-colors">Featured Projects</a></li>
-              <li><a href="#process" className="hover:text-white transition-colors">Work Process</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Selected Work</a></li>
+              <li><a href="#process" className="hover:text-white transition-colors">Process</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 

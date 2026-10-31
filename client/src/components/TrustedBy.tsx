@@ -2,23 +2,29 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { TRUSTED_CLIENTS } from "@/data/portfolioData";
+import { Globe, Code2, Zap, Database, Shield, Smartphone } from "lucide-react";
 
-const TRUST_STATS = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "25+", label: "Happy Clients" },
-  { value: "99%", label: "Client Satisfaction" },
-  { value: "5+", label: "Years Experience" },
+const VALUE_PILLARS = [
+  { title: "High-Performance", desc: "Websites & Applications", icon: Globe },
+  { title: "Performance", desc: "Targeted Marketing", icon: Zap },
+  { title: "Lead Generation", desc: "Automated Systems", icon: Smartphone },
+  { title: "Revenue-Focused", desc: "Commercial Strategy", icon: Shield },
+];
+
+const PLATFORMS = [
+  { name: "Next.js & React", category: "Modern Web Stack", icon: Code2, color: "from-blue-600 to-cyan-500" },
+  { name: "Meta Ads Platform", category: "Audience Targeting", icon: Zap, color: "from-blue-700 to-indigo-600" },
+  { name: "Google Search & Ads", category: "Commercial Intent", icon: Globe, color: "from-cyan-500 to-blue-600" },
+  { name: "Edge Deployment", category: "Sub-Second Latency", icon: Database, color: "from-purple-600 to-indigo-500" },
+  { name: "WhatsApp Direct", category: "Instant Lead Routing", icon: Smartphone, color: "from-emerald-500 to-teal-600" },
 ];
 
 export default function TrustedBy() {
-  const marqueeList = [...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS];
-
   return (
     <section className="relative z-10 bg-[#060816] text-white border-t border-white/10 pt-16 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Animated Trust Bar Counter Grid */}
+        {/* Value Pillars Grid (Non-Numerical Value Statements) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,47 +32,53 @@ export default function TrustedBy() {
           transition={{ duration: 0.5 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 p-8 rounded-3xl bg-[#0b0f24] border border-white/10 mb-20 shadow-2xl"
         >
-          {TRUST_STATS.map((stat, idx) => (
-            <div key={stat.label} className="flex flex-col items-center text-center p-3 border-r last:border-r-0 border-white/5">
-              <span className="font-heading text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-[#7C5CFF] to-[#A855F7] bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </span>
-              <span className="text-xs sm:text-sm font-medium text-[#94A3B8] tracking-wide">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+          {VALUE_PILLARS.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <div key={pillar.title} className="flex flex-col items-center text-center p-3 border-r last:border-r-0 border-white/5">
+                <div className="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 mb-3">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <span className="font-heading text-lg sm:text-xl font-extrabold text-white mb-1">
+                  {pillar.title}
+                </span>
+                <span className="text-xs sm:text-sm font-medium text-[#94A3B8] tracking-wide">
+                  {pillar.desc}
+                </span>
+              </div>
+            );
+          })}
         </motion.div>
 
-        {/* Client Logos Header */}
-        <div className="text-center mb-8">
+        {/* Technologies & Platforms We Deploy */}
+        <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-[#94A3B8]">
-            Trusted By Growing Enterprises, Medical Networks & Tech Leaders
+            MODERN PLATFORMS, CHANNELS &amp; TECHNOLOGIES WE DEPLOY
           </p>
         </div>
 
-        {/* Minimal Grayscale Client Logos Marquee (Hover becomes full color) */}
-        <div className="flex overflow-hidden select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="flex gap-8 shrink-0 animate-marquee items-center">
-            {marqueeList.map((client, idx) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {PLATFORMS.map((platform) => {
+            const Icon = platform.icon;
+            return (
               <div
-                key={`${client.name}-${idx}`}
-                className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0b0f24] border border-white/10 hover:border-[#7C5CFF]/60 transition-all duration-300 group shrink-0 filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100"
+                key={platform.name}
+                className="flex items-center gap-3 p-4 rounded-2xl bg-[#0b0f24] border border-white/10 hover:border-[#7C5CFF]/60 transition-all duration-300 group"
               >
-                <div className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${client.color} flex items-center justify-center text-white font-extrabold text-xs shadow-md group-hover:scale-105 transition-transform`}>
-                  {client.logoText}
+                <div className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${platform.color} flex items-center justify-center text-white font-bold text-xs shadow-md shrink-0`}>
+                  <Icon className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col text-left">
-                  <span className="font-heading font-bold text-sm text-white group-hover:text-[#7C5CFF] transition-colors">
-                    {client.name}
+                <div className="flex flex-col text-left overflow-hidden">
+                  <span className="font-heading font-bold text-xs text-white group-hover:text-[#7C5CFF] transition-colors truncate">
+                    {platform.name}
                   </span>
-                  <span className="text-[10px] font-medium text-[#94A3B8]">
-                    {client.industry}
+                  <span className="text-[10px] text-[#64748B] truncate">
+                    {platform.category}
                   </span>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
       </div>

@@ -289,17 +289,17 @@ export default function LaptopScreenStory({ onStageChange }: LaptopScreenStoryPr
 
               <div className="flex items-center gap-1.5 pt-0.5">
                 <span className="px-2 py-0.5 rounded bg-brand-500 text-white font-bold text-[7px]">
-                  Hire Me
+                  Free Audit
                 </span>
                 <span className="px-2 py-0.5 rounded bg-white/10 text-slate-300 font-bold text-[7px]">
-                  View Projects
+                  View Work
                 </span>
               </div>
             </div>
 
             <div className="pt-1.5 border-t border-slate-800 flex items-center justify-between text-[7px] text-slate-400">
-              <span>Traffic: 48,290+</span>
-              <span className="text-emerald-400 font-bold">Lighthouse 99/100</span>
+              <span>Status: Production Live</span>
+              <span className="text-emerald-400 font-bold">Performance Optimized</span>
             </div>
           </div>
         </motion.div>

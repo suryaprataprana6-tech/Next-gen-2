@@ -45,8 +45,8 @@ export default function About() {
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-500 font-bold text-xl">
-                  👨‍💻
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-1.5 shadow-md">
+                  <img src="/logo.png" alt="NextGen Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="font-heading text-2xl font-bold text-slate-900 dark:text-white">
@@ -73,7 +73,7 @@ export default function About() {
                 ⚡ {PERSONAL_INFO.experienceYears} Industry Experience
               </span>
               <span className="px-3 py-1.5 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300">
-                🚀 50+ Enterprise Releases
+                🚀 Full-Stack Web Architecture
               </span>
             </div>
           </motion.div>
@@ -91,7 +91,7 @@ export default function About() {
                 <Target className="w-5 h-5" />
               </div>
               <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3">
-                My Mission
+                Our Mission
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 "{ABOUT_STORY.mission}"
@@ -132,14 +132,14 @@ export default function About() {
 
         </div>
 
-        {/* Professional Career Growth Timeline */}
+        {/* Agency Evolution & Milestones */}
         <div className="mt-16">
           <div className="text-center mb-12">
             <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-              Professional Career Growth
+              Agency Evolution &amp; Milestones
             </h3>
             <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-2">
-              Evolution over 5+ years of shipping enterprise web software
+              Continuous innovation across modern full-stack web architectures and performance marketing
             </p>
           </div>
 

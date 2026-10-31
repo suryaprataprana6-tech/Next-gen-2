@@ -6,6 +6,8 @@ import { Award, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
 import { CERTIFICATIONS_DATA, CertificationItem } from "@/data/portfolioData";
 
 export default function Certifications() {
+  if (!CERTIFICATIONS_DATA || CERTIFICATIONS_DATA.length === 0) return null;
+
   return (
     <section className="py-20 relative overflow-hidden bg-slate-900/[0.02] dark:bg-white/[0.01]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -31,63 +31,7 @@ export function ScrollProgressBar() {
 }
 
 export function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
-
-    setIsVisible(true);
-
-    const onMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const onMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target && (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('a'))) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseover", onMouseOver);
-
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseover", onMouseOver);
-    };
-  }, []);
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="hidden lg:block pointer-events-none fixed inset-0 z-[999]">
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-500/60 bg-brand-500/10 backdrop-blur-[1px]"
-        animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovered ? 1.8 : 1,
-          borderColor: isHovered ? '#ec4899' : 'rgba(99, 102, 241, 0.6)',
-        }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-brand-500"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isHovered ? 0.5 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 800, damping: 35 }}
-      />
-    </div>
-  );
+  return null;
 }
 
 export function FloatingWhatsAppButton() {
@@ -157,42 +101,5 @@ export function BackToTopButton() {
 }
 
 export function LoadingScreen() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <AnimatePresence>
-      {loading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-dark-bg text-white"
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="flex flex-col items-center gap-4"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-violet flex items-center justify-center shadow-[0_0_30px_#6366f1] animate-pulse">
-              <Sparkles className="w-9 h-9 text-white animate-spin-slow" />
-            </div>
-            <h2 className="font-heading text-2xl font-bold tracking-tight text-gradient">
-              NextGen
-            </h2>
-            <p className="text-xs text-dark-muted tracking-widest uppercase animate-pulse">
-              Digital Solutions
-            </p>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return null;
 }

@@ -25,13 +25,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
+    { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
+    { name: "Work", href: "#work" },
     { name: "Process", href: "#process" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Blog", href: "#blog" },
+    { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -102,12 +100,12 @@ export default function Navbar() {
             <span>Consultation</span>
           </button>
 
-          {/* Hire Me CTA */}
+          {/* Primary Let's Talk CTA */}
           <button
-            onClick={() => openLeadModal("General Growth & Development")}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-brand-600 to-accent-violet text-white hover:shadow-glow-primary hover:scale-[1.02] active:scale-100 transition-all"
+            onClick={() => openLeadModal("Navbar CTA - Let's Talk")}
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-brand-600 to-accent-violet text-white hover:shadow-glow-primary hover:scale-[1.02] active:scale-100 transition-all shadow-md"
           >
-            <span>Hire Me</span>
+            <span>Let's Talk</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -171,11 +169,11 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    openLeadModal("Mobile Menu Direct Hire");
+                    openLeadModal("Mobile Menu - Let's Talk");
                   }}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-accent-violet text-white text-xs font-bold flex items-center justify-center gap-2"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-accent-violet text-white text-xs font-bold flex items-center justify-center gap-2 shadow-md"
                 >
-                  <span>Hire Me Now</span>
+                  <span>Let's Talk</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>

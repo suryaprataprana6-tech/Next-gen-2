@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /api/private/
-
-Sitemap: https://suryaprataprana.dev/sitemap.xml

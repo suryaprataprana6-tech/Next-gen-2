@@ -124,9 +124,11 @@ export default function AppleHeroBrowser() {
                 {/* Header branding */}
                 <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#7C5CFF] to-[#A855F7] flex items-center justify-center text-white text-xs font-extrabold shadow-lg">
-                      N
-                    </div>
+                    <img
+                      src="/logo.png"
+                      alt="NextGen Logo"
+                      className="w-6 h-6 rounded-lg object-contain bg-black/60 p-0.5 border border-white/10 shadow-lg"
+                    />
                     <span className="font-heading font-extrabold text-sm text-white tracking-tight">NextGen</span>
                   </div>
                   <span className="text-[10px] font-extrabold px-3 py-1 rounded-full bg-[#7C5CFF]/15 text-[#7C5CFF] border border-[#7C5CFF]/30">
@@ -165,8 +167,8 @@ export default function AppleHeroBrowser() {
 
                 {/* Footer Metrics */}
                 <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-medium">
-                  <span>★★★★★ 5.0 Rating (50+ Projects)</span>
-                  <span className="text-emerald-400 font-bold">Lighthouse 99/100</span>
+                  <span>High-Speed Next.js Architecture</span>
+                  <span className="text-emerald-400 font-bold">Sub-Second Load</span>
                 </div>
               </motion.div>
             )}
@@ -257,28 +259,28 @@ export default function AppleHeroBrowser() {
                     <span>Real-time Client Performance</span>
                   </div>
                   <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                    +248% Revenue Growth
+                    Targeted Conversion Architecture
                   </span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 my-auto">
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                    <span className="text-[10px] text-slate-400">Avg Speed</span>
-                    <div className="text-base font-extrabold text-white">0.4s</div>
+                    <span className="text-[10px] text-slate-400">Load Speed</span>
+                    <div className="text-base font-extrabold text-white">Sub-Sec</div>
                   </div>
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                    <span className="text-[10px] text-slate-400">SEO Score</span>
-                    <div className="text-base font-extrabold text-emerald-400">100/100</div>
+                    <span className="text-[10px] text-slate-400">Mobile UX</span>
+                    <div className="text-base font-extrabold text-emerald-400">Tested</div>
                   </div>
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                    <span className="text-[10px] text-slate-400">Conv. Rate</span>
-                    <div className="text-base font-extrabold text-purple-400">+4.8%</div>
+                    <span className="text-[10px] text-slate-400">Pipeline</span>
+                    <div className="text-base font-extrabold text-purple-400">Active</div>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-400 flex items-center justify-between">
-                  <span>Data verified across 50+ clients</span>
-                  <span className="text-slate-300 font-bold">Updated Live</span>
+                  <span>Illustrative Architecture View</span>
+                  <span className="text-slate-300 font-bold">Standard Spec</span>
                 </div>
               </motion.div>
             )}
@@ -306,13 +308,13 @@ export default function AppleHeroBrowser() {
                   </div>
                   <div className="text-emerald-400 font-bold flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>✓ Deployed to Vercel Global Edge Network in 0.8s</span>
+                    <span>✓ Deployed to Global Edge Network</span>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-400 flex justify-between">
-                  <span>Region: Global (300+ Edge Nodes)</span>
-                  <span className="text-emerald-400 font-bold">100% Uptime SLA</span>
+                  <span>Region: Global Edge</span>
+                  <span className="text-emerald-400 font-bold">High Availability</span>
                 </div>
               </motion.div>
             )}

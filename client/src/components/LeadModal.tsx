@@ -26,6 +26,7 @@ export default function LeadModal() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [waUrl, setWaUrl] = useState("");
 
   const isOpen = isLeadModalOpen || isConsultationModalOpen;
   const isConsultation = isConsultationModalOpen;
@@ -41,13 +42,50 @@ export default function LeadModal() {
     setIsSubmitting(true);
 
     try {
-      await new Promise((res) => setTimeout(res, 1000));
+      const waMessage = 
+`*CONSULTATION REQUEST — NextGen Digital Solutions*
+---------------------------------------
+👤 *Name:* ${formData.name}
+📞 *Phone:* ${formData.phone}
+📧 *Email:* ${formData.email || 'Not provided'}
+🎯 *Service:* ${formData.service}
+💰 *Budget:* ${formData.budget || 'Not specified'}
+💬 *Requirement:* ${formData.details || 'Ready to discuss requirements'}
+---------------------------------------
+Sent via NextGen Digital Solutions Website`;
+
+      const generatedWaUrl = `https://wa.me/918340424989?text=${encodeURIComponent(waMessage)}`;
+      setWaUrl(generatedWaUrl);
+
+      // Async sync to CRM database
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email || 'not-provided@client.com',
+          phone: formData.phone,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.details || `Consultation request for ${formData.service}`,
+        }),
+      }).catch((err) => console.warn('Could not sync to CRM:', err));
+
+      await new Promise((res) => setTimeout(res, 800));
       confetti({
         particleCount: 75,
         spread: 60,
         origin: { y: 0.6 },
       });
       setIsSubmitted(true);
+
+      setTimeout(() => {
+        try {
+          window.open(generatedWaUrl, "_blank");
+        } catch (err) {
+          console.warn("Popup blocked", err);
+        }
+      }, 400);
     } catch (e) {
       console.error(e);
     } finally {
@@ -80,16 +118,24 @@ export default function LeadModal() {
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h3 className="font-heading text-2xl font-extrabold text-white">
-                {isConsultation ? "Consultation Scheduled!" : "Proposal Received!"}
+                Your Enquiry Is Ready!
               </h3>
               <p className="text-xs text-slate-300 max-w-sm">
-                {isConsultation
-                  ? "Thank you! I will email you a Calendar invite link and meeting details shortly."
-                  : "Thank you for sharing your project details. I will review your requirements and send a full proposal within 4 hours."}
+                WhatsApp will open so you can send your project details directly to our team at +91 83404 24989.
               </p>
+              {waUrl && (
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-colors my-2"
+                >
+                  <span>Click here if WhatsApp didn't open automatically</span>
+                </a>
+              )}
               <button
                 onClick={handleClose}
-                className="px-6 py-2.5 rounded-xl bg-brand-500 text-white font-bold text-xs hover:bg-brand-600 transition-colors mt-4"
+                className="px-6 py-2.5 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-colors mt-2"
               >
                 Close Window
               </button>

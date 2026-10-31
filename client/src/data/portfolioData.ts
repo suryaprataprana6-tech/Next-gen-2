@@ -90,50 +90,48 @@ export interface TimelineItem {
 }
 
 export const PERSONAL_INFO = {
-  name: "Surya Pratap Rana",
-  title: "Senior Full Stack Architect & Growth Specialist",
-  tagline: "Building High-Converting Web Applications, Next.js Systems & AI Automations",
+  name: "NextGen Digital Solutions",
+  title: "Premier Digital Solutions & Revenue Growth Agency",
+  tagline: "Building High-Converting Web Applications, Precision Ad Funnels & Lead Systems",
   headline: "Engineering Scalable Digital Experiences That Drive Real Revenue Growth",
-  bio: "With over 5 years of full-stack engineering and digital strategy experience, I help ambitious brands, healthcare institutions, and high-growth startups build lightning-fast web applications, SEO engines, and automated sales systems.",
+  bio: "NextGen Digital Solutions is an elite digital engineering and performance growth agency. We engineer high-converting web applications, precision Meta & Google ad funnels, and automated lead generation systems that turn traffic into predictable, compounding revenue.",
   experienceYears: "5+",
-  projectsDelivered: "50+",
-  happyClients: "25+",
-  clientSatisfaction: "99%",
-  location: "Mumbai, India / Remote Worldwide",
-  email: "contact@nextgendigital.com",
-  phone: "+91 6209424989",
-  whatsapp: "https://wa.me/916209424989",
-  github: "https://github.com/suryaprataprana6-tech",
-  linkedin: "https://linkedin.com/in/suryaprataprana",
-  twitter: "https://twitter.com/nextgendigital",
-  resumeUrl: "#resume",
+  projectsDelivered: "High-Performance",
+  happyClients: "Long-Term Partners",
+  clientSatisfaction: "Outcome-Driven",
+  leadsGenerated: "Lead Systems",
+  adSpendManaged: "Multi-Platform",
+  location: "Patna / Ranchi / Delhi NCR / Remote Worldwide",
+  email: "suryaprataprana6@gmail.com",
+  phone: "+91 83404 24989",
+  whatsapp: "https://wa.me/918340424989?text=Hi%20NextGen%20Digital%20Solutions,%20I%20want%20to%20scale%20my%20business%20revenue",
+  website: "https://nextgendigitalsolutions.com",
 };
 
 export const STATS_DATA = [
-  { value: "50+", label: "Projects Delivered", suffix: "", icon: "CheckCircle2" },
-  { value: "25+", label: "Happy Clients", suffix: "", icon: "Users" },
-  { value: "5+", label: "Years Experience", suffix: "", icon: "Award" },
-  { value: "99%", label: "Client Satisfaction", suffix: "", icon: "TrendingUp" }
+  { value: "High-Performance", label: "Websites & Digital Architecture", suffix: "", icon: "CheckCircle2" },
+  { value: "Performance", label: "Paid Growth & Ad Strategy", suffix: "", icon: "Users" },
+  { value: "Systematic", label: "Lead Generation Engines", suffix: "", icon: "TrendingUp" },
+  { value: "Revenue-Focused", label: "Outcome-Driven Execution", suffix: "", icon: "Award" }
 ];
 
 export const TRUSTED_CLIENTS = [
-  { name: "Kamakhya Yatra", domain: "kamakhyayatra.com", industry: "Religious Tourism", logoText: "KY", color: "from-amber-500 to-orange-600" },
-  { name: "Anjan Hospital", domain: "anjanhospital.com", industry: "Healthcare & Care", logoText: "AH", color: "from-emerald-500 to-teal-600" },
-  { name: "Goodluck Properties", domain: "goodluckproperties.com", industry: "Real Estate", logoText: "GP", color: "from-blue-600 to-cyan-500" },
-  { name: "AIT Research Centre", domain: "aitresearchcentre.in", industry: "Research & Education", logoText: "AIT", color: "from-indigo-500 to-purple-600" },
-  { name: "IndiaOne Matrimony", domain: "indiaonematrimony.com", industry: "Matchmaking & Social", logoText: "IOM", color: "from-pink-500 to-rose-600" },
-  { name: "Honeymoon Safar", domain: "honeymoonsafar.com", industry: "Travel & Tours", logoText: "HS", color: "from-sky-400 to-blue-600" },
-  { name: "Label Raje", domain: "labelraje.com", industry: "Fashion E-Commerce", logoText: "LR", color: "from-violet-500 to-fuchsia-600" }
+  { name: "Tourism & Travel", domain: "booking-portals", industry: "Religious & Leisure Travel", logoText: "TT", color: "from-amber-500 to-orange-600" },
+  { name: "Healthcare & Clinics", domain: "patient-portals", industry: "Healthcare & Medical", logoText: "HC", color: "from-emerald-500 to-teal-600" },
+  { name: "Real Estate & Housing", domain: "property-engines", industry: "Real Estate & Lead CRM", logoText: "RE", color: "from-blue-600 to-cyan-500" },
+  { name: "Research & Academia", domain: "academic-hubs", industry: "Institutes & Education", logoText: "RA", color: "from-indigo-500 to-purple-600" },
+  { name: "Consumer Platforms", domain: "platform-systems", industry: "Matchmaking & Social", logoText: "CP", color: "from-pink-500 to-rose-600" },
+  { name: "Retail & Apparel", domain: "ecommerce-stores", industry: "Fashion & Direct-to-Consumer", logoText: "RA", color: "from-violet-500 to-fuchsia-600" }
 ];
 
 export const ABOUT_STORY = {
-  journey: "Started my coding journey building custom full-stack solutions and high-converting landing pages. Fast-forward to today: I architect enterprise Next.js application pipelines, AI automations, and custom CRM systems for businesses across travel, healthcare, real estate, and e-commerce.",
+  journey: "NextGen Digital Solutions was founded to solve a fundamental disconnect in the agency model: gorgeous websites that don't convert, and expensive ad campaigns that direct traffic to slow, broken landing pages. We engineer unified digital infrastructure that pairs engineering excellence with direct-response growth marketing.",
   mission: "To eliminate slow, bloated, low-converting software and replace it with ultra-fast, visually captivating, revenue-generating digital products.",
   coreValues: [
     { title: "Velocity & Precision", desc: "Shipping clean, maintainable code rapidly without sacrificing quality." },
     { title: "Conversion First Design", desc: "Every pixel, CTA, and micro-interaction is engineered for user engagement." },
     { title: "Architectural Integrity", desc: "Building scalable Next.js Server Components, clean API endpoints & secure DB schemas." },
-    { title: "Measurable Impact", desc: "Tracking real business ROI—traffic multiplier, lead velocity, and load speeds under 1 second." }
+    { title: "Measurable Impact", desc: "Tracking real business ROI—commercial inquiries, lead velocity, and load speeds under 1 second." }
   ]
 };
 
@@ -142,22 +140,22 @@ export const CAREER_TIMELINE: TimelineItem[] = [
     year: "2024 - Present",
     role: "Lead Full Stack & Next.js Solutions Architect",
     company: "NextGen Digital Agency",
-    description: "Designing end-to-end web architectures, AI chatbot workflows, and Next.js 15 platforms. Managing high-intent lead campaigns and technical SEO for client platforms.",
-    achievements: ["Engineered 20+ Next.js 15 App Router applications", "Increased client conversion rates by an average of 145%", "Built automated CRM pipelines reducing response time to under 1 minute"]
+    description: "Designing end-to-end web architectures, AI chatbot workflows, and Next.js platforms. Managing high-intent lead campaigns and technical SEO for client platforms.",
+    achievements: ["Engineered modern Next.js App Router applications", "Optimized client conversion funnels and inquiry flows", "Built automated CRM pipelines for instant lead follow-up"]
   },
   {
     year: "2022 - 2024",
     role: "Senior React & Full Stack Developer",
     company: "Digital Growth Labs",
     description: "Built scalable web platforms, customized CRM systems, and e-commerce applications with React, Node.js, MongoDB, and Tailwind CSS.",
-    achievements: ["Architected multi-tenant matrimonial & travel booking platforms", "Optimized Lighthouse performance scores from 55 to 98+"]
+    achievements: ["Architected consumer platforms and booking systems", "Optimized Core Web Vitals and load performance"]
   },
   {
     year: "2020 - 2022",
     role: "Frontend & SEO Engineer",
     company: "WebCraft Solutions",
     description: "Developed responsive web interfaces, crafted landing pages, and implemented structured data schemas and performance optimizations.",
-    achievements: ["Ranked 15+ websites on Google Page 1 for high-intent keywords", "Built over 30 bespoke client websites with custom animations"]
+    achievements: ["Deployed structured JSON-LD schemas and technical SEO", "Crafted responsive web interfaces with bespoke interactions"]
   }
 ];
 
@@ -270,17 +268,17 @@ export const SKILLS_DATA: SkillItem[] = [
 
 export const PROJECTS_DATA: ProjectCaseStudy[] = [
   {
-    id: "kamakhya-yatra",
-    title: "Kamakhya Yatra Pilgrimage Portal & Booking System",
-    clientName: "Kamakhya Pilgrimages",
+    id: "travel-booking-portal",
+    title: "Travel & Pilgrimage Booking Platform",
+    clientName: "Tourism & Travel Sector",
     category: "Travel",
-    description: "Comprehensive religious tourism platform featuring pilgrimage package booking, priest booking, interactive itinerary builder, and real-time payment processing.",
+    description: "Comprehensive religious and leisure tourism platform featuring pilgrimage package booking, priest reservation, interactive itinerary builder, and real-time payment processing.",
     heroImage: "https://images.unsplash.com/photo-1602631985686-2bb0604508ec?w=1000&fit=crop&q=80",
     screenshots: [
       "https://images.unsplash.com/photo-1602631985686-2bb0604508ec?w=800&fit=crop&q=80",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&fit=crop&q=80"
     ],
-    businessProblem: "The client suffered from lost pilgrimage bookings due to an outdated slow website, lack of mobile responsiveness, and zero online payment tracking.",
+    businessProblem: "Businesses in the hospitality and pilgrimage sector often lose direct bookings due to outdated slow websites, lack of mobile responsiveness, and manual enquiry tracking.",
     solutionImplemented: "Architected a Next.js App Router booking portal with instant search filters, WhatsApp direct confirmation, automated booking vouchers, and Google Schema optimization.",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Framer Motion", "WhatsApp API"],
     features: [
@@ -291,18 +289,18 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "JSON-LD TouristAttraction & Schema Integration"
     ],
     resultsAchieved: [
-      { metric: "+310%", label: "Organic Search Growth" },
-      { metric: "4.2x", label: "Monthly Booking Revenue" },
-      { metric: "0.8s", label: "Page Load Speed" }
+      { metric: "Sub-Second", label: "Page Load Architecture" },
+      { metric: "Integrated", label: "Direct WhatsApp Flow" },
+      { metric: "Engineered", label: "Dynamic Itinerary Builder" }
     ],
-    liveUrl: "https://kamakhyayatra.com",
+    liveUrl: "#contact",
     githubUrl: "https://github.com/suryaprataprana6-tech/Next-gen-2",
     featured: true
   },
   {
-    id: "anjan-hospital",
-    title: "Anjan Hospital Healthcare Portal & Patient Appointment System",
-    clientName: "Anjan Super Speciality Hospital",
+    id: "healthcare-patient-portal",
+    title: "Healthcare Portal & Doctor Appointment System",
+    clientName: "Healthcare & Clinical Sector",
     category: "Healthcare",
     description: "Modern multi-department hospital portal with online doctor appointment scheduling, emergency contact quick-connect, and medical services directory.",
     heroImage: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1000&fit=crop&q=80",
@@ -321,19 +319,19 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Hospital Location & Google Maps Navigation"
     ],
     resultsAchieved: [
-      { metric: "-65%", label: "Phone Queue Wait Times" },
-      { metric: "+180%", label: "Online Patient Bookings" },
-      { metric: "99.2%", label: "Patient Satisfaction" }
+      { metric: "Automated", label: "Appointment Scheduling" },
+      { metric: "Optimized", label: "Emergency Quick-Connect" },
+      { metric: "Structured", label: "Medical Search Schema" }
     ],
-    liveUrl: "https://anjanhospital.com",
+    liveUrl: "#contact",
     featured: true
   },
   {
-    id: "goodluck-properties",
-    title: "Goodluck Properties Real Estate Portal & Lead CRM",
-    clientName: "Goodluck Realty Group",
+    id: "realestate-lead-portal",
+    title: "Real Estate Discovery Portal & Lead CRM",
+    clientName: "Real Estate & Commercial Sector",
     category: "Real Estate",
-    description: "Luxury real estate property discovery platform with 3D virtual tour integrations, interactive price calculators, and automated lead capture funnels.",
+    description: "Luxury real estate property discovery platform with virtual tour integrations, interactive mortgage calculators, and automated lead capture funnels.",
     heroImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1000&fit=crop&q=80",
     screenshots: [
       "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&fit=crop&q=80",
@@ -350,25 +348,25 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Automated Buyer Qualification Questionnaire"
     ],
     resultsAchieved: [
-      { metric: "3.8x", label: "Ad Campaign ROI" },
-      { metric: "+240%", label: "Qualified Lead Volume" },
-      { metric: "98/100", label: "Lighthouse Performance" }
+      { metric: "Multi-Filter", label: "Property Search Engine" },
+      { metric: "Automated", label: "Brochure Lead Funnels" },
+      { metric: "Configured", label: "Meta Conversions API" }
     ],
-    liveUrl: "https://goodluckproperties.com",
+    liveUrl: "#contact",
     featured: true
   },
   {
-    id: "ait-research-centre",
-    title: "AIT Research Centre Academic Portal & Global Collaboration Engine",
-    clientName: "Academy of Information Technology",
+    id: "academic-research-portal",
+    title: "Academic Research Hub & Publication Engine",
+    clientName: "Education & Research Sector",
     category: "Websites",
-    description: "National academic and computer science research institute portal featuring publication archives, scholar directories, and conference registration.",
+    description: "Academic and computer science research institute portal featuring publication archives, scholar directories, and conference registration.",
     heroImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1000&fit=crop&q=80",
     screenshots: [
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&fit=crop&q=80",
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&fit=crop&q=80"
     ],
-    businessProblem: "Research papers and institutional achievements were buried in plain HTML files, resulting in poor search engine indexing and zero student engagement.",
+    businessProblem: "Research papers and institutional achievements were buried in plain unindexed documents, resulting in poor search engine indexing and low visitor engagement.",
     solutionImplemented: "Created a modern academic research hub with indexed publication search, faculty profile cards, scholarly dataset downloads, and SEO Schema for Research Projects.",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "JSON-LD Schemas"],
     features: [
@@ -379,24 +377,24 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Full Mobile & Tablet Responsive Layout"
     ],
     resultsAchieved: [
-      { metric: "12,000+", label: "Monthly Research Downloads" },
-      { metric: "#1 Rank", label: "Target CS Research Keywords" },
-      { metric: "100%", label: "Accessibility Score" }
+      { metric: "Searchable", label: "Research Archives" },
+      { metric: "Indexed", label: "Google Scholar Schema" },
+      { metric: "Responsive", label: "Cross-Device Layout" }
     ],
-    liveUrl: "https://aitresearchcentre.in",
+    liveUrl: "#contact",
     featured: true
   },
   {
-    id: "indiaone-matrimony",
-    title: "IndiaOne Matrimony Matchmaking & AI Profile Verification",
-    clientName: "India One Matrimony Inc",
+    id: "consumer-platform",
+    title: "Consumer Matchmaking & Verification System",
+    clientName: "Consumer Platform Sector",
     category: "AI",
-    description: "Trusted matchmaking platform with AI profile verification, intelligent compatibility scoring, secure messaging, and privacy-protected profile controls.",
+    description: "Matchmaking platform with profile verification, intelligent compatibility scoring, secure messaging, and privacy-protected profile controls.",
     heroImage: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000&fit=crop&q=80",
     screenshots: [
       "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&fit=crop&q=80"
     ],
-    businessProblem: "Inauthentic profiles and slow search filters led to user distrust and high churn on legacy matchmaking script.",
+    businessProblem: "Inauthentic user profiles and slow search filters led to user distrust and high churn on legacy scripts.",
     solutionImplemented: "Engineered an AI-backed verification pipeline, instant filter engine, end-to-end encrypted interest requests, and automated WhatsApp onboarding.",
     techStack: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS", "OpenAI API", "Socket.io"],
     features: [
@@ -407,17 +405,17 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Multi-Language UI Support"
     ],
     resultsAchieved: [
-      { metric: "+450%", label: "Verified User Registrations" },
-      { metric: "4.8/5", label: "App Store User Rating" },
-      { metric: "85%", label: "Match Success Rate" }
+      { metric: "Verified", label: "Profile Integrity Pipeline" },
+      { metric: "Real-Time", label: "Encrypted Communication" },
+      { metric: "Automated", label: "Onboarding Flow" }
     ],
-    liveUrl: "https://indiaonematrimony.com",
+    liveUrl: "#contact",
     featured: true
   },
   {
-    id: "honeymoon-safar",
-    title: "Honeymoon Safar Luxury Package Booking Engine",
-    clientName: "Honeymoon Safar Travel Group",
+    id: "luxury-travel-experience",
+    title: "Luxury Travel Experience & Itinerary Planner",
+    clientName: "Hospitality & Leisure Sector",
     category: "Travel",
     description: "Premium travel & romantic getaway booking platform with interactive destination galleries, customized itinerary cost estimators, and WhatsApp sales routing.",
     heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000&fit=crop&q=80",
@@ -435,25 +433,25 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Meta Ads Pixel & Conversion Tracking"
     ],
     resultsAchieved: [
-      { metric: "+220%", label: "Lead Conversion Rate" },
-      { metric: "0.6s", label: "Mobile First Contentful Paint" },
-      { metric: "5.0 ★", label: "Traveler Satisfaction" }
+      { metric: "Instant", label: "Itinerary Cost Builder" },
+      { metric: "Direct", label: "WhatsApp Consultation" },
+      { metric: "Optimized", label: "Mobile Core Web Vitals" }
     ],
-    liveUrl: "https://honeymoonsafar.com",
+    liveUrl: "#contact",
     featured: false
   },
   {
-    id: "label-raje",
-    title: "Label Raje Luxury Fashion Store & E-Commerce Pipeline",
-    clientName: "Label Raje Designs",
+    id: "dtc-apparel-store",
+    title: "Direct-to-Consumer Fashion & Apparel Store",
+    clientName: "Retail & Apparel Sector",
     category: "Websites",
     description: "High-end couture fashion e-commerce experience featuring dynamic apparel catalogs, size recommendation guide, and instant checkout integration.",
     heroImage: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1000&fit=crop&q=80",
     screenshots: [
       "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&fit=crop&q=80"
     ],
-    businessProblem: "Generic Shopify theme failed to convey the exclusivity and premium feel of handcrafted designer garments.",
-    solutionImplemented: "Designed a bespoke glassmorphic luxury web shop with smooth zoom interactions, micro-animations, quick cart drawers, and Instagram feed sync.",
+    businessProblem: "Generic off-the-shelf themes failed to convey the exclusivity and premium feel of handcrafted designer garments.",
+    solutionImplemented: "Designed a bespoke luxury web shop with smooth zoom interactions, micro-animations, quick cart drawers, and Instagram feed sync.",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Stripe API"],
     features: [
       "High-Resolution Zoom Garment Inspection",
@@ -463,17 +461,17 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Instagram Shoppable Feed Widget"
     ],
     resultsAchieved: [
-      { metric: "+190%", label: "Average Order Value (AOV)" },
-      { metric: "-40%", label: "Cart Abandonment Rate" },
-      { metric: "99.8%", label: "Uptime Reliability" }
+      { metric: "Fluid", label: "Slide Cart & Checkout UI" },
+      { metric: "Mobile-First", label: "Product Grid Experience" },
+      { metric: "Optimized", label: "Conversion Hierarchy" }
     ],
-    liveUrl: "https://labelraje.com",
+    liveUrl: "#contact",
     featured: false
   },
   {
     id: "nextgen-crm",
-    title: "NextGen Multi-Tenant Lead & Business CRM System",
-    clientName: "NextGen Enterprise",
+    title: "NextGen Multi-Tenant Lead CRM System",
+    clientName: "Agency & B2B Operations",
     category: "CRM",
     description: "All-in-one lead management, chatbot conversation tracker, and automated follow-up engine for agencies and service businesses.",
     heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&fit=crop&q=80",
@@ -491,83 +489,16 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       "Exportable CSV Analytics & Revenue Reports"
     ],
     resultsAchieved: [
-      { metric: "100%", label: "Lead Capture Rate" },
-      { metric: "< 2 min", label: "Average Lead Contact Time" },
-      { metric: "3.5x", label: "Sales Closing Rate" }
+      { metric: "Unified", label: "Multi-Channel Tracking" },
+      { metric: "Automated", label: "WhatsApp & SMS Routing" },
+      { metric: "Real-Time", label: "Status Kanban Boards" }
     ],
-    liveUrl: "#crm-demo",
+    liveUrl: "#contact",
     featured: true
   }
 ];
 
-export const TESTIMONIALS_DATA: TestimonialItem[] = [
-  {
-    id: "t1",
-    name: "Dr. Anjan Kumar",
-    role: "Founder & Director",
-    company: "Anjan Super Speciality Hospital",
-    avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "Surya transformed our hospital's digital presence completely. Our online patient appointment system is extremely reliable and fast. Patient feedback has been overwhelming!",
-    projectTag: "Healthcare Portal",
-    verified: true
-  },
-  {
-    id: "t2",
-    name: "Rajesh Sharma",
-    role: "Managing Partner",
-    company: "Kamakhya Pilgrimages",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "Surya's expertise in Next.js, SEO, and WhatsApp automation resulted in a 4x increase in pilgrimage bookings. He is super responsive, transparent, and delivers beyond expectations.",
-    projectTag: "Kamakhya Yatra",
-    verified: true
-  },
-  {
-    id: "t3",
-    name: "Vikas Agarwal",
-    role: "Managing Director",
-    company: "Goodluck Properties",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "The real estate portal designed by Surya generated qualified property buyers within the first week of launch. His understanding of high-converting UI/UX and Meta Ads tracking is top tier.",
-    projectTag: "Real Estate CRM",
-    verified: true
-  },
-  {
-    id: "t4",
-    name: "Dr. P. K. Mishra",
-    role: "Dean of Research",
-    company: "AIT Research Centre",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "Surya built a world-class academic portal that showcases our institute's research globally. Page load times are instant and Google search indexing reached #1 for our primary research domains.",
-    projectTag: "Academic Portal",
-    verified: true
-  },
-  {
-    id: "t5",
-    name: "Sunita Roy",
-    role: "CEO & Co-Founder",
-    company: "IndiaOne Matrimony",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "Outstanding work on our matchmaking platform! The AI profile verification integration restored complete user confidence, and user retention grew by over 400%. Highly recommended!",
-    projectTag: "Matrimony Platform",
-    verified: true
-  },
-  {
-    id: "t6",
-    name: "Anil & Kavita Sengupta",
-    role: "Founders",
-    company: "Honeymoon Safar",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&fit=crop&q=80",
-    rating: 5,
-    review: "Our travel package booking site is now fast, elegant, and converts like crazy. The instant WhatsApp lead routing gives us an unbeatable competitive edge.",
-    projectTag: "Travel Booking",
-    verified: true
-  }
-];
+export const TESTIMONIALS_DATA: TestimonialItem[] = [];
 
 export const WORK_PROCESS_STEPS: ProcessStep[] = [
   {
@@ -631,7 +562,7 @@ export const BLOG_POSTS: BlogItem[] = [
     category: "Next.js",
     readTime: "5 min read",
     date: "Jan 18, 2026",
-    author: "Surya Pratap Rana",
+    author: "NextGen Engineering Team",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&fit=crop&q=80"
   },
   {
@@ -643,7 +574,7 @@ export const BLOG_POSTS: BlogItem[] = [
     category: "SEO",
     readTime: "7 min read",
     date: "Dec 29, 2025",
-    author: "Surya Pratap Rana",
+    author: "NextGen Engineering Team",
     image: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&fit=crop&q=80"
   },
   {
@@ -655,7 +586,7 @@ export const BLOG_POSTS: BlogItem[] = [
     category: "AI",
     readTime: "6 min read",
     date: "Dec 12, 2025",
-    author: "Surya Pratap Rana",
+    author: "NextGen Engineering Team",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&fit=crop&q=80"
   },
   {
@@ -667,53 +598,12 @@ export const BLOG_POSTS: BlogItem[] = [
     category: "Web Development",
     readTime: "4 min read",
     date: "Nov 25, 2025",
-    author: "Surya Pratap Rana",
+    author: "NextGen Engineering Team",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&fit=crop&q=80"
   }
 ];
 
-export const CERTIFICATIONS_DATA: CertificationItem[] = [
-  {
-    id: "cert-1",
-    title: "Next.js 15 & React 19 Senior Architect",
-    issuer: "Vercel & Meta Engineering Academy",
-    issueDate: "2025",
-    credentialId: "VER-98421-NX15",
-    badgeUrl: "https://images.unsplash.com/photo-1618401471353-b98aedd04e11?w=150&fit=crop&q=80",
-    verifyUrl: "https://vercel.com",
-    skillsVerified: ["Next.js 15", "React 19", "Server Components", "ISR", "Edge Runtime"]
-  },
-  {
-    id: "cert-2",
-    title: "Full Stack Web Developer & Cloud Engineer",
-    issuer: "AWS & MongoDB University",
-    issueDate: "2024",
-    credentialId: "AWS-DEV-77402",
-    badgeUrl: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=150&fit=crop&q=80",
-    verifyUrl: "https://aws.amazon.com",
-    skillsVerified: ["Node.js", "MongoDB", "Supabase", "Cloud Architecture", "REST APIs"]
-  },
-  {
-    id: "cert-3",
-    title: "Google Advanced Technical SEO & Schemas Specialist",
-    issuer: "Google Digital Academy",
-    issueDate: "2024",
-    credentialId: "GOOG-SEO-55192",
-    badgeUrl: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=150&fit=crop&q=80",
-    verifyUrl: "https://skillshop.exceedlms.com",
-    skillsVerified: ["Technical SEO", "JSON-LD Schemas", "Core Web Vitals", "Indexing Engine"]
-  },
-  {
-    id: "cert-4",
-    title: "Meta Certified Digital Marketing & Ads Specialist",
-    issuer: "Meta Business Certification",
-    issueDate: "2023",
-    credentialId: "META-ADS-99104",
-    badgeUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=150&fit=crop&q=80",
-    verifyUrl: "https://www.credly.com",
-    skillsVerified: ["Meta Ads Pixel", "Conversions API (CAPI)", "Audience Targeting", "Funnel Optimization"]
-  }
-];
+export const CERTIFICATIONS_DATA: CertificationItem[] = [];
 
 export const FAQ_DATA = [
   {

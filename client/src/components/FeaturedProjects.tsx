@@ -25,7 +25,8 @@ export default function FeaturedProjects() {
     : PROJECTS_DATA.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-28 relative overflow-hidden bg-[#060816] text-white border-t border-white/10">
+    <section id="work" className="py-28 relative overflow-hidden bg-[#060816] text-white border-t border-white/10">
+      <span id="projects" className="absolute -top-24" />
       
       {/* Background Soft Ambient Light */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full bg-[#A855F7]/10 blur-[160px] pointer-events-none" />
@@ -45,7 +46,7 @@ export default function FeaturedProjects() {
             </span>
           </h2>
           <p className="mt-4 text-[#94A3B8] text-lg max-w-2xl mx-auto">
-            Explore Apple-style case studies showing business challenges solved, custom tech stack applied, and client ROI metrics achieved.
+            Explore category architectures showing business challenges solved, custom tech stack applied, and systematic conversion funnels deployed.
           </p>
         </div>
 
@@ -95,7 +96,7 @@ export default function FeaturedProjects() {
                 {/* Card Info */}
                 <div className="p-7">
                   <div className="text-xs font-bold text-[#7C5CFF] mb-1">
-                    Client: {project.clientName}
+                    Sector: {project.clientName}
                   </div>
 
                   <h3 className="font-heading font-extrabold text-2xl text-white group-hover:text-[#7C5CFF] transition-colors mb-3">

@@ -2,17 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import LeadModal from "@/components/LeadModal";
-import ChatBot from "@/components/ChatBot";
-import { 
-  ScrollProgressBar, 
-  CustomCursor, 
-  FloatingWhatsAppButton, 
-  BackToTopButton, 
-  LoadingScreen 
-} from "@/components/ExtraFeatures";
+import { AdminAuthProvider } from "@/context/AdminAuthContext";
+import PublicShell from "@/components/PublicShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,49 +16,50 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "NextGen | Digital Solutions & High-Converting Web Applications",
-  description: "Redesigning digital growth with Next.js 15 App Router, high-converting web applications, technical SEO engines, and custom AI automations. 50+ projects delivered with 99% client satisfaction.",
+  title: "NextGen Digital Solutions | Websites, Ads & Digital Growth",
+  description: "NextGen Digital Solutions engineers high-converting web applications, precision Meta & Google ad funnels, and automated lead generation engines that scale revenue.",
   keywords: [
     "NextGen Digital Solutions",
-    "Next.js Developer",
-    "Digital Solutions",
-    "Full Stack Architecture",
-    "Technical SEO Specialist",
-    "AI Chatbot Automation",
-    "High Converting Portfolio"
+    "Digital Solutions Agency",
+    "High Converting Websites",
+    "Next.js Web Applications",
+    "Meta Ads Agency",
+    "Google Ads Specialists",
+    "Lead Generation Systems",
+    "Technical SEO"
   ],
-  authors: [{ name: "NextGen Digital Solutions", url: "https://nextgendigital.com" }],
+  authors: [{ name: "NextGen Digital Solutions", url: "https://next-gen-2.vercel.app" }],
   creator: "NextGen Digital Solutions",
-  metadataBase: new URL("https://nextgendigital.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://next-gen-2.vercel.app"),
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
     apple: "/logo.png",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nextgendigital.com",
-    title: "NextGen | Digital Solutions & High-Converting Web Applications",
-    description: "Engineering scalable, high-converting digital applications with Next.js 15, TypeScript, SEO schemas, and AI lead automation.",
+    url: "https://next-gen-2.vercel.app",
+    title: "NextGen Digital Solutions | Websites, Ads & Digital Growth",
+    description: "Engineering scalable, high-converting digital applications with Next.js, precision ad funnels, and automated lead generation engines.",
     siteName: "NextGen Digital Solutions",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&fit=crop&q=80",
-        width: 1200,
-        height: 630,
-        alt: "NextGen Digital Solutions Portfolio",
+        url: "/logo.png",
+        width: 1254,
+        height: 1254,
+        alt: "NextGen Digital Solutions Official Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NextGen | Digital Solutions & High-Converting Applications",
-    description: "High-converting web applications, Next.js 15, SEO schemas, and AI lead automation.",
-    images: ["https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&fit=crop&q=80"],
+    title: "NextGen Digital Solutions | Websites, Ads & Digital Growth",
+    description: "High-converting web applications, Meta & Google Ads, and automated lead generation funnels.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -91,16 +83,9 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <body className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased selection:bg-brand-500/30 selection:text-brand-400`}>
         <ThemeProvider>
-          <LoadingScreen />
-          <ScrollProgressBar />
-          <CustomCursor />
-          <Navbar />
-          <main className="relative z-10">{children}</main>
-          <Footer />
-          <LeadModal />
-          <ChatBot />
-          <FloatingWhatsAppButton />
-          <BackToTopButton />
+          <AdminAuthProvider>
+            <PublicShell>{children}</PublicShell>
+          </AdminAuthProvider>
         </ThemeProvider>
       </body>
     </html>

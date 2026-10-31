@@ -38,6 +38,7 @@ export default function ContactSection() {
   const { openConsultationModal } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [waUrl, setWaUrl] = useState("");
 
   const {
     register,
@@ -54,8 +55,36 @@ export default function ContactSection() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call to /api/contact
-      await new Promise((res) => setTimeout(res, 1200));
+      // Build structured WhatsApp inquiry message
+      const waMessage = 
+`*CONSULTATION REQUEST — NextGen Digital Solutions*
+---------------------------------------
+👤 *Name:* ${data.name}
+📞 *Phone:* ${data.phone}
+📧 *Email:* ${data.email || 'Not provided'}
+🎯 *Service:* ${data.service}
+💬 *Requirement:* ${data.message}
+---------------------------------------
+Sent via NextGen Digital Solutions Website`;
+
+      const generatedWaUrl = `https://wa.me/918340424989?text=${encodeURIComponent(waMessage)}`;
+      setWaUrl(generatedWaUrl);
+
+      // Async log to internal CRM database
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email || 'not-provided@client.com',
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+        }),
+      }).catch((err) => console.warn('Could not sync to CRM:', err));
+
+      // Brief delay for UX feedback
+      await new Promise((res) => setTimeout(res, 800));
 
       // Trigger Confetti Celebration
       confetti({
@@ -66,6 +95,15 @@ export default function ContactSection() {
 
       setIsSubmitted(true);
       reset();
+
+      // Open WhatsApp directly
+      setTimeout(() => {
+        try {
+          window.open(generatedWaUrl, "_blank");
+        } catch (e) {
+          console.warn("Popup blocked or not permitted", e);
+        }
+      }, 400);
     } catch (e) {
       console.error(e);
     } finally {
@@ -156,34 +194,13 @@ export default function ContactSection() {
                 <ArrowUpRight className="w-5 h-5" />
               </button>
 
-              {/* Socials & Resume */}
-              <div className="pt-4 border-t border-slate-900/10 dark:border-white/10 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <a
-                    href={PERSONAL_INFO.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl glass-card text-slate-700 dark:text-slate-300 hover:text-brand-500"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={PERSONAL_INFO.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-xl glass-card text-slate-700 dark:text-slate-300 hover:text-brand-500"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
+              {/* Working Hours & Guarantee */}
+              <div className="pt-4 border-t border-slate-900/10 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Mon–Sat: 9:00 AM – 8:00 PM IST</span>
                 </div>
-
-                <a
-                  href="#resume"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card border border-brand-500/30 text-xs font-bold text-brand-500 dark:text-brand-400 hover:bg-brand-500 hover:text-white transition-all"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Resume</span>
-                </a>
+                <span className="font-semibold text-brand-400">100% Client IP Ownership</span>
               </div>
             </div>
 
@@ -229,14 +246,25 @@ export default function ContactSection() {
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h4 className="font-heading text-2xl font-extrabold text-slate-900 dark:text-white">
-                    Inquiry Received Successfully!
+                    Your Enquiry Is Ready!
                   </h4>
                   <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md">
-                    Thank you for reaching out. I have received your message details and will get back to you with a custom strategy within 4 hours.
+                    WhatsApp will open so you can send your project details directly to our team at +91 83404 24989.
                   </p>
+                  {waUrl && (
+                    <a
+                      href={waUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-colors my-2"
+                    >
+                      <span>Click here if WhatsApp didn't open automatically</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  )}
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="px-6 py-2.5 rounded-xl bg-brand-500 text-white font-bold text-xs hover:bg-brand-600 transition-colors mt-4"
+                    className="px-6 py-2 rounded-xl bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-colors mt-2"
                   >
                     Send Another Message
                   </button>

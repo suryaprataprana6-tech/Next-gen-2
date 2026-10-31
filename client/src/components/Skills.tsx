@@ -58,7 +58,7 @@ export default function Skills() {
             Interactive <span className="text-gradient">Tech Stack & Proficiency</span>
           </h2>
           <p className="mt-4 text-slate-600 dark:text-slate-300 text-base">
-            Modern tools and frameworks battle-tested across 50+ enterprise web builds and growth campaigns.
+            Modern tools, frameworks, and ad networks deployed to scale modern digital businesses.
           </p>
         </div>
 

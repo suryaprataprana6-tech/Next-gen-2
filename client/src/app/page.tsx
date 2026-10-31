@@ -7,7 +7,6 @@ import FeaturedProjects from "@/components/FeaturedProjects";
 import WorkProcess from "@/components/WorkProcess";
 import Testimonials from "@/components/Testimonials";
 import Blog from "@/components/Blog";
-import Certifications from "@/components/Certifications";
 import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
       <WorkProcess />
       <Testimonials />
       <Blog />
-      <Certifications />
       <ContactSection />
     </div>
   );
