@@ -9,7 +9,8 @@
     "billingCycle": "one-time",
     "enabled": true,
     "badge": "Kickoff",
-    "iconName": "BadgeCheck"
+    "iconName": "BadgeCheck",
+    "updatedAt": "2026-11-04T06:36:50.214Z"
   },
   {
     "id": "token_domain_hosting",
@@ -25,13 +26,18 @@
         "amount": 5000
       },
       {
-        "label": "Domain & Cloud Server Setup (1 Year)",
-        "amount": 3500
+        "label": "Domain Registration (1 Year)",
+        "amount": 1500
+      },
+      {
+        "label": "Cloud Server Hosting (1 Year)",
+        "amount": 2000
       }
     ],
     "enabled": true,
     "badge": "Popular",
-    "iconName": "Server"
+    "iconName": "Server",
+    "updatedAt": "2026-11-04T06:36:50.216Z"
   },
   {
     "id": "seo_services",
@@ -122,6 +128,8 @@
     "minAmount": 500,
     "enabled": true,
     "badge": "Flexible",
-    "iconName": "CreditCard"
+    "iconName": "CreditCard",
+    "maxAmount": 500000,
+    "updatedAt": "2026-11-04T06:36:50.218Z"
   }
 ]

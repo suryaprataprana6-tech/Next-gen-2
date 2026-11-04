@@ -6,19 +6,51 @@ export interface ServiceBreakdownItem {
   amount: number;
 }
 
+export type PaymentType = 'token' | 'full' | 'recurring' | 'custom';
+export type PaymentStatus = 'pending' | 'successful' | 'failed' | 'cancelled' | 'refunded';
+
 export interface ServiceCategory {
   id: string;
   name: string;
+  category: 'kickoff' | 'marketing' | 'development' | 'maintenance' | 'creative' | 'custom' | string;
   shortDescription: string;
-  amount: number;
+  amount: number; // in INR
   currency: string;
   pricingType: 'fixed' | 'custom';
+  paymentType: PaymentType;
   billingCycle: 'one-time' | 'monthly' | 'custom';
   breakdown?: ServiceBreakdownItem[];
   enabled: boolean;
   minAmount?: number;
+  maxAmount?: number;
   badge?: string;
   iconName?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface PaymentSettings {
+  tokenMoneyAmount: number;
+  tokenOptionEnabled: boolean;
+  domainRegistrationAmount: number;
+  hostingAmount: number;
+  additionalChargesAmount: number;
+  minCustomAmount: number;
+  maxCustomAmount: number;
+  currency: string;
+  requireApprovalAbove?: number;
+  updatedAt: string;
+  updatedBy?: string;
+}
+
+export interface PricingAuditLog {
+  id: string;
+  timestamp: string;
+  action: 'create_service' | 'update_service' | 'delete_service' | 'update_settings';
+  serviceId?: string;
+  serviceName?: string;
+  changes: Record<string, any>;
+  adminUser?: string;
 }
 
 export interface PaymentRecord {
@@ -30,15 +62,20 @@ export interface PaymentRecord {
   businessName?: string;
   serviceId: string;
   serviceName: string;
+  paymentType: PaymentType;
   projectDescription: string;
-  amount: number; // in INR
+  purpose?: string;
+  projectReference?: string;
+  totalProjectAmount?: number; // total agreed project amount
+  amount: number; // amount paid in this transaction in INR
+  remainingBalance?: number; // remaining project balance when total is known
   currency: string;
   breakdown?: ServiceBreakdownItem[];
   gateway: 'razorpay';
   gatewayOrderId: string;
   gatewayPaymentId?: string;
   gatewaySignature?: string;
-  status: 'pending' | 'successful' | 'failed' | 'cancelled';
+  status: PaymentStatus;
   statusReason?: string;
   paymentTimestamp?: string;
   createdAt: string;
@@ -47,16 +84,35 @@ export interface PaymentRecord {
 
 const PRICING_FILE = path.join(process.cwd(), 'data', 'service_pricing.json');
 const PAYMENTS_FILE = path.join(process.cwd(), 'data', 'payments.json');
+const SETTINGS_FILE = path.join(process.cwd(), 'data', 'payment_settings.json');
+const AUDIT_FILE = path.join(process.cwd(), 'data', 'pricing_audit.json');
+
+// Default global payment configuration
+export const DEFAULT_PAYMENT_SETTINGS: PaymentSettings = {
+  tokenMoneyAmount: 5000,
+  tokenOptionEnabled: true,
+  domainRegistrationAmount: 1500,
+  hostingAmount: 2000,
+  additionalChargesAmount: 0,
+  minCustomAmount: 500,
+  maxCustomAmount: 500000,
+  currency: 'INR',
+  requireApprovalAbove: 200000,
+  updatedAt: new Date().toISOString(),
+  updatedBy: 'System Default',
+};
 
 // Default verified service categories matching digital agency offerings
 export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'token_money',
     name: 'Token Money',
+    category: 'kickoff',
     shortDescription: 'Project initiation and kickoff deposit to lock your strategy calendar and start architecture design.',
     amount: 5000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'token',
     billingCycle: 'one-time',
     enabled: true,
     badge: 'Kickoff',
@@ -65,14 +121,17 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'token_domain_hosting',
     name: 'Token Money + Domain & Hosting',
+    category: 'kickoff',
     shortDescription: 'Advance deposit plus enterprise cloud hosting setup and primary commercial domain registration.',
     amount: 8500,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'token',
     billingCycle: 'one-time',
     breakdown: [
       { label: 'Project Kickoff Advance', amount: 5000 },
-      { label: 'Domain & Cloud Server Setup (1 Year)', amount: 3500 },
+      { label: 'Domain Registration (1 Year)', amount: 1500 },
+      { label: 'High-Speed Cloud Server Hosting (1 Year)', amount: 2000 },
     ],
     enabled: true,
     badge: 'Popular',
@@ -81,10 +140,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'seo_services',
     name: 'SEO Services',
+    category: 'marketing',
     shortDescription: 'Full-spectrum organic search optimization, technical auditing, keyword ranking, and local growth.',
     amount: 15000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'recurring',
     billingCycle: 'monthly',
     enabled: true,
     iconName: 'Search',
@@ -92,10 +153,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'meta_ads',
     name: 'Meta Ads Setup',
+    category: 'marketing',
     shortDescription: 'High-converting Facebook & Instagram campaign structuring, pixel tracking, and creative ad copy setup.',
     amount: 12000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'full',
     billingCycle: 'one-time',
     enabled: true,
     iconName: 'Target',
@@ -103,10 +166,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'google_ads',
     name: 'Google Ads Setup',
+    category: 'marketing',
     shortDescription: 'Intent-driven Google PPC search, call campaigns, negative keyword sculpting, and conversion API.',
     amount: 12000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'full',
     billingCycle: 'one-time',
     enabled: true,
     iconName: 'TrendingUp',
@@ -114,10 +179,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'smm',
     name: 'Social Media Management',
+    category: 'marketing',
     shortDescription: 'Brand narrative curation, aesthetic post graphics, reel syndication, and community engagement.',
     amount: 10000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'recurring',
     billingCycle: 'monthly',
     enabled: true,
     iconName: 'Share2',
@@ -125,10 +192,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'web_dev',
     name: 'Website Development',
+    category: 'development',
     shortDescription: 'Ultra-fast Next.js engineering, custom animations, responsive layouts, and conversion-focused pages.',
     amount: 25000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'full',
     billingCycle: 'one-time',
     enabled: true,
     badge: 'Full Solution',
@@ -137,10 +206,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'web_maintenance',
     name: 'Website Maintenance',
+    category: 'maintenance',
     shortDescription: 'Monthly core updates, SSL security monitoring, CDN cache optimization, and routine content patches.',
     amount: 6000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'recurring',
     billingCycle: 'monthly',
     enabled: true,
     iconName: 'ShieldCheck',
@@ -148,10 +219,12 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'graphic_design',
     name: 'Graphic Design',
+    category: 'creative',
     shortDescription: 'Vector brand assets, marketing collaterals, social graphics, and pitch deck visual systems.',
     amount: 8000,
     currency: 'INR',
     pricingType: 'fixed',
+    paymentType: 'full',
     billingCycle: 'one-time',
     enabled: true,
     iconName: 'Palette',
@@ -159,108 +232,204 @@ export const DEFAULT_SERVICES: ServiceCategory[] = [
   {
     id: 'custom_payment',
     name: 'Other Services / Custom Payment',
+    category: 'custom',
     shortDescription: 'Milestone disbursements, custom scopes, enterprise retainer top-ups, or bespoke add-on services.',
     amount: 0,
     currency: 'INR',
     pricingType: 'custom',
+    paymentType: 'custom',
     billingCycle: 'custom',
     minAmount: 500,
+    maxAmount: 500000,
     enabled: true,
     badge: 'Flexible',
     iconName: 'CreditCard',
   },
 ];
 
-// Seeded verified payment records for initial audit/dashboard demonstration
-export const INITIAL_PAYMENTS: PaymentRecord[] = [
-  {
-    id: 'NGD-PAY-1001',
-    receiptNumber: 'NGD-2026-0891',
-    customerName: 'Rahul Verma',
-    customerMobile: '+91 98350 11223',
-    customerEmail: 'rahul@vermasafaris.com',
-    businessName: 'Verma Luxury Safaris',
-    serviceId: 'token_domain_hosting',
-    serviceName: 'Token Money + Domain & Hosting',
-    projectDescription: 'Kickoff advance and fast cloud server setup for luxury safari booking portal.',
-    amount: 8500,
-    currency: 'INR',
-    breakdown: [
-      { label: 'Project Kickoff Advance', amount: 5000 },
-      { label: 'Domain & Cloud Server Setup (1 Year)', amount: 3500 },
-    ],
-    gateway: 'razorpay',
-    gatewayOrderId: 'order_PnK9X2026Rzp01',
-    gatewayPaymentId: 'pay_PnK9X89201LveA',
-    gatewaySignature: 'sig_verified_prod_01928374',
-    status: 'successful',
-    paymentTimestamp: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
-    createdAt: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
-    updatedAt: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
-  },
-  {
-    id: 'NGD-PAY-1002',
-    receiptNumber: 'NGD-2026-0892',
-    customerName: 'Dr. Ananya Sen',
-    customerMobile: '+91 97712 44556',
-    customerEmail: 'ananya.sen@apexclinics.in',
-    businessName: 'Apex Super Speciality Clinic',
-    serviceId: 'google_ads',
-    serviceName: 'Google Ads Setup',
-    projectDescription: 'High-intent PPC lead campaign setup for dental and cosmetic surgery consultations.',
-    amount: 12000,
-    currency: 'INR',
-    gateway: 'razorpay',
-    gatewayOrderId: 'order_QmL4B2026Rzp02',
-    gatewayPaymentId: 'pay_QmL4B99182LveB',
-    gatewaySignature: 'sig_verified_prod_02837465',
-    status: 'successful',
-    paymentTimestamp: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
-    createdAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
-    updatedAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
-  },
-  {
-    id: 'NGD-PAY-1003',
-    receiptNumber: 'NGD-2026-0893',
-    customerName: 'Amit Patel',
-    customerMobile: '+91 94311 88990',
-    customerEmail: 'amit@skylinerealty.com',
-    businessName: 'Skyline Realty Projects',
-    serviceId: 'meta_ads',
-    serviceName: 'Meta Ads Setup',
-    projectDescription: 'Pre-launch campaign for luxury 3BHK residential inventory in NCR.',
-    amount: 12000,
-    currency: 'INR',
-    gateway: 'razorpay',
-    gatewayOrderId: 'order_RmN7C2026Rzp03',
-    status: 'pending',
-    statusReason: 'Checkout opened, awaiting authorization',
-    createdAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
-    updatedAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
-  },
-];
-
+// In-memory singletons for resilience across serverless invocations
 let inMemoryServices: ServiceCategory[] = [...DEFAULT_SERVICES];
-let inMemoryPayments: PaymentRecord[] = [...INITIAL_PAYMENTS];
+let inMemoryPayments: PaymentRecord[] = [];
+let inMemorySettings: PaymentSettings = { ...DEFAULT_PAYMENT_SETTINGS };
+let inMemoryAudit: PricingAuditLog[] = [];
 
-function ensurePricingFile(): void {
-  try {
-    const dir = path.dirname(PRICING_FILE);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    if (!fs.existsSync(PRICING_FILE)) {
-      fs.writeFileSync(PRICING_FILE, JSON.stringify(DEFAULT_SERVICES, null, 2), 'utf8');
-    }
-  } catch (e) {}
+function ensureDirectoryExistence(filePath: string) {
+  const dirname = path.dirname(filePath);
+  if (!fs.existsSync(dirname)) {
+    fs.mkdirSync(dirname, { recursive: true });
+  }
 }
 
-function ensurePaymentsFile(): void {
+function ensureSettingsFile() {
   try {
-    const dir = path.dirname(PAYMENTS_FILE);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    if (!fs.existsSync(PAYMENTS_FILE)) {
-      fs.writeFileSync(PAYMENTS_FILE, JSON.stringify(INITIAL_PAYMENTS, null, 2), 'utf8');
+    ensureDirectoryExistence(SETTINGS_FILE);
+    if (!fs.existsSync(SETTINGS_FILE)) {
+      fs.writeFileSync(SETTINGS_FILE, JSON.stringify(DEFAULT_PAYMENT_SETTINGS, null, 2), 'utf8');
+      inMemorySettings = { ...DEFAULT_PAYMENT_SETTINGS };
     }
-  } catch (e) {}
+  } catch (e) {
+    console.warn('Could not initialize payment_settings.json:', e);
+  }
+}
+
+function ensurePricingFile() {
+  try {
+    ensureDirectoryExistence(PRICING_FILE);
+    if (!fs.existsSync(PRICING_FILE)) {
+      fs.writeFileSync(PRICING_FILE, JSON.stringify(DEFAULT_SERVICES, null, 2), 'utf8');
+      inMemoryServices = [...DEFAULT_SERVICES];
+    }
+  } catch (e) {
+    console.warn('Could not initialize service_pricing.json:', e);
+  }
+}
+
+function ensurePaymentsFile() {
+  try {
+    ensureDirectoryExistence(PAYMENTS_FILE);
+    if (!fs.existsSync(PAYMENTS_FILE)) {
+      fs.writeFileSync(PAYMENTS_FILE, JSON.stringify([], null, 2), 'utf8');
+    }
+  } catch (e) {
+    console.warn('Could not initialize payments.json:', e);
+  }
+}
+
+function ensureAuditFile() {
+  try {
+    ensureDirectoryExistence(AUDIT_FILE);
+    if (!fs.existsSync(AUDIT_FILE)) {
+      fs.writeFileSync(AUDIT_FILE, JSON.stringify([], null, 2), 'utf8');
+    }
+  } catch (e) {
+    console.warn('Could not initialize pricing_audit.json:', e);
+  }
+}
+
+// ----------------------------------------------------
+// PAYMENT SETTINGS ACCESSORS
+// ----------------------------------------------------
+
+export function getPaymentSettings(): PaymentSettings {
+  ensureSettingsFile();
+  try {
+    if (fs.existsSync(SETTINGS_FILE)) {
+      const content = fs.readFileSync(SETTINGS_FILE, 'utf8');
+      const parsed = JSON.parse(content);
+      if (parsed && typeof parsed.tokenMoneyAmount === 'number') {
+        inMemorySettings = { ...DEFAULT_PAYMENT_SETTINGS, ...parsed };
+        return inMemorySettings;
+      }
+    }
+  } catch (e) {
+    console.warn('Using in-memory payment settings fallback:', e);
+  }
+  return inMemorySettings;
+}
+
+export function updatePaymentSettings(
+  updates: Partial<PaymentSettings>,
+  adminUser?: string
+): PaymentSettings {
+  const current = getPaymentSettings();
+  const updated: PaymentSettings = {
+    ...current,
+    ...updates,
+    updatedAt: new Date().toISOString(),
+    updatedBy: adminUser || current.updatedBy,
+  };
+
+  // Synchronize Token Money & Token + Domain & Hosting services with updated settings
+  if (typeof updates.tokenMoneyAmount === 'number') {
+    updateServicePricing('token_money', { amount: updates.tokenMoneyAmount }, false);
+  }
+
+  const tokenAmt = updated.tokenMoneyAmount;
+  const domainAmt = updated.domainRegistrationAmount;
+  const hostAmt = updated.hostingAmount;
+  const addlAmt = updated.additionalChargesAmount || 0;
+  const totalBundle = tokenAmt + domainAmt + hostAmt + addlAmt;
+
+  const bundleBreakdown: ServiceBreakdownItem[] = [
+    { label: 'Project Kickoff Advance', amount: tokenAmt },
+    { label: 'Domain Registration (1 Year)', amount: domainAmt },
+    { label: 'Cloud Server Hosting (1 Year)', amount: hostAmt },
+  ];
+  if (addlAmt > 0) {
+    bundleBreakdown.push({ label: 'Additional Applicable Charges', amount: addlAmt });
+  }
+
+  updateServicePricing('token_domain_hosting', {
+    amount: totalBundle,
+    breakdown: bundleBreakdown,
+  }, false);
+
+  if (typeof updates.minCustomAmount === 'number' || typeof updates.maxCustomAmount === 'number') {
+    updateServicePricing('custom_payment', {
+      minAmount: updated.minCustomAmount,
+      maxAmount: updated.maxCustomAmount,
+    }, false);
+  }
+
+  inMemorySettings = updated;
+  try {
+    ensureSettingsFile();
+    fs.writeFileSync(SETTINGS_FILE, JSON.stringify(updated, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Could not persist payment settings to disk:', e);
+  }
+
+  logPricingAudit({
+    action: 'update_settings',
+    changes: updates,
+    adminUser,
+  });
+
+  return updated;
+}
+
+// ----------------------------------------------------
+// AUDIT LOGGING
+// ----------------------------------------------------
+
+export function logPricingAudit(log: Omit<PricingAuditLog, 'id' | 'timestamp'>): void {
+  ensureAuditFile();
+  try {
+    let logs: PricingAuditLog[] = [];
+    if (fs.existsSync(AUDIT_FILE)) {
+      const content = fs.readFileSync(AUDIT_FILE, 'utf8');
+      logs = JSON.parse(content);
+      if (!Array.isArray(logs)) logs = [];
+    }
+    const newEntry: PricingAuditLog = {
+      id: `AUDIT-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      timestamp: new Date().toISOString(),
+      ...log,
+    };
+    logs.unshift(newEntry);
+    if (logs.length > 100) logs = logs.slice(0, 100); // keep last 100 logs
+    inMemoryAudit = logs;
+    fs.writeFileSync(AUDIT_FILE, JSON.stringify(logs, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Could not write pricing audit log:', e);
+  }
+}
+
+export function getPricingAuditLogs(): PricingAuditLog[] {
+  ensureAuditFile();
+  try {
+    if (fs.existsSync(AUDIT_FILE)) {
+      const content = fs.readFileSync(AUDIT_FILE, 'utf8');
+      const parsed = JSON.parse(content);
+      if (Array.isArray(parsed)) {
+        inMemoryAudit = parsed;
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Using in-memory audit log fallback:', e);
+  }
+  return inMemoryAudit;
 }
 
 // ----------------------------------------------------
@@ -278,7 +447,7 @@ export function getServiceCatalog(includeDisabled = false): ServiceCategory[] {
       }
     }
   } catch (e) {
-    console.warn('Using in-memory services fallback:', e);
+    console.warn('Using in-memory service pricing fallback:', e);
   }
 
   if (includeDisabled) {
@@ -292,9 +461,90 @@ export function getServiceById(id: string): ServiceCategory | undefined {
   return services.find((s) => s.id === id);
 }
 
+export function addService(
+  newService: Omit<ServiceCategory, 'createdAt' | 'updatedAt'>,
+  adminUser?: string
+): ServiceCategory {
+  const services = getServiceCatalog(true);
+  
+  // Normalize ID slug
+  let slug = newService.id?.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '_') || '';
+  if (!slug) {
+    slug = newService.name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 30);
+  }
+
+  // Ensure unique ID
+  let finalId = slug;
+  let counter = 1;
+  while (services.some((s) => s.id === finalId)) {
+    finalId = `${slug}_${counter++}`;
+  }
+
+  const created: ServiceCategory = {
+    ...newService,
+    id: finalId,
+    currency: newService.currency || 'INR',
+    category: newService.category || 'development',
+    pricingType: newService.pricingType || 'fixed',
+    paymentType: newService.paymentType || 'full',
+    billingCycle: newService.billingCycle || 'one-time',
+    enabled: typeof newService.enabled === 'boolean' ? newService.enabled : true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  services.push(created);
+  inMemoryServices = services;
+
+  try {
+    ensurePricingFile();
+    fs.writeFileSync(PRICING_FILE, JSON.stringify(services, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Could not persist newly added service to disk:', e);
+  }
+
+  logPricingAudit({
+    action: 'create_service',
+    serviceId: created.id,
+    serviceName: created.name,
+    changes: created,
+    adminUser,
+  });
+
+  return created;
+}
+
+export function deleteService(id: string, adminUser?: string): boolean {
+  const services = getServiceCatalog(true);
+  const index = services.findIndex((s) => s.id === id);
+  if (index === -1) return false;
+
+  const removed = services.splice(index, 1)[0];
+  inMemoryServices = services;
+
+  try {
+    ensurePricingFile();
+    fs.writeFileSync(PRICING_FILE, JSON.stringify(services, null, 2), 'utf8');
+  } catch (e) {
+    console.warn('Could not persist service deletion to disk:', e);
+  }
+
+  logPricingAudit({
+    action: 'delete_service',
+    serviceId: removed.id,
+    serviceName: removed.name,
+    changes: { deleted: true },
+    adminUser,
+  });
+
+  return true;
+}
+
 export function updateServicePricing(
   id: string,
-  updates: Partial<Omit<ServiceCategory, 'id'>>
+  updates: Partial<ServiceCategory>,
+  recordAudit = true,
+  adminUser?: string
 ): ServiceCategory | null {
   const services = getServiceCatalog(true);
   const index = services.findIndex((s) => s.id === id);
@@ -303,6 +553,7 @@ export function updateServicePricing(
   services[index] = {
     ...services[index],
     ...updates,
+    updatedAt: new Date().toISOString(),
   };
 
   inMemoryServices = services;
@@ -311,6 +562,16 @@ export function updateServicePricing(
     fs.writeFileSync(PRICING_FILE, JSON.stringify(services, null, 2), 'utf8');
   } catch (e) {
     console.warn('Could not persist updated service pricing to disk:', e);
+  }
+
+  if (recordAudit) {
+    logPricingAudit({
+      action: 'update_service',
+      serviceId: services[index].id,
+      serviceName: services[index].name,
+      changes: updates,
+      adminUser,
+    });
   }
 
   return services[index];
@@ -359,7 +620,11 @@ export function createPaymentRecord(data: {
   businessName?: string;
   serviceId: string;
   serviceName: string;
+  paymentType?: PaymentType;
   projectDescription: string;
+  purpose?: string;
+  projectReference?: string;
+  totalProjectAmount?: number;
   amount: number;
   currency?: string;
   breakdown?: ServiceBreakdownItem[];
@@ -368,6 +633,13 @@ export function createPaymentRecord(data: {
   const payments = getPayments();
   const timestamp = Date.now();
   const count = payments.length + 1;
+
+  // Calculate remaining balance if total project amount is specified
+  let remainingBalance: number | undefined = undefined;
+  if (typeof data.totalProjectAmount === 'number' && data.totalProjectAmount > data.amount) {
+    remainingBalance = Math.round(data.totalProjectAmount - data.amount);
+  }
+
   const newRecord: PaymentRecord = {
     id: `NGD-PAY-${timestamp.toString().slice(-6)}`,
     receiptNumber: `NGD-${new Date().getFullYear()}-${String(count).padStart(4, '0')}`,
@@ -377,8 +649,13 @@ export function createPaymentRecord(data: {
     businessName: data.businessName?.trim() || undefined,
     serviceId: data.serviceId,
     serviceName: data.serviceName,
+    paymentType: data.paymentType || (data.serviceId.includes('token') ? 'token' : data.serviceId === 'custom_payment' ? 'custom' : 'full'),
     projectDescription: data.projectDescription.trim(),
+    purpose: data.purpose?.trim() || undefined,
+    projectReference: data.projectReference?.trim() || undefined,
+    totalProjectAmount: data.totalProjectAmount,
     amount: data.amount,
+    remainingBalance,
     currency: data.currency || 'INR',
     breakdown: data.breakdown,
     gateway: 'razorpay',
@@ -461,7 +738,13 @@ export function getPaymentStats() {
     pendingCount: 0,
     failedCount: 0,
     cancelledCount: 0,
+    refundedCount: 0,
+    customPaymentsCount: 0,
+    customPaymentsRevenue: 0,
+    tokenPaymentsCount: 0,
+    tokenPaymentsRevenue: 0,
     byService: {} as Record<string, { count: number; revenue: number }>,
+    serviceWiseList: [] as Array<{ serviceName: string; count: number; revenue: number }>,
     recentTransactions: payments.slice(0, 10),
   };
 
@@ -469,12 +752,27 @@ export function getPaymentStats() {
     if (p.status === 'successful') {
       stats.totalRevenue += p.amount;
       stats.successfulCount++;
+      if (p.paymentType === 'custom' || p.serviceId === 'custom_payment') {
+        stats.customPaymentsRevenue += p.amount;
+      }
+      if (p.paymentType === 'token' || p.serviceId.includes('token')) {
+        stats.tokenPaymentsRevenue += p.amount;
+      }
     } else if (p.status === 'pending') {
       stats.pendingCount++;
     } else if (p.status === 'failed') {
       stats.failedCount++;
     } else if (p.status === 'cancelled') {
       stats.cancelledCount++;
+    } else if (p.status === 'refunded') {
+      stats.refundedCount++;
+    }
+
+    if (p.paymentType === 'custom' || p.serviceId === 'custom_payment') {
+      stats.customPaymentsCount++;
+    }
+    if (p.paymentType === 'token' || p.serviceId.includes('token')) {
+      stats.tokenPaymentsCount++;
     }
 
     if (!stats.byService[p.serviceName]) {
@@ -485,6 +783,12 @@ export function getPaymentStats() {
       stats.byService[p.serviceName].revenue += p.amount;
     }
   });
+
+  stats.serviceWiseList = Object.entries(stats.byService).map(([name, data]) => ({
+    serviceName: name,
+    count: data.count,
+    revenue: data.revenue,
+  }));
 
   return stats;
 }

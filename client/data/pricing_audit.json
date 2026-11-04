@@ -1,0 +1,71 @@
+[
+  {
+    "id": "AUDIT-1793774210232-ggrb",
+    "timestamp": "2026-11-04T06:36:50.232Z",
+    "action": "delete_service",
+    "serviceId": "ai_agent___crm_workflow_automa",
+    "serviceName": "AI Agent & CRM Workflow Automation",
+    "changes": {
+      "deleted": true
+    },
+    "adminUser": "admin@nextgendigital.com"
+  },
+  {
+    "id": "AUDIT-1793774210222-f95g",
+    "timestamp": "2026-11-04T06:36:50.222Z",
+    "action": "update_settings",
+    "changes": {
+      "tokenMoneyAmount": 5000,
+      "minCustomAmount": 500,
+      "maxCustomAmount": 500000
+    },
+    "adminUser": "admin@nextgendigital.com"
+  },
+  {
+    "id": "AUDIT-1793774210207-tjst",
+    "timestamp": "2026-11-04T06:36:50.207Z",
+    "action": "update_settings",
+    "changes": {
+      "tokenMoneyAmount": 6000,
+      "minCustomAmount": 600,
+      "maxCustomAmount": 600000
+    },
+    "adminUser": "admin@nextgendigital.com"
+  },
+  {
+    "id": "AUDIT-1793774210190-9m50",
+    "timestamp": "2026-11-04T06:36:50.190Z",
+    "action": "update_service",
+    "serviceId": "ai_agent___crm_workflow_automa",
+    "serviceName": "AI Agent & CRM Workflow Automation",
+    "changes": {
+      "amount": 48000,
+      "badge": "Enterprise AI"
+    },
+    "adminUser": "admin@nextgendigital.com"
+  },
+  {
+    "id": "AUDIT-1793774210175-39wn",
+    "timestamp": "2026-11-04T06:36:50.175Z",
+    "action": "create_service",
+    "serviceId": "ai_agent___crm_workflow_automa",
+    "serviceName": "AI Agent & CRM Workflow Automation",
+    "changes": {
+      "id": "ai_agent___crm_workflow_automa",
+      "name": "AI Agent & CRM Workflow Automation",
+      "category": "development",
+      "shortDescription": "Custom autonomous AI agents integrated with CRM and WhatsApp Business API.",
+      "amount": 45000,
+      "currency": "INR",
+      "pricingType": "fixed",
+      "paymentType": "full",
+      "billingCycle": "one-time",
+      "enabled": true,
+      "badge": "New Innovation",
+      "iconName": "Code",
+      "createdAt": "2026-11-04T06:36:50.173Z",
+      "updatedAt": "2026-11-04T06:36:50.173Z"
+    },
+    "adminUser": "admin@nextgendigital.com"
+  }
+]

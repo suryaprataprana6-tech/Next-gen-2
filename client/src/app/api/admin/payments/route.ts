@@ -21,6 +21,7 @@ export async function GET(request: Request) {
     const search = searchParams.get('search')?.toLowerCase().trim() || '';
     const serviceFilter = searchParams.get('service') || 'all';
     const statusFilter = searchParams.get('status') || 'all';
+    const paymentTypeFilter = searchParams.get('paymentType') || 'all';
     const startDate = searchParams.get('startDate') || '';
     const endDate = searchParams.get('endDate') || '';
 
@@ -34,6 +35,9 @@ export async function GET(request: Request) {
           p.customerEmail.toLowerCase().includes(search) ||
           p.id.toLowerCase().includes(search) ||
           p.receiptNumber.toLowerCase().includes(search) ||
+          (p.businessName && p.businessName.toLowerCase().includes(search)) ||
+          (p.purpose && p.purpose.toLowerCase().includes(search)) ||
+          (p.projectReference && p.projectReference.toLowerCase().includes(search)) ||
           (p.gatewayPaymentId && p.gatewayPaymentId.toLowerCase().includes(search)) ||
           (p.gatewayOrderId && p.gatewayOrderId.toLowerCase().includes(search))
       );
@@ -45,6 +49,10 @@ export async function GET(request: Request) {
 
     if (statusFilter !== 'all') {
       payments = payments.filter((p) => p.status === statusFilter);
+    }
+
+    if (paymentTypeFilter !== 'all') {
+      payments = payments.filter((p) => p.paymentType === paymentTypeFilter);
     }
 
     if (startDate) {
@@ -115,32 +123,53 @@ export async function PATCH(request: Request) {
         );
       }
 
-      const pData = gatewayCheck.payment;
-      if (pData.status !== 'captured' && pData.status !== 'authorized') {
+      const rzpPayment = gatewayCheck.payment;
+      // Ensure payment is actually captured
+      if (rzpPayment.status !== 'captured') {
         return NextResponse.json(
           {
             success: false,
-            message: `Razorpay reported payment status as "${pData.status}". Cannot mark successful without captured funds.`,
+            message: `Gateway status is "${rzpPayment.status}", not "captured". Payment cannot be marked successful.`,
           },
           { status: 400 }
         );
       }
 
+      // Check amount match if possible
+      const expectedPaise = Math.round(payment.amount * 100);
+      if (rzpPayment.amount !== expectedPaise) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: `Amount mismatch: Gateway records ₹${(rzpPayment.amount / 100).toLocaleString('en-IN')} vs order expected ₹${payment.amount.toLocaleString('en-IN')}.`,
+          },
+          { status: 400 }
+        );
+      }
+
+      // Successfully verified with Razorpay API evidence
       const updated = markPaymentSuccessful(
         payment.gatewayOrderId,
         verifiedGatewayPaymentId,
-        `admin_audit_verified_${admin.id}`
+        `admin_verified_via_${admin.email}`
       );
 
       return NextResponse.json({
         success: true,
-        message: 'Payment successfully authenticated and updated with verified gateway audit evidence.',
+        message: `Payment verified against live Razorpay gateway (${verifiedGatewayPaymentId}) and marked as successful.`,
         payment: updated,
       });
     }
 
-    return NextResponse.json({ success: false, message: 'Invalid action requested' }, { status: 400 });
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Invalid administrative action requested.',
+      },
+      { status: 400 }
+    );
   } catch (error: any) {
+    console.error('Admin payment PATCH error:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

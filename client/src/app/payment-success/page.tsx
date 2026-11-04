@@ -36,6 +36,10 @@ interface PaymentDetails {
   serviceId: string;
   serviceName: string;
   projectDescription: string;
+  purpose?: string;
+  projectReference?: string;
+  totalProjectAmount?: number;
+  remainingBalance?: number;
   amount: number;
   currency: string;
   breakdown?: { label: string; amount: number }[];
@@ -257,12 +261,22 @@ function PaymentSuccessContent() {
         </div>
 
         {/* Total Box */}
-        <div className="py-6 flex justify-between items-center border-b border-slate-800/80 print:border-slate-300">
+        <div className="py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800/80 print:border-slate-300">
           <div>
             <span className="text-xs font-mono text-slate-400 block">Payment Status</span>
             <span className="inline-flex items-center gap-1.5 text-emerald-400 font-bold text-xs font-mono uppercase">
-              <CheckCircle2 className="w-3.5 h-3.5" /> PAID IN FULL
+              <CheckCircle2 className="w-3.5 h-3.5" /> PAID & CONFIRMED
             </span>
+            {payment?.purpose && (
+              <p className="text-[11px] font-mono text-cyan-400 mt-1">
+                Purpose: {payment.purpose}
+              </p>
+            )}
+            {payment?.projectReference && (
+              <p className="text-[11px] font-mono text-slate-400 mt-0.5">
+                Ref Code: {payment.projectReference}
+              </p>
+            )}
           </div>
 
           <div className="text-right">
@@ -270,6 +284,11 @@ function PaymentSuccessContent() {
             <span className="text-2xl sm:text-3xl font-heading font-extrabold text-cyan-400 print:text-black">
               ₹{(payment?.amount || 0).toLocaleString("en-IN")}
             </span>
+            {typeof payment?.remainingBalance === "number" && payment.remainingBalance > 0 && (
+              <div className="text-[11px] font-mono text-amber-400 mt-1">
+                Remaining Project Balance: ₹{payment.remainingBalance.toLocaleString("en-IN")}
+              </div>
+            )}
           </div>
         </div>
 
@@ -342,3 +361,4 @@ export default function PaymentSuccessPage() {
     </div>
   );
 }
+

@@ -1,0 +1,13 @@
+{
+  "tokenMoneyAmount": 5000,
+  "tokenOptionEnabled": true,
+  "domainRegistrationAmount": 1500,
+  "hostingAmount": 2000,
+  "additionalChargesAmount": 0,
+  "minCustomAmount": 500,
+  "maxCustomAmount": 500000,
+  "currency": "INR",
+  "requireApprovalAbove": 200000,
+  "updatedAt": "2026-11-04T06:36:50.213Z",
+  "updatedBy": "admin@nextgendigital.com"
+}

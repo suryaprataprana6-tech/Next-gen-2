@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { getServiceById, createPaymentRecord } from '@/lib/paymentsDb';
+import { getServiceById, createPaymentRecord, getPaymentSettings } from '@/lib/paymentsDb';
 import { createRazorpayOrder, getRazorpayCredentials } from '@/lib/razorpay';
 
 export const dynamic = 'force-dynamic';
@@ -11,8 +11,11 @@ const CreateOrderSchema = z.object({
   customerEmail: z.string().email('Invalid email address'),
   customerMobile: z.string().min(10, 'Valid 10-digit mobile number required').max(15),
   businessName: z.string().max(120).optional().or(z.literal('')),
-  projectDescription: z.string().min(5, 'Project description is required').max(1000),
+  projectDescription: z.string().min(5, 'Project description or purpose is required').max(1000),
   customAmount: z.number().optional(),
+  totalProjectAmount: z.number().positive().optional(),
+  purpose: z.string().max(250).optional(),
+  projectReference: z.string().max(100).optional(),
 });
 
 export async function POST(request: Request) {
@@ -39,7 +42,12 @@ export async function POST(request: Request) {
       businessName,
       projectDescription,
       customAmount,
+      totalProjectAmount,
+      purpose,
+      projectReference,
     } = result.data;
+
+    const settings = getPaymentSettings();
 
     // 1. Validate service from database catalog
     const service = getServiceById(serviceId);
@@ -62,8 +70,17 @@ export async function POST(request: Request) {
     if (service.pricingType === 'fixed') {
       finalAmount = service.amount;
     } else if (service.pricingType === 'custom') {
-      const minAllowed = service.minAmount || 500;
-      if (!customAmount || customAmount < minAllowed) {
+      const minAllowed = service.minAmount || settings.minCustomAmount || 500;
+      const maxAllowed = service.maxAmount || settings.maxCustomAmount || 500000;
+
+      if (!customAmount || typeof customAmount !== 'number' || isNaN(customAmount)) {
+        return NextResponse.json(
+          { success: false, error: 'Please enter a valid numeric payment amount.' },
+          { status: 400 }
+        );
+      }
+
+      if (customAmount < minAllowed) {
         return NextResponse.json(
           {
             success: false,
@@ -72,15 +89,17 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
-      if (customAmount > 10000000) {
+
+      if (customAmount > maxAllowed) {
         return NextResponse.json(
           {
             success: false,
-            error: 'Payment amount exceeds maximum online single transaction threshold.',
+            error: `Payment amount exceeds the maximum allowable threshold of ₹${maxAllowed.toLocaleString('en-IN')}. For larger enterprise contracts, please request an approved invoice link.`,
           },
           { status: 400 }
         );
       }
+
       finalAmount = Math.round(customAmount);
     }
 
@@ -101,10 +120,13 @@ export async function POST(request: Request) {
       notes: {
         service_id: service.id,
         service_name: service.name,
+        payment_type: service.paymentType,
         customer_name: customerName,
         customer_mobile: customerMobile,
         customer_email: customerEmail,
         business_name: businessName || 'N/A',
+        purpose: purpose || projectDescription.slice(0, 100),
+        project_reference: projectReference || 'N/A',
       },
     });
 
@@ -127,7 +149,11 @@ export async function POST(request: Request) {
       businessName,
       serviceId: service.id,
       serviceName: service.name,
+      paymentType: service.paymentType,
       projectDescription,
+      purpose: purpose || (service.pricingType === 'custom' ? projectDescription : undefined),
+      projectReference,
+      totalProjectAmount,
       amount: finalAmount,
       currency: 'INR',
       breakdown: service.breakdown,
@@ -148,6 +174,8 @@ export async function POST(request: Request) {
       service: {
         id: service.id,
         name: service.name,
+        category: service.category,
+        paymentType: service.paymentType,
         breakdown: service.breakdown,
       },
       customer: {
@@ -155,6 +183,8 @@ export async function POST(request: Request) {
         email: customerEmail,
         mobile: customerMobile,
       },
+      totalProjectAmount: paymentRecord.totalProjectAmount,
+      remainingBalance: paymentRecord.remainingBalance,
     });
   } catch (err: any) {
     console.error('Create order unhandled error:', err);
