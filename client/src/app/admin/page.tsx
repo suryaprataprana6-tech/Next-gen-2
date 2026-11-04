@@ -29,10 +29,12 @@ import {
   Cpu,
   Layers,
   ChevronRight,
+  CreditCard,
 } from "lucide-react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import JarvisOverlay from "@/components/jarvis/JarvisOverlay";
 import JarvisOrb from "@/components/jarvis/JarvisOrb";
+import AdminPaymentManager from "@/components/admin/AdminPaymentManager";
 import { useDoubleClap } from "@/hooks/useDoubleClap";
 import { Lead } from "@/lib/db";
 
@@ -46,6 +48,7 @@ export default function AdminPage() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Dashboard Data States
+  const [adminSection, setAdminSection] = useState<"crm" | "payments">("crm");
   const [leads, setLeads] = useState<Lead[]>([]);
   const [stats, setStats] = useState({
     total: 0,
@@ -527,9 +530,48 @@ export default function AdminPage() {
         </div>
 
         {/* ==================================================== */}
-        {/* LIVE CRM LEADS DIRECTORY                             */}
+        {/* ADMIN WORKSPACE SECTION SWITCHER                     */}
         {/* ==================================================== */}
-        <div className="rounded-2xl bg-slate-900/70 border border-slate-800 overflow-hidden shadow-xl">
+        <div className="flex items-center gap-3 pt-2">
+          <button
+            type="button"
+            onClick={() => setAdminSection("crm")}
+            className={`px-5 py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 ${
+              adminSection === "crm"
+                ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+                : "bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+          >
+            <Users className="w-4 h-4" />
+            <span>CRM Leads Pipeline ({leads.length})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setAdminSection("payments")}
+            className={`px-5 py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 ${
+              adminSection === "payments"
+                ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+                : "bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+            }`}
+          >
+            <CreditCard className="w-4 h-4" />
+            <span>Payment Management & Service Pricing</span>
+          </button>
+        </div>
+
+        {/* ==================================================== */}
+        {/* SECTION: PAYMENT MANAGEMENT                          */}
+        {/* ==================================================== */}
+        {adminSection === "payments" && (
+          <AdminPaymentManager token={token} />
+        )}
+
+        {/* ==================================================== */}
+        {/* SECTION: LIVE CRM LEADS DIRECTORY                    */}
+        {/* ==================================================== */}
+        {adminSection === "crm" && (
+          <div className="rounded-2xl bg-slate-900/70 border border-slate-800 overflow-hidden shadow-xl">
           
           {/* Table Header & Filter Bar */}
           <div className="px-6 py-4 border-b border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -713,6 +755,7 @@ export default function AdminPage() {
             </table>
           </div>
         </div>
+        )}
 
         {/* ==================================================== */}
         {/* SYSTEM DIAGNOSTICS & TELEMETRY FOOTER CARD           */}

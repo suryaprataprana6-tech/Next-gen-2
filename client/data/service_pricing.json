@@ -1,0 +1,127 @@
+[
+  {
+    "id": "token_money",
+    "name": "Token Money",
+    "shortDescription": "Project initiation and kickoff deposit to lock your strategy calendar and start architecture design.",
+    "amount": 5000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "enabled": true,
+    "badge": "Kickoff",
+    "iconName": "BadgeCheck"
+  },
+  {
+    "id": "token_domain_hosting",
+    "name": "Token Money + Domain & Hosting",
+    "shortDescription": "Advance deposit plus enterprise cloud hosting setup and primary commercial domain registration.",
+    "amount": 8500,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "breakdown": [
+      {
+        "label": "Project Kickoff Advance",
+        "amount": 5000
+      },
+      {
+        "label": "Domain & Cloud Server Setup (1 Year)",
+        "amount": 3500
+      }
+    ],
+    "enabled": true,
+    "badge": "Popular",
+    "iconName": "Server"
+  },
+  {
+    "id": "seo_services",
+    "name": "SEO Services",
+    "shortDescription": "Full-spectrum organic search optimization, technical auditing, keyword ranking, and local growth.",
+    "amount": 15000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "monthly",
+    "enabled": true,
+    "iconName": "Search"
+  },
+  {
+    "id": "meta_ads",
+    "name": "Meta Ads Setup",
+    "shortDescription": "High-converting Facebook & Instagram campaign structuring, pixel tracking, and creative ad copy setup.",
+    "amount": 12000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "enabled": true,
+    "iconName": "Target"
+  },
+  {
+    "id": "google_ads",
+    "name": "Google Ads Setup",
+    "shortDescription": "Intent-driven Google PPC search, call campaigns, negative keyword sculpting, and conversion API.",
+    "amount": 12000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "enabled": true,
+    "iconName": "TrendingUp"
+  },
+  {
+    "id": "smm",
+    "name": "Social Media Management",
+    "shortDescription": "Brand narrative curation, aesthetic post graphics, reel syndication, and community engagement.",
+    "amount": 10000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "monthly",
+    "enabled": true,
+    "iconName": "Share2"
+  },
+  {
+    "id": "web_dev",
+    "name": "Website Development",
+    "shortDescription": "Ultra-fast Next.js engineering, custom animations, responsive layouts, and conversion-focused pages.",
+    "amount": 25000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "enabled": true,
+    "badge": "Full Solution",
+    "iconName": "Code"
+  },
+  {
+    "id": "web_maintenance",
+    "name": "Website Maintenance",
+    "shortDescription": "Monthly core updates, SSL security monitoring, CDN cache optimization, and routine content patches.",
+    "amount": 6000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "monthly",
+    "enabled": true,
+    "iconName": "ShieldCheck"
+  },
+  {
+    "id": "graphic_design",
+    "name": "Graphic Design",
+    "shortDescription": "Vector brand assets, marketing collaterals, social graphics, and pitch deck visual systems.",
+    "amount": 8000,
+    "currency": "INR",
+    "pricingType": "fixed",
+    "billingCycle": "one-time",
+    "enabled": true,
+    "iconName": "Palette"
+  },
+  {
+    "id": "custom_payment",
+    "name": "Other Services / Custom Payment",
+    "shortDescription": "Milestone disbursements, custom scopes, enterprise retainer top-ups, or bespoke add-on services.",
+    "amount": 0,
+    "currency": "INR",
+    "pricingType": "custom",
+    "billingCycle": "custom",
+    "minAmount": 500,
+    "enabled": true,
+    "badge": "Flexible",
+    "iconName": "CreditCard"
+  }
+]

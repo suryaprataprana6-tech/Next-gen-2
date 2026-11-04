@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Menu, X, Calendar, Download, ArrowUpRight } from "lucide-react";
+import { Moon, Sun, Menu, X, Calendar, ArrowUpRight, CreditCard } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
@@ -25,12 +26,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Process", href: "#process" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "Services", href: "/#services" },
+    { name: "Work", href: "/#work" },
+    { name: "Process", href: "/#process" },
+    { name: "About", href: "/#about" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -42,7 +43,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-11 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
@@ -61,23 +62,32 @@ export default function Navbar() {
               Digital Solutions
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 p-1.5 rounded-full backdrop-blur-md">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-brand-500 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 transition-all"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* Right CTA Actions */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Prominent Pay Online Button */}
+          <Link
+            href="/pay-online"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:border-cyan-400 transition-all shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] group"
+          >
+            <CreditCard className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <span>Pay Online</span>
+          </Link>
+
           {/* Dark / Light Toggle */}
           <button
             onClick={toggleTheme}
@@ -145,17 +155,25 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm font-semibold py-2 text-slate-700 dark:text-slate-200 hover:text-brand-500"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               
               <div className="pt-4 border-t border-slate-900/10 dark:border-white/10 flex flex-col gap-3">
+                <Link
+                  href="/pay-online"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full py-2.5 rounded-xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-400 text-xs font-bold flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                >
+                  <CreditCard className="w-4 h-4 text-cyan-400" />
+                  <span>Pay Online</span>
+                </Link>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);

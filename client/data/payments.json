@@ -1,0 +1,73 @@
+[
+  {
+    "id": "NGD-PAY-1001",
+    "receiptNumber": "NGD-2026-0891",
+    "customerName": "Rahul Verma",
+    "customerMobile": "+91 98350 11223",
+    "customerEmail": "rahul@vermasafaris.com",
+    "businessName": "Verma Luxury Safaris",
+    "serviceId": "token_domain_hosting",
+    "serviceName": "Token Money + Domain & Hosting",
+    "projectDescription": "Kickoff advance and fast cloud server setup for luxury safari booking portal.",
+    "amount": 8500,
+    "currency": "INR",
+    "breakdown": [
+      {
+        "label": "Project Kickoff Advance",
+        "amount": 5000
+      },
+      {
+        "label": "Domain & Cloud Server Setup (1 Year)",
+        "amount": 3500
+      }
+    ],
+    "gateway": "razorpay",
+    "gatewayOrderId": "order_PnK9X2026Rzp01",
+    "gatewayPaymentId": "pay_PnK9X89201LveA",
+    "gatewaySignature": "sig_verified_prod_01928374",
+    "status": "successful",
+    "paymentTimestamp": "2026-11-02T17:36:15.717Z",
+    "createdAt": "2026-11-02T17:36:15.747Z",
+    "updatedAt": "2026-11-02T17:36:15.747Z"
+  },
+  {
+    "id": "NGD-PAY-1002",
+    "receiptNumber": "NGD-2026-0892",
+    "customerName": "Dr. Ananya Sen",
+    "customerMobile": "+91 97712 44556",
+    "customerEmail": "ananya.sen@apexclinics.in",
+    "businessName": "Apex Super Speciality Clinic",
+    "serviceId": "google_ads",
+    "serviceName": "Google Ads Setup",
+    "projectDescription": "High-intent PPC lead campaign setup for dental and cosmetic surgery consultations.",
+    "amount": 12000,
+    "currency": "INR",
+    "gateway": "razorpay",
+    "gatewayOrderId": "order_QmL4B2026Rzp02",
+    "gatewayPaymentId": "pay_QmL4B99182LveB",
+    "gatewaySignature": "sig_verified_prod_02837465",
+    "status": "successful",
+    "paymentTimestamp": "2026-11-03T15:36:15.747Z",
+    "createdAt": "2026-11-03T15:36:15.747Z",
+    "updatedAt": "2026-11-03T15:36:15.747Z"
+  },
+  {
+    "id": "NGD-PAY-1003",
+    "receiptNumber": "NGD-2026-0893",
+    "customerName": "Amit Patel",
+    "customerMobile": "+91 94311 88990",
+    "customerEmail": "amit@skylinerealty.com",
+    "businessName": "Skyline Realty Projects",
+    "serviceId": "meta_ads",
+    "serviceName": "Meta Ads Setup",
+    "projectDescription": "Pre-launch campaign for luxury 3BHK residential inventory in NCR.",
+    "amount": 12000,
+    "currency": "INR",
+    "gateway": "razorpay",
+    "gatewayOrderId": "order_RmN7C2026Rzp03",
+    "status": "pending",
+    "statusReason": "Checkout opened, awaiting authorization",
+    "createdAt": "2026-11-04T03:36:15.747Z",
+    "updatedAt": "2026-11-04T03:36:15.747Z"
+  }
+]
